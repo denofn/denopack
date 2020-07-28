@@ -1,9 +1,9 @@
 const deno_dir = Deno.env.get("DENO_DIR"); // set once
 if (!deno_dir) throw new Error(`DENO_DIR is not set`);
 
-import { path, Plugin } from "../deps.ts";
-import { isFile } from "../util/isFile.ts";
-import { isHttpUrl } from "../util/isHttpUrl.ts";
+import { path, Plugin } from "../../deps.ts";
+import { isFile } from "../../util/isFile.ts";
+import { isHttpUrl } from "../../util/isHttpUrl.ts";
 
 const extensions = [".js", ".jsx"];
 type Opts = {
@@ -33,7 +33,9 @@ export function pluginCacheResolver(opts: Opts = { lazy: false }): Plugin {
     name: "denopack-plugin-cacheResolver",
     async resolveId(importee: string) {
       const importeeLocation: string | undefined = resolveImporteeLocation(importee);
-      return importeeLocation && (opts.lazy || (await isFile(importeeLocation))) ? importeeLocation : importee;
+      return importeeLocation && (opts.lazy || (await isFile(importeeLocation)))
+        ? importeeLocation
+        : importee;
     },
   };
 }

@@ -1,3 +1,12 @@
 {
-  "deno.enable": true
+  "deno.enable": true,
+  "editor.formatOnSave": true,
+  "prettier.printWidth": 100,
+  "importSorter.generalConfiguration.sortOnBeforeSave": true,
+  "importSorter.importStringConfiguration.quoteMark": "double",
+  "importSorter.importStringConfiguration.tabSize": 2,
+  "importSorter.sortConfiguration.removeUnusedImports": true,
+  "importSorter.sortConfiguration.removeUnusedDefaultImports": true,
+  "importSorter.importStringConfiguration.trailingComma": "multiLine",
+  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.type": "newLineEachExpressionAfterCountLimitExceptIfOnlyOne"
 }

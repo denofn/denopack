@@ -1,4 +1,4 @@
-import { Plugin, ResolveIdResult } from "../deps.ts";
+import { Plugin, ResolveIdResult } from "../../deps.ts";
 
 export function pluginChainResolver(...plugs: Plugin[]): Plugin {
   return {

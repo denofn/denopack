@@ -1,5 +1,5 @@
-import { Plugin } from "../deps.ts";
-import { isHttpUrl } from "../util/isHttpUrl.ts";
+import { Plugin } from "../../deps.ts";
+import { isHttpUrl } from "../../util/isHttpUrl.ts";
 
 export function pluginFileLoader(): Plugin {
   return {

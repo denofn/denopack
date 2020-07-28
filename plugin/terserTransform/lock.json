@@ -1,0 +1,18 @@
+{
+  "https://deno.land/std@0.62.0/_util/assert.ts": "e1f76e77c5ccb5a8e0dbbbe6cce3a56d2556c8cb5a9a8802fc9565af72462149",
+  "https://deno.land/std@0.62.0/path/_constants.ts": "e11f32a36644e04dce243f3c1f30c02cc5d149827f48a755628176f0707cfc70",
+  "https://deno.land/std@0.62.0/path/_globrex.ts": "cfd1af99fb5ed2eff9b49aef994cdf7a14a5d26cd32b14c60b27bfff49839c82",
+  "https://deno.land/std@0.62.0/path/_interface.ts": "5876f91d35fd42624893a4aaddaee352144e1f46e719f1dde6511bab7c3c1029",
+  "https://deno.land/std@0.62.0/path/_util.ts": "f0fa012d40ae9b6acbef03908e534eb11e694de6470fb4d78ea4f38829e735ab",
+  "https://deno.land/std@0.62.0/path/common.ts": "e4ec66a7416d56f60331b66e27a8a4f08c7b1cf48e350271cb69754a01cf5c04",
+  "https://deno.land/std@0.62.0/path/glob.ts": "dbcda011329b5ba0f955823e578af19a8bf8d01586a07925b42affe885544e62",
+  "https://deno.land/std@0.62.0/path/mod.ts": "6de8885c2534757097818e302becd1cefcbc4c28ac022cc279e612ee04e8cfd1",
+  "https://deno.land/std@0.62.0/path/posix.ts": "018dd955e0a6b6fffed55acd34ea2f4fb734aec3c9feb842e50b144c1bdb0851",
+  "https://deno.land/std@0.62.0/path/separator.ts": "9dd15d46ff84a16e13554f56af7fee1f85f8d0f379efbbe60ac066a60561f036",
+  "https://deno.land/std@0.62.0/path/win32.ts": "90261b763121538e8133ee7f2995987d4871debfe029456c5c7000207f45317c",
+  "https://unpkg.com/cac@6.6.1/mod.d.ts": "bd1a2f73f346ff2711bf6a589678a0bfd23f0458efaf00dc78050d2c5773c204",
+  "https://unpkg.com/cac@6.6.1/mod.js": "215a1b45f379d89557c8c2dd1667e68facdf7a9e43af0fda9e95a16bd004f090",
+  "https://unpkg.com/rollup@2.23.0/dist/es/rollup.browser.js": "fa17eb7f6b65f8de7d960e6b1e3aa34664a121a5c3db903ce1bc3b7eed6bd540",
+  "https://unpkg.com/rollup@2.23.0/dist/rollup.d.ts": "07f64403aa45bcad261b83708a6a8d113229de2a4eb7b8bca37e58912c44048d",
+  "https://unpkg.com/terser@4.8.0/dist/bundle.min.js": "406370750bbd866572455f365bddcf1777cd6c043e082084d1619799b01ec54e"
+}

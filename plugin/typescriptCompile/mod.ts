@@ -1,7 +1,7 @@
-import { Plugin } from "../deps.ts";
-import { rewriteFileUrl } from "../util/rewriteFileUrl.ts";
-import { usesProtocol } from "../util/usesProtocol.ts";
-import { resolver } from "../util/resolver.ts";
+import { Plugin } from "../../deps.ts";
+import { resolver } from "../../util/resolver.ts";
+import { rewriteFileUrl } from "../../util/rewriteFileUrl.ts";
+import { usesProtocol } from "../../util/usesProtocol.ts";
 
 let modules: Record<string, string>;
 let files: string[];

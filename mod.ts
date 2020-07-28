@@ -1,32 +1,16 @@
-import { path, rollup, RollupBuild, RollupOptions } from "./deps.ts";
-import { useCompile } from "./plugins/hooks.ts";
-import { pluginTerserTransform } from "./plugins/terserTransform.ts";
+export * from "./plugin/mod.ts";
 
-const extensions = [".ts", ".tsx", ".js", ".jsx"];
+export { default as config } from "./cli/options.ts";
 
-function parseInputFile() {
-  const _location = Deno.args[0];
-  if (!_location || !extensions.includes(path.parse(_location).ext))
-    throw new Error(`No valid input file has been given!`);
-
-  const location = path.resolve(Deno.cwd(), path.normalize(_location));
-
-  return path.parse(location);
-}
-
-const { dir, base } = parseInputFile();
-
-const options: RollupOptions = {
-  input: `${dir}/${base}`,
-  plugins: useCompile(),
-};
-
-const bundle = (await rollup(options)) as RollupBuild;
-const generated = await bundle.generate({
-  file: "bundle.js",
-  format: "esm",
-  plugins: [pluginTerserTransform({ module: true, compress: true, mangle: true })],
-});
-
-if (!Deno.args[1]) console.log(generated.output[0].code);
-else Deno.writeTextFile(path.resolve(Deno.cwd(), Deno.args[1]), generated.output[0].code);
+// @deno-types="https://unpkg.com/rollup@2.23.0/dist/rollup.d.ts"
+export { rollup } from "https://unpkg.com/rollup@2.23.0/dist/es/rollup.browser.js";
+export type {
+  Plugin,
+  ResolveIdResult,
+  RollupOptions,
+  RollupOutput,
+  RollupBuild,
+  OutputAsset,
+  OutputChunk,
+  OutputOptions,
+} from "https://unpkg.com/rollup@2.23.0/dist/rollup.d.ts";

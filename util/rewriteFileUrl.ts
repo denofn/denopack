@@ -1,13 +1,20 @@
 import { path } from "../deps.ts";
 
-export function rewriteFileUrl(p: string) {
-  // rewrites ts -> js and tsx -> jsx
-  const parsedPath = path.parse(p);
+// rewrites ts -> js and tsx -> jsx
+export function rewriteFileUrl(p: string): string {
+  const { dir, ext: ogExt, name } = path.parse(p);
 
   let ext: ".js" | ".jsx" = ".js";
+  switch (ogExt) {
+    case ".ts":
+      ext = ".js";
+      break;
+    case ".tsx":
+      ext = ".jsx";
+      break;
+    default:
+      return p;
+  }
 
-  if (parsedPath.ext !== ".ts" && parsedPath.ext !== ".tsx") return p;
-  else if (parsedPath.ext === ".ts") ext = ".js";
-  else if (parsedPath.ext === ".tsx") ext = ".jsx";
-  return `${parsedPath.dir}/${parsedPath.name}${ext}`;
+  return `${dir}/${name}${ext}`;
 }
