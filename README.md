@@ -54,7 +54,7 @@ deno install --unstable --allow-read --allow-write --allow-env --allow-net -n de
 ```
 
 ```sh
-deno install --unstable --allow-read --allow-write --allow-env --allow-net -n denopack https://x.nest.land/denopack@0.1.0
+eggs install --unstable --allow-read --allow-write --allow-env --allow-net -n denopack https://x.nest.land/denopack@0.1.2/cli.ts
 ```
 
 **NOTE: denopack uses unstable Deno APIs. These APIs are not final and may break, but this does mean `--unstable` is mandatory!**
