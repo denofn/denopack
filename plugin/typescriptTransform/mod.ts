@@ -5,7 +5,7 @@ export function pluginTypescriptTransform(opts?: Deno.CompilerOptions): Plugin {
     name: "denopack-plugin-typescriptTransform",
     transform: async function (code, id) {
       const result = await Deno.transpileOnly({ [id]: code }, opts);
-      return result[id].source;
+      return { code: result[id].source, map: result[id].map };
     },
   };
 }

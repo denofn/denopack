@@ -3,6 +3,7 @@
 denopack provides several built-in plugins that you can use
 
 - [pluginRootResolver](./pluginRootResolver)
+- [pluginImportResolver](./pluginImportResolver)
 - ~~[pluginCacheResolver](./pluginCacheResolver)~~ **deprecated after Deno v1.2.3**
 - [pluginChainResolver](./pluginChainResolver)
 - [pluginCacheLoader](./pluginCacheResolver)

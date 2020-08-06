@@ -11,7 +11,6 @@ export function parseInputFile({ input }: Options): ReturnType<typeof path.parse
   )
     throw new Error(`No valid input file has been given!`);
 
-  const location = path.resolve(Deno.cwd(), path.normalize(_location));
-
+  const location = path.resolve(path.normalize(_location));
   return path.parse(location);
 }

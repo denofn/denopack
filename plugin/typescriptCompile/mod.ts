@@ -26,8 +26,7 @@ export function pluginTypescriptCompile(opts?: Deno.CompilerOptions): Plugin {
     },
     async load(id) {
       if (!files.includes(id)) throw new Error(`Cannot find file ${id} in emitMap`);
-
-      return modules[id];
+      return { code: modules[id] };
     },
   };
 }
