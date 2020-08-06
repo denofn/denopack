@@ -39,7 +39,7 @@ There is absolutely nothing wrong with `deno bundle`, but in its current state i
 
 - [x] [Tree shaking](https://rollupjs.org/guide/en/#tree-shaking) comes built-in with Rollup
 - [x] Minification by the usage of the [Terser plugin](./plugin/terserTransform)
-- [ ] Source Maps (should also come built-in with Rollup, coming soon)
+- [ ] Source Maps (should also come built-in with Rollup, [coming soon](https://github.com/denofn/denopack/pull/2))
 - [ ] File watching (pretty sure this can be implemented, coming soon)
 - [ ] Lock file support, specifically in the shape of a plugin, similar to the [cacheResolver plugin](./plugin/cacheResolver)
 
