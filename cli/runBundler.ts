@@ -1,7 +1,6 @@
 import { path, rollup, RollupBuild } from "../deps.ts";
 import { emitFiles } from "./emitFiles.ts";
 import { Options, splitOptions } from "./options.ts";
-import { parseInputFile } from "./parseInputFile.ts";
 
 export async function runBundler({ input, output, dir, config, print }: Options): Promise<void> {
   const { default: conf } = await import(
@@ -15,8 +14,7 @@ export async function runBundler({ input, output, dir, config, print }: Options)
   outputOpts.dir = undefined;
 
   if (input) {
-    const { dir, base } = parseInputFile({ input });
-    rollupOpts.input = `${dir}/${base}`;
+    rollupOpts.input = input;
   }
 
   if (!rollupOpts.input) {
