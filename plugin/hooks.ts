@@ -4,24 +4,31 @@ import { pluginImportResolver } from "./importResolver/mod.ts";
 import { pluginTypescriptCompile } from "./typescriptCompile/mod.ts";
 import { pluginTypescriptTransform } from "./typescriptTransform/mod.ts";
 
-export const useAlwaysFetch = (opts?: Deno.CompilerOptions) => [
+export const useAlwaysFetch = (opts: Deno.CompilerOptions = {}) => [
   pluginImportResolver(),
   pluginFileLoader(),
   pluginTypescriptTransform(opts),
 ];
 
-export const useCache = (opts?: Deno.CompilerOptions) => [
+export const useCache = (opts: Deno.CompilerOptions = {}) => [
   pluginImportResolver(),
   pluginCacheLoader(),
   pluginFileLoader(),
   pluginTypescriptTransform(opts),
 ];
 
-export const useCacheLazy = (opts?: Deno.CompilerOptions) => [
+export const useCacheLazy = (opts: Deno.CompilerOptions = {}) => [
   pluginImportResolver(),
   pluginCacheLoader({ lazy: true }),
   pluginFileLoader(),
   pluginTypescriptTransform(opts),
 ];
 
-export const useCompile = (opts?: Deno.CompilerOptions) => [pluginTypescriptCompile(opts)];
+export const useCompile = (opts: Deno.CompilerOptions = {}) => [
+  pluginTypescriptCompile({ useAsLoader: false, compilerOptions: opts }),
+  pluginFileLoader(),
+];
+
+export const useCompileAsLoader = (opts: Deno.CompilerOptions = {}) => [
+  pluginTypescriptCompile({ useAsLoader: true, compilerOptions: opts }),
+];

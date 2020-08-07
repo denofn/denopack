@@ -3,46 +3,57 @@ import { isHttpUrl } from "../../util/isHttpUrl.ts";
 import { resolver } from "../../util/resolver.ts";
 import { stripFileProtocol } from "../../util/stripFileProtocol.ts";
 
+type Options = {
+  useAsLoader: boolean;
+  compilerOptions: Deno.CompilerOptions;
+};
+
 let modules: Record<string, string>;
 let files: string[];
 
-let entryPoint: string;
+function resolveFromModules(id: string) {
+  const resolvedFile = isHttpUrl(id) ? id : path.resolve(id);
+  const originalFile = path.parse(resolvedFile);
+  const jsFile =
+    originalFile.ext === ".js" || originalFile.ext === ".jsx"
+      ? resolvedFile
+      : `${originalFile.dir}/${originalFile.name}.${originalFile.ext === ".tsx" ? "jsx" : "js"}`;
 
-export function pluginTypescriptCompile(opts?: Deno.CompilerOptions): Plugin {
+  if (!files.includes(jsFile)) throw new Error(`Cannot find file ${id} in emitMap`);
+  return { code: modules[jsFile], map: modules[`${jsFile}.map`] };
+}
+
+async function resolveId(
+  compilerOptions: Deno.CompilerOptions,
+  importee: string,
+  importer: string | undefined
+) {
+  if (importer || modules) return resolver(importee, importer);
+
+  const [diagnostics, emitMap] = await Deno.compile(importee, undefined, compilerOptions);
+  if (diagnostics) throw new Error(Deno.formatDiagnostics(diagnostics));
+
+  modules = stripFileProtocol(emitMap);
+  files = Object.keys(modules);
+
+  return importee;
+}
+
+export function pluginTypescriptCompile(
+  { useAsLoader, compilerOptions }: Options = { useAsLoader: false, compilerOptions: {} }
+): Plugin {
   return {
     name: "denopack-plugin-typescriptCompile",
-    resolveId: async function (importee, importer) {
-      if (!importer && !entryPoint && !modules) {
-        const [diagnostics, emitMap] = await Deno.compile(importee, undefined, opts);
-
-        if (diagnostics) throw new Error(Deno.formatDiagnostics(diagnostics));
-
-        entryPoint = importee;
-        modules = stripFileProtocol(emitMap);
-        files = Object.keys(modules);
-
-        return importee;
-      }
-
-      return resolver(importee, importer);
+    async resolveId(importee, importer) {
+      return resolveId(compilerOptions, importee, importer);
     },
+
     async load(id) {
-      const resolvedFile = isHttpUrl(id) ? id : path.resolve(id);
-      const originalFile = path.parse(resolvedFile);
+      return !!useAsLoader ? resolveFromModules(id) : null;
+    },
 
-      if (originalFile.ext === ".js" || originalFile.ext === ".jsx") {
-        if (!files.includes(resolvedFile)) throw new Error(`Cannot find file ${id} in emitMap`);
-        // be lazy
-        return { code: modules[resolvedFile] };
-      } else if (originalFile.ext === ".ts" || originalFile.ext === ".tsx") {
-        const jsUrl = `${originalFile.dir}/${originalFile.name}.${
-          originalFile.ext === ".tsx" ? "jsx" : "js"
-        }`;
-
-        if (!files.includes(jsUrl)) throw new Error(`Cannot find file ${id} in emitMap`);
-
-        return { code: modules[jsUrl] };
-      }
+    async transform(_, id) {
+      return !!useAsLoader ? null : resolveFromModules(id);
     },
   };
 }
