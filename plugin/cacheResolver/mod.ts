@@ -1,9 +1,7 @@
-const deno_dir = Deno.env.get("DENO_DIR"); // set once
-if (!deno_dir) throw new Error(`DENO_DIR is not set`);
-
 import { path, Plugin } from "../../deps.ts";
 import { isFile } from "../../util/isFile.ts";
 import { isHttpUrl } from "../../util/isHttpUrl.ts";
+import { resolveCacheLocation } from "../../util/resolveCacheLocation.ts";
 
 const extensions = [".js", ".jsx"];
 type Opts = {
@@ -11,6 +9,8 @@ type Opts = {
 };
 
 function resolveImporteeLocation(importee: string) {
+  const deno_dir = resolveCacheLocation();
+
   let importeeLocation: string | undefined;
 
   if (isHttpUrl(importee)) {
