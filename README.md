@@ -29,6 +29,7 @@
 - [Plugins](#plugins)
   - [Usage](#usage-1)
     - [Usage wihout CLI](#usage-without-cli)
+- [Contributing](#contributing)
   - [Contributing denopack plugins](#contributing-denopack-plugins)
   - [Contributing denopack hooks](#contributing-denopack-hooks)
 - [Acknowledgements](#acknowledgements)
@@ -183,7 +184,7 @@ import type { RollupOptions } from "https://cdn.jsdelivr.net/gh/denofn/denopack@
 
 Just like the CLI, you can use it out-of-the-box with `deno run` or script runners like the ones mentioned up above.
 
-### Contributing
+## Contributing
 
 - If you are using vscode, install and enable the [required extensions](./.vscode/extensions.json).
   - If you are not using vscode, sort your imports and use the following prettier settings:
@@ -198,7 +199,7 @@ Just like the CLI, you can use it out-of-the-box with `deno run` or script runne
 - Extract shared code to [util](./util)
 - Code that is not a plugin or hook lives in [cli](./cli)
 
-#### Contributing denopack plugins
+### Contributing denopack plugins
 
 Contributing a plugin to the denopack repo is not only extremely welcomed, it's even encouraged. That does mean a few conventions are in order, extending from the existing [Rollup conventions](https://rollupjs.org/guide/en/#conventions) these are:
 
@@ -209,7 +210,7 @@ Contributing a plugin to the denopack repo is not only extremely welcomed, it's 
 - Use async Deno APIs (readFile not readFileSync, etc.)
 - Document your plugin in English and **detail what flags are required**! [Here's an example](./plugin/typescriptCompile/README.md)
 
-#### Contributing denopack hooks
+### Contributing denopack hooks
 
 Contributing a hook follows the following conventions:
 
