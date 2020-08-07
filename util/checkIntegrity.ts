@@ -11,7 +11,7 @@ export function checkIntegrity(
     throw new Error(
       `Integrity of ${filePath} does not match the checksum in the provided lockfile!`
     );
-  // else {
-  //   console.log(`Integrity of ${filePath} matches lockfile`);
-  // }
+  else {
+    console.log(`Integrity of ${filePath} matches lockfile`);
+  }
 }
