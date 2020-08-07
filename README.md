@@ -41,8 +41,8 @@ There is absolutely nothing wrong with `deno bundle`, but in its current state i
 - [x] [Tree shaking](https://rollupjs.org/guide/en/#tree-shaking) comes built-in with Rollup
 - [x] Minification by the usage of the [Terser plugin](./plugin/terserTransform)
 - [x] Source Maps (should also come built-in with Rollup, [coming soon](https://github.com/denofn/denopack/pull/2))
+- [x] Lock file support, checking checksums from the lockfile against loaded code
 - [ ] File watching (pretty sure this can be implemented, coming soon)
-- [ ] Lock file support, checking checksums from the lockfile against loaded code
 
 More to come, also see the `deno bundle` roadmap/wishlist over at [denoland/deno/issues/4549](https://github.com/denoland/deno/issues/4549)
 
@@ -219,6 +219,7 @@ Contributing a hook follows the following conventions:
 - Hooks are stored inside of [hooks.ts](./plugin/hooks.ts)
 - Hooks are always functions and always return an array of plugins
 - Using plugins that accept configuration options in hooks should always be allowed to pass config down to that plugin
+- Configuration options are stored in one object containing all configuration options, see [hooks.ts](./plugin/hooks.ts) for examples
 
 ## Acknowledgements
 

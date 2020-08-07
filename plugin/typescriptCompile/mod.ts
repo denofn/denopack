@@ -4,8 +4,8 @@ import { resolver } from "../../util/resolver.ts";
 import { stripFileProtocol } from "../../util/stripFileProtocol.ts";
 
 type Options = {
-  useAsLoader: boolean;
-  compilerOptions: Deno.CompilerOptions;
+  useAsLoader?: boolean;
+  compilerOptions?: Deno.CompilerOptions;
 };
 
 let modules: Record<string, string>;
@@ -39,13 +39,11 @@ async function resolveId(
   return importee;
 }
 
-export function pluginTypescriptCompile(
-  { useAsLoader, compilerOptions }: Options = { useAsLoader: false, compilerOptions: {} }
-): Plugin {
+export function pluginTypescriptCompile({ useAsLoader, compilerOptions }: Options = {}): Plugin {
   return {
     name: "denopack-plugin-typescriptCompile",
     async resolveId(importee, importer) {
-      return resolveId(compilerOptions, importee, importer);
+      return resolveId(compilerOptions ?? {}, importee, importer);
     },
 
     async load(id) {
