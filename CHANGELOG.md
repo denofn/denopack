@@ -9,9 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Source map support [denofn/denopack/pull/2](https://github.com/denofn/denopack/pull/2)
-- Lockfile integrity checking
+- Source map support in [denofn/denopack/pull/2](https://github.com/denofn/denopack/pull/2)
+- Lockfile integrity checking in [denofn/denopack/pull/4](https://github.com/denofn/denopack/pull/4)
 
 ### Changed
 
-- Hooks now take one configuration object as parameter where needed
+- Hooks now take one configuration object as parameter where needed in [denofn/denopack/pull/4](https://github.com/denofn/denopack/pull/4)
