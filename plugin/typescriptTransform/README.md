@@ -13,11 +13,15 @@ Uses the internal `Deno.transpileOnly` [compiler API](https://deno.land/manual/r
 ## Usage
 
 ```ts
-import { pluginRootResolver } from "https://cdn.jsdelivr.net/gh/denofn/denopack@latest/plugin/rootResolver/mod.ts";
+import { pluginImportResolver } from "https://cdn.jsdelivr.net/gh/denofn/denopack@latest/plugin/importResolver/mod.ts";
 import { pluginFileLoader } from "https://cdn.jsdelivr.net/gh/denofn/denopack@latest/plugin/fileLoader/mod.ts";
 import { pluginTypescriptTransform } from "https://cdn.jsdelivr.net/gh/denofn/denopack@latest/plugin/typescriptTransform/mod.ts";
 
 export default {
-  plugins: [pluginRootResolver(), pluginFileLoader(), pluginTypescriptTransform({ ...myOptions })],
+  plugins: [
+    pluginImportResolver(),
+    pluginFileLoader(),
+    pluginTypescriptTransform({ ...myOptions }),
+  ],
 };
 ```
