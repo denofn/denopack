@@ -7,7 +7,14 @@ const config: RollupOptions = {
   output: {
     file: "bundle.js",
     format: "esm",
-    plugins: [pluginTerserTransform({ module: true, compress: true, mangle: true })],
+    sourcemap: true,
+    plugins: [
+      pluginTerserTransform({
+        module: true,
+        compress: true,
+        mangle: true,
+      }),
+    ],
   },
 };
 
@@ -31,7 +38,14 @@ export default {
   output: {
     file: "bundle.js",
     format: "esm",
-    plugins: [pluginTerserTransform({ module: true, compress: true, mangle: true })],
+    sourcemap: true,
+    plugins: [
+      pluginTerserTransform({
+        module: true,
+        compress: true,
+        mangle: true,
+      }),
+    ],
   },
 };
 `);

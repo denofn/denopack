@@ -17,5 +17,12 @@ export async function emitFiles(generated: RollupOutput, outputDir: string): Pro
 
     if (typeof data === "string") await Deno.writeTextFile(location, data);
     else await Deno.writeFile(location, data);
+
+    if (!isOutputAsset(toEmit) && toEmit.map) {
+      await Deno.writeTextFile(
+        path.resolve(outputDirPath, `${toEmit.map.file}.map`),
+        JSON.stringify(toEmit.map)
+      );
+    }
   }
 }

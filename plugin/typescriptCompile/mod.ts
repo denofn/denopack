@@ -1,33 +1,59 @@
-import { Plugin } from "../../deps.ts";
+import { path, Plugin } from "../../deps.ts";
+import { isHttpUrl } from "../../util/isHttpUrl.ts";
 import { resolver } from "../../util/resolver.ts";
-import { rewriteFileUrl } from "../../util/rewriteFileUrl.ts";
-import { usesProtocol } from "../../util/usesProtocol.ts";
+import { stripFileProtocol } from "../../util/stripFileProtocol.ts";
+
+type Options = {
+  useAsLoader: boolean;
+  compilerOptions: Deno.CompilerOptions;
+};
 
 let modules: Record<string, string>;
 let files: string[];
 
-export function pluginTypescriptCompile(opts?: Deno.CompilerOptions): Plugin {
+function resolveFromModules(id: string) {
+  const resolvedFile = isHttpUrl(id) ? id : path.resolve(id);
+  const originalFile = path.parse(resolvedFile);
+  const jsFile =
+    originalFile.ext === ".js" || originalFile.ext === ".jsx"
+      ? resolvedFile
+      : `${originalFile.dir}/${originalFile.name}.${originalFile.ext === ".tsx" ? "jsx" : "js"}`;
+
+  if (!files.includes(jsFile)) throw new Error(`Cannot find file ${id} in emitMap`);
+  return { code: modules[jsFile], map: modules[`${jsFile}.map`] };
+}
+
+async function resolveId(
+  compilerOptions: Deno.CompilerOptions,
+  importee: string,
+  importer: string | undefined
+) {
+  if (importer || modules) return resolver(importee, importer);
+
+  const [diagnostics, emitMap] = await Deno.compile(importee, undefined, compilerOptions);
+  if (diagnostics) throw new Error(Deno.formatDiagnostics(diagnostics));
+
+  modules = stripFileProtocol(emitMap);
+  files = Object.keys(modules);
+
+  return importee;
+}
+
+export function pluginTypescriptCompile(
+  { useAsLoader, compilerOptions }: Options = { useAsLoader: false, compilerOptions: {} }
+): Plugin {
   return {
     name: "denopack-plugin-typescriptCompile",
-    resolveId: async function (importee, importer) {
-      if (!importer && !modules) {
-        const [diagnostics, emitMap] = await Deno.compile(importee, undefined, opts);
-
-        if (diagnostics) throw new Error(Deno.formatDiagnostics(diagnostics));
-
-        modules = emitMap;
-        files = Object.keys(modules);
-
-        if (!usesProtocol(importee)) return rewriteFileUrl(`file://${importee}`);
-      }
-
-      const imp = rewriteFileUrl(importee);
-      return resolver(imp, importer);
+    async resolveId(importee, importer) {
+      return resolveId(compilerOptions, importee, importer);
     },
-    async load(id) {
-      if (!files.includes(id)) throw new Error(`Cannot find file ${id} in emitMap`);
 
-      return modules[id];
+    async load(id) {
+      return !!useAsLoader ? resolveFromModules(id) : null;
+    },
+
+    async transform(_, id) {
+      return !!useAsLoader ? null : resolveFromModules(id);
     },
   };
 }

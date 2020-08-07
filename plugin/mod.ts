@@ -1,4 +1,5 @@
 export * from "./hooks.ts";
+export * from "./importResolver/mod.ts";
 export * from "./rootResolver/mod.ts";
 export * from "./cacheResolver/mod.ts";
 export * from "./chainResolver/mod.ts";

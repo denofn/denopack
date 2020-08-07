@@ -8,7 +8,7 @@ type Opts = {
   lazy?: boolean;
 };
 
-function resolveImporteeLocation(importee: string) {
+function resolveImporteeLocation(importee: string): string | undefined {
   const deno_dir = resolveCacheLocation();
 
   let importeeLocation: string | undefined;
@@ -32,7 +32,7 @@ export function pluginCacheResolver(opts: Opts = { lazy: false }): Plugin {
   return {
     name: "denopack-plugin-cacheResolver",
     async resolveId(importee: string) {
-      const importeeLocation: string | undefined = resolveImporteeLocation(importee);
+      const importeeLocation = resolveImporteeLocation(importee);
       return importeeLocation && (opts.lazy || (await isFile(importeeLocation)))
         ? importeeLocation
         : importee;

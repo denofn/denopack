@@ -10,14 +10,14 @@ type Opts = {
 export function pluginCacheLoader(opts: Opts = {}): Plugin {
   return {
     name: "denopack-plugin-cacheLoader",
-    load: async function (id) {
-      if (isHttpUrl(id)) {
-        const cacheUrl = buildCacheUrl(id);
+    async load(id) {
+      if (!isHttpUrl(id)) return null;
 
-        if (opts.lazy || (await isFile(cacheUrl))) {
-          const code = await Deno.readTextFile(cacheUrl);
-          return code;
-        }
+      const cacheUrl = buildCacheUrl(id);
+
+      if (opts.lazy || (await isFile(cacheUrl))) {
+        const code = await Deno.readTextFile(cacheUrl);
+        return code;
       }
 
       return null;

@@ -39,7 +39,7 @@ There is absolutely nothing wrong with `deno bundle`, but in its current state i
 
 - [x] [Tree shaking](https://rollupjs.org/guide/en/#tree-shaking) comes built-in with Rollup
 - [x] Minification by the usage of the [Terser plugin](./plugin/terserTransform)
-- [ ] Source Maps (should also come built-in with Rollup, [coming soon](https://github.com/denofn/denopack/pull/2))
+- [x] Source Maps (should also come built-in with Rollup, [coming soon](https://github.com/denofn/denopack/pull/2))
 - [ ] File watching (pretty sure this can be implemented, coming soon)
 - [ ] Lock file support, checking checksums from the lockfile against loaded code
 
@@ -183,23 +183,41 @@ import type { RollupOptions } from "https://cdn.jsdelivr.net/gh/denofn/denopack@
 
 Just like the CLI, you can use it out-of-the-box with `deno run` or script runners like the ones mentioned up above.
 
-### Contributing denopack plugins
+### Contributing
+
+- If you are using vscode, install and enable the [required extensions](./.vscode/extensions.json).
+  - If you are not using vscode, sort your imports and use the following prettier settings:
+    - semi: true
+    - singleQuote: false
+    - printWidth: 100
+    - trailingComma: "es5"
+    - tabWidth: 2
+    - useTabs: false
+- Functions, constants and variables are always camelCase
+- Classes are allowed to be PascalCase
+- Extract shared code to [util](./util)
+- Code that is not a plugin or hook lives in [cli](./cli)
+
+#### Contributing denopack plugins
 
 Contributing a plugin to the denopack repo is not only extremely welcomed, it's even encouraged. That does mean a few conventions are in order, extending from the existing [Rollup conventions](https://rollupjs.org/guide/en/#conventions) these are:
 
-- Plugins should have a clear name with a `denopack-plugin-` prefix
+- Plugins should have a clear plugin name with a `denopack-plugin-` prefix
+- Plugin functions are always camelCased
 - Plugins and their documentation should be stored in a separate folder [inside the plugin directory](./plugin)
 - Optionally also indicating what the most impactful action is (resolve, load, transform, ...). The [typescriptCompile](./plugin/typescriptCompile) plugin is an obvious exception, but do take a look at the naming of the [other plugins](./plugin)
 - Use async Deno APIs (readFile not readFileSync, etc.)
 - Document your plugin in English and **detail what flags are required**! [Here's an example](./plugin/typescriptCompile/README.md)
 
-### Contributing denopack hooks
+#### Contributing denopack hooks
 
 Contributing a hook follows the following conventions:
 
+- Hooks start with the keyword use
+- Hooks are always camelCased
 - Hooks are stored inside of [hooks.ts](./plugin/hooks.ts)
 - Hooks are always functions and always return an array of plugins
-- Hooks that use plugins that accept configuration options should a
+- Using plugins that accept configuration options in hooks should always be allowed to pass config down to that plugin
 
 ## Acknowledgements
 
