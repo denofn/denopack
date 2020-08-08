@@ -26,8 +26,8 @@ If you don't care about source maps, using the Compiler API with appears to be t
 ### In conjunction with a source file loader
 
 ```ts
-import { pluginTypescriptCompile } from "https://cdn.jsdelivr.net/gh/denofn/denopack@latest/plugin/typescriptCompile/mod.ts";
-import { pluginFileLoader } from "https://cdn.jsdelivr.net/gh/denofn/denopack@latest/plugin/fileLoader/mod.ts";
+import { pluginTypescriptCompile } from "https://deno.land/x/denopack@0.3.2/plugin/typescriptCompile/mod.ts";
+import { pluginFileLoader } from "https://deno.land/x/denopack@0.3.2/plugin/fileLoader/mod.ts";
 
 export default {
   plugins: [
@@ -40,7 +40,7 @@ export default {
 ### Explicitly loading files
 
 ```ts
-import { pluginTypescriptCompile } from "https://cdn.jsdelivr.net/gh/denofn/denopack@latest/plugin/typescriptCompile/mod.ts";
+import { pluginTypescriptCompile } from "https://deno.land/x/denopack@0.3.2/plugin/typescriptCompile/mod.ts";
 
 export default {
   plugins: [

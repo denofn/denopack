@@ -49,11 +49,11 @@ More to come, also see the `deno bundle` roadmap/wishlist over at [denoland/deno
 ### Installation
 
 ```sh
-deno install --unstable --allow-read --allow-write --allow-env --allow-net -n denopack https://cdn.jsdelivr.net/gh/denofn/denopack@latest/cli.ts
+deno install --unstable --allow-read --allow-write --allow-env --allow-net -n denopack https://deno.land/x/denopack@0.3.2/cli.ts
 ```
 
 ```sh
-eggs install --unstable --allow-read --allow-write --allow-env --allow-net -n denopack https://x.nest.land/denopack@0.3.0/cli.ts
+eggs install --unstable --allow-read --allow-write --allow-env --allow-net -n denopack https://x.nest.land/denopack@0.3.2/cli.ts
 ```
 
 **NOTE: denopack uses unstable Deno APIs. These APIs are not final and may break, but this does mean `--unstable` is mandatory!**
@@ -94,7 +94,7 @@ Script runners that should work out-of-the-box:
 # example
 
 scripts:
-  start: deno run --unstable --allow-read --allow-write https://cdn.jsdelivr.net/gh/denofn/denopack@latest/cli.ts
+  start: deno run --unstable --allow-read --allow-write https://deno.land/x/denopack@0.3.2/cli.ts
 ```
 
 ```sh
@@ -108,7 +108,7 @@ vr run start -i mod.ts -o bundle.js
 
 scripts:
   start:
-    file: https://cdn.jsdelivr.net/gh/denofn/denopack@latest/cli.ts
+    file: https://deno.land/x/denopack@0.3.2/cli.ts
     deno_options:
       allow-read: true
       allow-write: true
@@ -124,7 +124,7 @@ denox run start -i mod.ts -o bundle.js
 ```json
 {
   "config": {
-    "start": "--unstable --allow-read --allow-write https://cdn.jsdelivr.net/gh/denofn/denopack@latest/cli.ts -i mod.ts -o bundle.js"
+    "start": "--unstable --allow-read --allow-write https://deno.land/x/denopack@0.3.2/cli.ts -i mod.ts -o bundle.js"
   }
 }
 ```
@@ -159,7 +159,7 @@ A list of included plugins and a collection of strategies are included [in the p
 If you only need plugins or hooks - for example to create a config file - you can import straight from the `mod.ts` in the plugin directory.
 
 ```ts
-import /* whatever plugins/hooks are needed */ "https://cdn.jsdelivr.net/gh/denofn/denopack@latest/plugin/mod.ts";
+import /* whatever plugins/hooks are needed */ "https://deno.land/x/denopack@0.3.2/plugin/mod.ts";
 
 export default {
   file: "mod.ts",
@@ -176,8 +176,8 @@ If you want to handle the building/bundling yourself, the toplevel `mod.ts` also
 ```ts
 import {
   rollup /* whatever plugins/hooks are needed */,
-} from "https://cdn.jsdelivr.net/gh/denofn/denopack@latest/mod.ts";
-import type { RollupOptions } from "https://cdn.jsdelivr.net/gh/denofn/denopack@latest/mod.ts";
+} from "https://deno.land/x/denopack@0.3.2/mod.ts";
+import type { RollupOptions } from "https://deno.land/x/denopack@0.3.2/mod.ts";
 ```
 
 Just like the CLI, you can use it out-of-the-box with `deno run` or script runners like the ones mentioned up above.

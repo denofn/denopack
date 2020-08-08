@@ -29,11 +29,9 @@ export type Options = {
 };
 
 export function printDefaultConfig(): void {
-  console.log(`import { RollupOptions } from "https://cdn.jsdelivr.net/gh/denofn/denopack@latest/deps.ts";
-import { useCompile } from "https://cdn.jsdelivr.net/gh/denofn/denopack@latest/plugin/hooks.ts";
-import { pluginTerserTransform } from "https://cdn.jsdelivr.net/gh/denofn/denopack@latest/plugin/terserTransform/mod.ts";
+  console.log(`import { pluginTerserTransform, RollupOptions, useCompile } from "https://deno.land/x/denopack@0.3.2/mod.ts";
 
-export default {
+const config: RollupOptions = {
   plugins: useCompile(),
   output: {
     file: "bundle.js",
@@ -48,6 +46,8 @@ export default {
     ],
   },
 };
+
+export default config;
 `);
 }
 

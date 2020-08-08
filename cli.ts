@@ -3,7 +3,7 @@ import { runBundler } from "./cli/runBundler.ts";
 import { cac } from "./deps.ts";
 
 const denopack = cac("denopack");
-denopack.version("0.3.0");
+denopack.version("0.3.2");
 
 denopack
   .option("-i, --input <pathToFile>", "The input file (most likely mod.ts)", {})

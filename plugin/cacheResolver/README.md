@@ -17,9 +17,9 @@
 ## Usage
 
 ```ts
-import { pluginImportResolver } from "https://cdn.jsdelivr.net/gh/denofn/denopack@latest/plugin/importResolver/mod.ts";
-import { pluginChainResolver } from "https://cdn.jsdelivr.net/gh/denofn/denopack@latest/plugin/chainResolver/mod.ts";
-import { pluginCacheResolver } from "https://cdn.jsdelivr.net/gh/denofn/denopack@latest/plugin/cacheResolver/mod.ts";
+import { pluginImportResolver } from "https://deno.land/x/denopack@0.3.2/plugin/importResolver/mod.ts";
+import { pluginChainResolver } from "https://deno.land/x/denopack@0.3.2/plugin/chainResolver/mod.ts";
+import { pluginCacheResolver } from "https://deno.land/x/denopack@0.3.2/plugin/cacheResolver/mod.ts";
 
 export default {
   plugins: [pluginChainResolver(pluginImportResolver(), pluginCacheResolver())],

@@ -5,7 +5,7 @@ import { Options, splitOptions } from "./options.ts";
 export async function runBundler({ input, output, dir, config, print }: Options): Promise<void> {
   const { default: conf } = await import(
     config && typeof config === "string"
-      ? path.resolve(Deno.cwd(), path.normalize(config))
+      ? `file://${path.join(Deno.cwd(), path.normalize(config))}`
       : "./options.ts"
   );
 
