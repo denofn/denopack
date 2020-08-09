@@ -1,5 +1,6 @@
-export * as path from "https://deno.land/std@0.63.0/path/mod.ts";
-export * as hash from "https://deno.land/std@0.63.0/hash/mod.ts";
+export * as fs from "https://deno.land/std@0.64.0/fs/mod.ts";
+export * as path from "https://deno.land/std@0.64.0/path/mod.ts";
+export * as hash from "https://deno.land/std@0.64.0/hash/mod.ts";
 
 // @deno-types="https://unpkg.com/cac@6.6.1/mod.d.ts"
 export { cac } from "https://unpkg.com/cac@6.6.1/mod.js";
