@@ -9,10 +9,16 @@ export async function watch({ watch, ...opts }: Options) {
 
   let cache: RollupCache = { modules: [] };
 
-  cache = (await runBundler(opts, cache)) as RollupCache;
+  const run = async () => {
+    const now = Date.now();
+    cache = (await runBundler(opts, cache)) as RollupCache;
+    console.log(`denopack completed in ${Date.now() - now}ms`);
+  };
+
+  await run();
 
   for await (const { kind } of Deno.watchFs(watch)) {
     if (kind === "any" || kind === "access") continue;
-    cache = (await runBundler(opts, cache)) as RollupCache;
+    await run();
   }
 }
