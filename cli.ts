@@ -21,9 +21,11 @@ denopack.option(
 );
 
 denopack
-  .option("-w, --watch <dirOrFile>", "Watch a file or directory and rebuild on changes", {})
-  .usage("-w mod.ts")
-  .usage("-w src");
+  .option("--watch <dirOrFile>", "Watch a file or directory and rebuild on changes", {})
+  .usage("--watch mod.ts")
+  .usage("--watch src");
+
+denopack.option("--cache <cacheLocation>", "Persist build cache", {}).usage("--cache cache.json");
 
 denopack.option("-p, --print", "Prints the generated bundle to stdout", {});
 

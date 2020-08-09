@@ -12,7 +12,7 @@ export async function watch({ watch, ...opts }: Options) {
   cache = (await runBundler(opts, cache)) as RollupCache;
 
   for await (const { kind } of Deno.watchFs(watch)) {
-    if (kind === "access") continue;
+    if (kind === "any" || kind === "access") continue;
     cache = (await runBundler(opts, cache)) as RollupCache;
   }
 }
