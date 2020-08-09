@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Default plugin hook changed from useCompile to useCache in [denofn/denopack/pull/5](https://github.com/denofn/denopack/pull/5)
+- Extra CLI options like print, watch and cache are now verbose in [denofn/denopack/pull/5](https://github.com/denofn/denopack/pull/5)
 
 ## [0.3.2](https://github.com/denofn/denopack/compare/0.3.0..0.3.2) - 2020-08-08
 

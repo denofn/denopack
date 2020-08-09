@@ -70,8 +70,10 @@ Options:
   -o, --output [pathToFile]    The output file name
   -d, --dir [pathToDir]        The output directory
   -c, --config [pathToConfig]  The config file. Use --defaultConfig for default values
-  -p, --print                  Prints the generated bundle to stdout
+  --cache <cacheLocation>      Persist build cache
+  --watch <dirOrFile>          Watch a file or directory and rebuild on changes
   --defaultConfig              Prints the default config to stdout
+  --print                      Prints the generated bundle to stdout
   -h, --help                   Display this message
 
 Examples:
@@ -79,7 +81,7 @@ denopack -i mod.ts
 denopack -i mod.ts -o bundle.js
 denopack -i mod.ts --dir dist
 denopack -c denopack.config.ts
-denopack -i mod.ts -o out.js --dir dist -c denopack.config.ts
+denopack -i mod.ts -o out.js -d dist -c denopack.config.ts
 ```
 
 ### Usage with script runners
