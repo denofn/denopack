@@ -1,36 +1,41 @@
-import { path, rollup, RollupBuild } from "../deps.ts";
+import { path, rollup, RollupBuild, RollupCache } from "../deps.ts";
+import { findPlugin } from "../util/findPlugin.ts";
 import { emitFiles } from "./emitFiles.ts";
-import { Options, splitOptions } from "./options.ts";
+import { mergeOptions, Options } from "./options.ts";
+import { persistCache } from "./persistCache.ts";
 
-export async function runBundler({ input, output, dir, config, print }: Options): Promise<void> {
+let outputDir: string;
+
+export async function runBundler(
+  { input, output, dir, config, print, cache }: Options,
+  watchCache?: RollupCache
+): Promise<RollupCache | undefined> {
   const { default: conf } = await import(
     config && typeof config === "string"
       ? `file://${path.join(Deno.cwd(), path.normalize(config))}`
       : "./options.ts"
   );
 
-  const [rollupOpts, outputOpts] = splitOptions(conf);
-  const outputDir = dir ? dir : outputOpts?.dir ? outputOpts.dir : Deno.cwd();
-  outputOpts.dir = undefined;
-
-  if (input) {
-    rollupOpts.input = input;
-  }
-
-  if (!rollupOpts.input) {
-    console.error("Error: no input file has been defined");
+  if (!!watchCache && findPlugin(conf.plugins ?? [], "denopack-plugin-typescriptCompile")) {
+    console.warn(`pluginTypescriptCompile is currently not supported in watch mode`);
     Deno.exit(1);
   }
 
-  if (output) {
-    outputOpts.file = output;
-  }
+  const [rollupOpts, outputOpts, _outputDir] = await mergeOptions(
+    conf,
+    { input, output, dir, cache },
+    watchCache
+  );
 
   const bundle = (await rollup(rollupOpts)) as RollupBuild;
   const generated = await bundle.generate(outputOpts);
 
-  if (print) console.log(generated.output[0].code);
-  else {
-    return emitFiles(generated, outputDir);
-  }
+  if (!outputDir) outputDir = _outputDir;
+  if (cache) await persistCache(cache, bundle.cache!);
+
+  if (!print) return emitFiles(generated, outputDir, bundle.cache);
+
+  console.log(generated.output[0].code);
+
+  return bundle.cache;
 }

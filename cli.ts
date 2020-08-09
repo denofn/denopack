@@ -1,5 +1,6 @@
 import { Options, printDefaultConfig } from "./cli/options.ts";
 import { runBundler } from "./cli/runBundler.ts";
+import { watch } from "./cli/watch.ts";
 import { cac } from "./deps.ts";
 
 const denopack = cac("denopack");
@@ -19,9 +20,13 @@ denopack.option(
   {}
 );
 
-denopack.option("-p, --print", "Prints the generated bundle to stdout", {});
+denopack.option("--cache <cacheLocation>", "Persist build cache", {});
+
+denopack.option("--watch <dirOrFile>", "Watch a file or directory and rebuild on changes", {});
 
 denopack.option("--defaultConfig", "Prints the default config to stdout", {});
+
+denopack.option("--print", "Prints the generated bundle to stdout", {});
 
 denopack.help(() => {
   console.log("🦕📦🦕📦🦕📦🦕📦\n");
@@ -31,7 +36,7 @@ denopack.example("denopack -i mod.ts");
 denopack.example("denopack -i mod.ts -o bundle.js");
 denopack.example("denopack -i mod.ts --dir dist");
 denopack.example("denopack -c denopack.config.ts");
-denopack.example("denopack -i mod.ts -o out.js --dir dist -c denopack.config.ts");
+denopack.example("denopack -i mod.ts -o out.js -d dist -c denopack.config.ts");
 
 const opts = denopack.parse().options as Options;
 
@@ -39,6 +44,10 @@ if (opts.help) {
   // noop
 } else if (opts.defaultConfig) {
   printDefaultConfig();
+} else if (opts.watch) {
+  watch(opts);
 } else {
+  const now = Date.now();
   await runBundler(opts);
+  console.log(`denopack completed in ${Date.now() - now}ms`);
 }
