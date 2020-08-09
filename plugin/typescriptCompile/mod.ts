@@ -25,10 +25,17 @@ function resolveFromModules(id: string) {
 
 async function resolveId(
   compilerOptions: Deno.CompilerOptions,
-  importee: string,
+  _importee: string,
   importer: string | undefined
 ) {
-  if (importer || modules) return resolver(importee, importer);
+  if (importer || modules) return resolver(_importee, importer);
+
+  let importee = _importee;
+
+  if (isHttpUrl(importee)) {
+    const { url, redirected } = await fetch(importee);
+    redirected && (importee = url);
+  }
 
   const [diagnostics, emitMap] = await Deno.compile(importee, undefined, compilerOptions);
   if (diagnostics) throw new Error(Deno.formatDiagnostics(diagnostics));
