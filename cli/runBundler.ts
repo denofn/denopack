@@ -1,4 +1,5 @@
 import { path, rollup, RollupBuild, RollupCache } from "../deps.ts";
+import { findPlugin } from "../util/findPlugin.ts";
 import { emitFiles } from "./emitFiles.ts";
 import { mergeOptions, Options } from "./options.ts";
 import { persistCache } from "./persistCache.ts";
@@ -14,6 +15,11 @@ export async function runBundler(
       ? `file://${path.join(Deno.cwd(), path.normalize(config))}`
       : "./options.ts"
   );
+
+  if (!!watchCache && findPlugin(conf.plugins ?? [], "denopack-plugin-typescriptCompile")) {
+    console.warn(`pluginTypescriptCompile is currently not supported in watch mode`);
+    Deno.exit(1);
+  }
 
   const [rollupOpts, outputOpts, _outputDir] = await mergeOptions(
     conf,

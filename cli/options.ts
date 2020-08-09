@@ -1,10 +1,10 @@
 import { OutputOptions, RollupCache, RollupOptions } from "../deps.ts";
-import { useCompile } from "../plugin/hooks.ts";
+import { useCache } from "../plugin/hooks.ts";
 import { pluginTerserTransform } from "../plugin/terserTransform/mod.ts";
 import { getCache } from "./getCache.ts";
 
 const config: RollupOptions = {
-  plugins: useCompile(),
+  plugins: useCache(),
   output: {
     file: "bundle.js",
     format: "esm",
@@ -32,10 +32,10 @@ export type Options = {
 };
 
 export function printDefaultConfig(): void {
-  console.log(`import { pluginTerserTransform, RollupOptions, useCompile } from "https://deno.land/x/denopack@0.3.2/mod.ts";
+  console.log(`import { pluginTerserTransform, RollupOptions, useCache } from "https://deno.land/x/denopack@0.3.2/mod.ts";
 
 const config: RollupOptions = {
-  plugins: useCompile(),
+  plugins: useCache(),
   output: {
     file: "bundle.js",
     format: "esm",
