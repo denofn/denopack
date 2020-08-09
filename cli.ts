@@ -1,5 +1,6 @@
 import { Options, printDefaultConfig } from "./cli/options.ts";
 import { runBundler } from "./cli/runBundler.ts";
+import { watch } from "./cli/watch.ts";
 import { cac } from "./deps.ts";
 
 const denopack = cac("denopack");
@@ -18,6 +19,11 @@ denopack.option(
   "The config file. Use --defaultConfig for default values",
   {}
 );
+
+denopack
+  .option("-w, --watch <dirOrFile>", "Watch a file or directory and rebuild on changes", {})
+  .usage("-w mod.ts")
+  .usage("-w src");
 
 denopack.option("-p, --print", "Prints the generated bundle to stdout", {});
 
@@ -39,6 +45,8 @@ if (opts.help) {
   // noop
 } else if (opts.defaultConfig) {
   printDefaultConfig();
+} else if (opts.watch) {
+  watch(opts);
 } else {
-  await runBundler(opts);
+  runBundler(opts);
 }

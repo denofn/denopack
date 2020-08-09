@@ -12,6 +12,7 @@ export type {
   RollupOptions,
   RollupOutput,
   RollupBuild,
+  RollupCache,
   OutputAsset,
   OutputChunk,
   OutputOptions,

@@ -26,6 +26,7 @@ export type Options = {
   print?: boolean;
   config?: string;
   help?: boolean;
+  watch?: string;
 };
 
 export function printDefaultConfig(): void {
