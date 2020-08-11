@@ -32,6 +32,18 @@
   "https://deno.land/std@0.64.0/path/win32.ts": "b530878b0f3f281c7f06fa73dc8e89a15106ab06e88ca1dea27394d09a1b0514",
   "https://unpkg.com/cac@6.6.1/mod.d.ts": "bd1a2f73f346ff2711bf6a589678a0bfd23f0458efaf00dc78050d2c5773c204",
   "https://unpkg.com/cac@6.6.1/mod.js": "215a1b45f379d89557c8c2dd1667e68facdf7a9e43af0fda9e95a16bd004f090",
+  "https://unpkg.com/lodash-es@4.17.15/_Symbol.js": "631160c3c0cbd05ec8a3d1934ded4a312504a29f04a00be2b29372d00dd6bc6d",
+  "https://unpkg.com/lodash-es@4.17.15/_baseGetTag.js": "3a9eebe37ba231eff0380b5f76ac5b5fcee4590665642fd052d77aa51c7d063f",
+  "https://unpkg.com/lodash-es@4.17.15/_freeGlobal.js": "0b65c37b3c1ce6d1800cb59a330dde73f1009f0d10eeaf8fd45f7607b87db4c5",
+  "https://unpkg.com/lodash-es@4.17.15/_getRawTag.js": "0023dec54160317b70d52df1d7918638bc16a2869b1bf355f0a4f3e755aa6faf",
+  "https://unpkg.com/lodash-es@4.17.15/_objectToString.js": "8f1bb6043dc27219e71dfae28900a7f214a0856118a628efeb120169fe46fe8c",
+  "https://unpkg.com/lodash-es@4.17.15/_root.js": "df58ff96c454ca91ace20d20e6af49b354c70dfba7e737adc00cd23e8ff77168",
+  "https://unpkg.com/lodash-es@4.17.15/debounce.js": "d5f2c62200af44e14130d0018a27a47b0d6256220ea41b35b8d8fd0807805030",
+  "https://unpkg.com/lodash-es@4.17.15/isObject.js": "fc44c8f265db1492ea04f777d9e2d8598b44d481f5eb38360cb58c1e45b8cbd9",
+  "https://unpkg.com/lodash-es@4.17.15/isObjectLike.js": "e45d69136695e8568c6fb3c7327f96ac1a8ff7284b1b22f26fb4654255fd0c6c",
+  "https://unpkg.com/lodash-es@4.17.15/isSymbol.js": "f0dc1666c3cec2306cd4fd0f63a9a7ab1f25ed21d2db6664b1edc81bd3641a41",
+  "https://unpkg.com/lodash-es@4.17.15/now.js": "1304c9968c6c069d6529465225da0dbccf18055c0e340eda213ce6c47565a58f",
+  "https://unpkg.com/lodash-es@4.17.15/toNumber.js": "259181d3d6a6e779f2a8861a8cf4de4bd79920a6afe65de612e2d33c695c89ae",
   "https://unpkg.com/rollup@2.23.0/dist/es/rollup.browser.js": "fa17eb7f6b65f8de7d960e6b1e3aa34664a121a5c3db903ce1bc3b7eed6bd540",
   "https://unpkg.com/rollup@2.23.0/dist/rollup.d.ts": "07f64403aa45bcad261b83708a6a8d113229de2a4eb7b8bca37e58912c44048d"
 }

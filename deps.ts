@@ -18,3 +18,15 @@ export type {
   OutputChunk,
   OutputOptions,
 } from "https://unpkg.com/rollup@2.23.0/dist/rollup.d.ts";
+
+import { default as _debounce } from "https://unpkg.com/lodash-es@4.17.15/debounce.js";
+
+export const debounce = _debounce as <T extends (...args: any[]) => any>(
+  func: T,
+  wait?: number,
+  options?: {
+    leading?: boolean;
+    maxWait?: number;
+    trailing?: boolean;
+  }
+) => T;
