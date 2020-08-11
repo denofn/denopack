@@ -45,6 +45,8 @@ There is absolutely nothing wrong with `deno bundle`, but in its current state i
 
 More to come, also see the `deno bundle` roadmap/wishlist over at [denoland/deno/issues/4549](https://github.com/denoland/deno/issues/4549)
 
+**General note: make sure you are running Deno v1.2.0 or later**
+
 ## CLI
 
 ### Installation
