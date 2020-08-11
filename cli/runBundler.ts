@@ -10,6 +10,8 @@ export async function runBundler(
   { input, output, dir, config, print, cache }: Options,
   watchCache?: RollupCache
 ): Promise<RollupCache | undefined> {
+  const now = Date.now();
+
   const { default: conf } = await import(
     config && typeof config === "string"
       ? `file://${path.join(Deno.cwd(), path.normalize(config))}`
@@ -33,9 +35,10 @@ export async function runBundler(
   if (!outputDir) outputDir = _outputDir;
   if (cache) await persistCache(cache, bundle.cache!);
 
-  if (!print) return emitFiles(generated, outputDir, bundle.cache);
-
-  console.log(generated.output[0].code);
+  if (!print) {
+    await emitFiles(generated, outputDir);
+    console.log(`denopack completed in ${Date.now() - now}ms`);
+  } else console.log(generated.output[0].code);
 
   return bundle.cache;
 }

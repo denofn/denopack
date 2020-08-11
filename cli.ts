@@ -47,7 +47,5 @@ if (opts.help) {
 } else if (opts.watch) {
   watch(opts);
 } else {
-  const now = Date.now();
-  await runBundler(opts);
-  console.log(`denopack completed in ${Date.now() - now}ms`);
+  runBundler(opts);
 }

@@ -1,4 +1,4 @@
-import { OutputAsset, path, RollupCache, RollupOutput } from "../deps.ts";
+import { OutputAsset, path, RollupOutput } from "../deps.ts";
 import { isDir } from "../util/isDir.ts";
 
 // deno-lint-ignore no-explicit-any
@@ -6,11 +6,7 @@ function isOutputAsset(x: any): x is OutputAsset {
   return Boolean(x?.isAsset);
 }
 
-export async function emitFiles(
-  generated: RollupOutput,
-  outputDir: string,
-  cache?: RollupCache
-): Promise<RollupCache | undefined> {
+export async function emitFiles(generated: RollupOutput, outputDir: string): Promise<void> {
   const outputDirPath = path.resolve(Deno.cwd(), path.normalize(outputDir));
 
   if (!(await isDir(outputDirPath))) await Deno.mkdir(outputDirPath);
@@ -28,9 +24,5 @@ export async function emitFiles(
         JSON.stringify(toEmit.map)
       );
     }
-  }
-
-  if (cache) {
-    return cache;
   }
 }
