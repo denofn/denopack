@@ -41,6 +41,7 @@ There is absolutely nothing wrong with `deno bundle`, but in its current state i
 - [x] Source Maps
 - [x] Lock file support, checking checksums from the lockfile against loaded code
 - [x] File watching (currently not supported in conjunction with pluginTypescriptCompile)
+- [x] Redirects on main module are checked and handled (circumvents [denoland/deno/issues/3082](https://github.com/denoland/deno/issues/3082))
 
 More to come, also see the `deno bundle` roadmap/wishlist over at [denoland/deno/issues/4549](https://github.com/denoland/deno/issues/4549)
 
