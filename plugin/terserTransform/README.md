@@ -9,10 +9,10 @@ Use Terser to minify/compress/mangle/... your bundle.
 ## Usage
 
 ```ts
-import { pluginImportResolver } from "https://deno.land/x/denopack@0.3.2/plugin/importResolver/mod.ts";
-import { pluginFileLoader } from "https://deno.land/x/denopack@0.3.2/plugin/fileLoader/mod.ts";
-import { pluginTypescriptTransform } from "https://deno.land/x/denopack@0.3.2/plugin/typescriptTransform/mod.ts";
-import { pluginTerserTransform } from "https://deno.land/x/denopack@0.3.2/plugin/terserTransform/mod.ts";
+import { pluginImportResolver } from "https://deno.land/x/denopack@0.4.0/plugin/importResolver/mod.ts";
+import { pluginFileLoader } from "https://deno.land/x/denopack@0.4.0/plugin/fileLoader/mod.ts";
+import { pluginTypescriptTransform } from "https://deno.land/x/denopack@0.4.0/plugin/typescriptTransform/mod.ts";
+import { pluginTerserTransform } from "https://deno.land/x/denopack@0.4.0/plugin/terserTransform/mod.ts";
 
 export default {
   plugins: [

@@ -32,7 +32,7 @@ export type Options = {
 };
 
 export function printDefaultConfig(): void {
-  console.log(`import { pluginTerserTransform, RollupOptions, useCache } from "https://deno.land/x/denopack@0.3.2/mod.ts";
+  console.log(`import { pluginTerserTransform, RollupOptions, useCache } from "https://deno.land/x/denopack@0.4.0/mod.ts";
 
 const config: RollupOptions = {
   plugins: useCache(),
