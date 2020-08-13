@@ -6,6 +6,6 @@ export function resolver(importee: string, importer: string | undefined): string
   else if (!usesProtocol(importee)) {
     return usesProtocol(importer)
       ? new URL(importee, importer).href
-      : path.resolve(path.parse(importer).dir, importee);
+      : path.join(path.parse(importer).dir, importee);
   } else return importee;
 }

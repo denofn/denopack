@@ -1,5 +1,6 @@
 {
   "deno.enable": true,
+  "deno.unstable": true,
   "editor.formatOnSave": true,
   "prettier.printWidth": 100,
   "importSorter.generalConfiguration.sortOnBeforeSave": true,

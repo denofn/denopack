@@ -72,8 +72,9 @@ export async function mergeOptions(
   if (watchCache && !rollupOpts.cache && !cache) rollupOpts.cache = watchCache;
   if (cache) rollupOpts.cache = await getCache(cache);
 
-  const outputDir = dir ? dir : outputOpts?.dir ? outputOpts.dir : Deno.cwd();
-  outputOpts.dir = undefined;
+  outputOpts.dir = dir ? dir : outputOpts?.dir ? outputOpts.dir : undefined;
+  if (outputOpts.dir) outputOpts.file = undefined; // It's either file or dir, dir supports dynamic imports thus takes precedence
+  const outputDir = outputOpts?.dir ? outputOpts.dir : Deno.cwd();
 
   return [rollupOpts, outputOpts as OutputOptions, outputDir];
 }

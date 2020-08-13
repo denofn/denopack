@@ -15,11 +15,14 @@ function resolveFromModules(id: string) {
   const resolvedFile = isHttpUrl(id) ? id : path.resolve(id);
   const originalFile = path.parse(resolvedFile);
   const jsFile =
-    originalFile.ext === ".js" || originalFile.ext === ".jsx"
-      ? resolvedFile
-      : `${originalFile.dir}/${originalFile.name}.${originalFile.ext === ".tsx" ? "jsx" : "js"}`;
+    originalFile.ext === ".js" ? resolvedFile : `${originalFile.dir}/${originalFile.name}.js`;
 
-  if (!files.includes(jsFile)) throw new Error(`Cannot find file ${id} in emitMap`);
+  if (!files.includes(jsFile)) {
+    // Allows files like React (.js) to still be bundled since they don't get re-emitted
+    console.warn(`Cannot find file ${id} in emitMap`);
+    return;
+  }
+
   return { code: modules[jsFile], map: modules[`${jsFile}.map`] };
 }
 
@@ -38,6 +41,7 @@ async function resolveId(
   }
 
   const [diagnostics, emitMap] = await Deno.compile(importee, undefined, compilerOptions);
+
   if (diagnostics) throw new Error(Deno.formatDiagnostics(diagnostics));
 
   modules = stripFileProtocol(emitMap);

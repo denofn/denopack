@@ -4,8 +4,6 @@ import { emitFiles } from "./emitFiles.ts";
 import { mergeOptions, Options } from "./options.ts";
 import { persistCache } from "./persistCache.ts";
 
-let outputDir: string;
-
 export async function runBundler(
   { input, output, dir, config, print, cache }: Options,
   watchCache?: RollupCache
@@ -23,7 +21,7 @@ export async function runBundler(
     Deno.exit(1);
   }
 
-  const [rollupOpts, outputOpts, _outputDir] = await mergeOptions(
+  const [rollupOpts, outputOpts, outputDir] = await mergeOptions(
     conf,
     { input, output, dir, cache },
     watchCache
@@ -32,7 +30,6 @@ export async function runBundler(
   const bundle = (await rollup(rollupOpts)) as RollupBuild;
   const generated = await bundle.generate(outputOpts);
 
-  if (!outputDir) outputDir = _outputDir;
   if (cache) await persistCache(cache, bundle.cache!);
 
   if (!print) {
