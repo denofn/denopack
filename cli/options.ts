@@ -4,18 +4,19 @@ import { pluginTerserTransform } from "../plugin/terserTransform/mod.ts";
 import { getCache } from "./getCache.ts";
 
 const config: RollupOptions = {
-  plugins: useCache(),
+  plugins: [
+    ...useCache(),
+    pluginTerserTransform({
+      module: true,
+      compress: true,
+      mangle: true,
+      sourceMap: true,
+    }),
+  ],
   output: {
     file: "bundle.js",
     format: "esm",
     sourcemap: true,
-    plugins: [
-      pluginTerserTransform({
-        module: true,
-        compress: true,
-        mangle: true,
-      }),
-    ],
   },
 };
 
@@ -35,18 +36,19 @@ export function printDefaultConfig(): void {
   console.log(`import { pluginTerserTransform, RollupOptions, useCache } from "https://deno.land/x/denopack@0.4.0/mod.ts";
 
 const config: RollupOptions = {
-  plugins: useCache(),
+  plugins: [
+    ...useCache(),
+    pluginTerserTransform({
+      module: true,
+      compress: true,
+      mangle: true,
+      sourceMap: true,
+    }),
+  ],
   output: {
     file: "bundle.js",
     format: "esm",
     sourcemap: true,
-    plugins: [
-      pluginTerserTransform({
-        module: true,
-        compress: true,
-        mangle: true,
-      }),
-    ],
   },
 };
 

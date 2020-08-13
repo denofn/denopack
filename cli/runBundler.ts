@@ -3,6 +3,7 @@ import { findPlugin } from "../util/findPlugin.ts";
 import { emitFiles } from "./emitFiles.ts";
 import { mergeOptions, Options } from "./options.ts";
 import { persistCache } from "./persistCache.ts";
+import { persistSourceMaps } from "./persistSourceMaps.ts";
 
 export async function runBundler(
   { input, output, dir, config, print, cache }: Options,
@@ -28,7 +29,7 @@ export async function runBundler(
   );
 
   const bundle = (await rollup(rollupOpts)) as RollupBuild;
-  const generated = await bundle.generate(outputOpts);
+  const generated = await persistSourceMaps(bundle.generate, outputOpts);
 
   if (cache) await persistCache(cache, bundle.cache!);
 

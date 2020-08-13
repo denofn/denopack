@@ -1,10 +1,6 @@
-import { OutputAsset, path, RollupOutput } from "../deps.ts";
+import { path, RollupOutput } from "../deps.ts";
 import { isDir } from "../util/isDir.ts";
-
-// deno-lint-ignore no-explicit-any
-function isOutputAsset(x: any): x is OutputAsset {
-  return Boolean(x?.isAsset);
-}
+import { isOutputAsset } from "../util/isOutputAsset.ts";
 
 export async function emitFiles(generated: RollupOutput, outputDir: string): Promise<void> {
   const outputDirPath = path.resolve(Deno.cwd(), path.normalize(outputDir));

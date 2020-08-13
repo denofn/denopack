@@ -19,9 +19,7 @@ export default {
     pluginImportResolver(),
     pluginFileLoader(),
     pluginTypescriptTransform({ ...myOptions }),
+    pluginTerserTransform(),
   ],
-  output: {
-    plugins: [pluginTerserTransform()],
-  },
 };
 ```
