@@ -10,7 +10,6 @@ const config: RollupOptions = {
       module: true,
       compress: true,
       mangle: true,
-      sourceMap: true,
     }),
   ],
   output: {
@@ -42,7 +41,6 @@ const config: RollupOptions = {
       module: true,
       compress: true,
       mangle: true,
-      sourceMap: true,
     }),
   ],
   output: {

@@ -6,8 +6,6 @@ Use Terser to minify/compress/mangle/... your bundle.
 
 - `opts [MinifyOptions]`: this plugin accepts Terser's config object for [minify options](https://terser.org/docs/api-reference#minify-options)
 
-**Note: `sourceMap: true` needs to be set explitcly in pluginTerserTransform starting from denopack v0.5.0!**
-
 ## Usage
 
 ```ts
