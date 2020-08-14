@@ -1,12 +1,5 @@
 import { path, Plugin } from "../../../deps.ts";
-import {
-  filterOutUnusedRules,
-  getStyleTag,
-  React,
-  ReactDOMServer,
-  setup,
-  VirtualInjector,
-} from "../deps.ts";
+import { getStyleTag, React, ReactDOMServer, setup, VirtualInjector } from "../deps.ts";
 
 const injector = VirtualInjector();
 setup({ injector });
