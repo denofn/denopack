@@ -7,6 +7,7 @@ setup({ injector });
 const renderHtml = (head: string, body: string) => `<!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8"/><link rel="icon" href="./assets/favicon.ico"/>
 ${head}
 </head>
 <body>${body}</body>
