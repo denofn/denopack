@@ -1,3 +1,4 @@
 scripts:
-  start: deno run --unstable --allow-read --allow-write --allow-env --allow-net ../cli.ts -c src/denopack.config.ts && vr clean
+  start: deno run --unstable --allow-read --allow-write --allow-env --allow-net ../cli.ts -c src/denopack.config.ts --cache cache.json && vr clean
   clean: rm main.js
+  watch: deno run --unstable -A ./customWatchScript.ts

@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Karla", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-size: 16px;
+  line-height: 1.5rem;
+  color: #4a5568;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Rubik", sans-serif;
+  color: black;
+}

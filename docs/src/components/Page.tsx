@@ -1,9 +1,16 @@
 import { css, React } from "../deps.ts";
+import { Topbar } from "./Topbar.tsx";
 
-const pageRoot = css({
-  textAlign: "center",
+const footerSpacer = css({
+  marginBottom: "5rem",
 });
 
 export function Page({ children }: React.PropsWithChildren<{}>) {
-  return <div className={pageRoot}>{children}</div>;
+  return (
+    <>
+      <Topbar />
+      {children}
+      <div className={footerSpacer} />
+    </>
+  );
 }

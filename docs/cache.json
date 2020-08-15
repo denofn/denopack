@@ -1,0 +1,28 @@
+{
+  "modules": [
+    {
+      "alwaysRemovedCode": [],
+      "ast": {
+        "type": "Program",
+        "start": 0,
+        "end": 0,
+        "body": [],
+        "sourceType": "module"
+      },
+      "code": "",
+      "customTransformCache": false,
+      "dependencies": [],
+      "id": "main.js",
+      "moduleSideEffects": true,
+      "originalCode": "",
+      "originalSourcemap": null,
+      "resolvedIds": {},
+      "sourcemapChain": [],
+      "syntheticNamedExports": false,
+      "transformDependencies": []
+    }
+  ],
+  "plugins": {
+    "denopack-plugin-renderPagesAsHtml": {}
+  }
+}

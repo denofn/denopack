@@ -1,9 +1,10 @@
 <p align="center">
    <img src="https://github.com/denofn/denopack/raw/main/.github/denopack_logo.png" alt="denopack logo" />
 </p>
-<p align="center">Bundling and minification toolset for Deno</p>
+<p align="center">The bundling and minification toolset, <strong>made for Deno</strong></p>
 <p align="center">
-   <img src="https://img.shields.io/github/v/tag/denofn/denopack?label=latest" />
+   <img src="https://img.shields.io/github/v/tag/denofn/denopack?label=latest&labelColor=black&style=flat&color=teal" />
+   <a href="https://deno.land/x/denopack"><img src="https://img.shields.io/badge/Available%20on-deno.land/x-teal.svg?style=flat&logo=deno&labelColor=black" /></a>
    <a href="https://nest.land/package/denopack"><img src="https://nest.land/badge.svg" /></a>
 </p>
 
