@@ -36,7 +36,7 @@ const headerLink = css({
 export function Topbar() {
   return (
     <header className={headerRoot}>
-      <a href="/" className={headerTitle}>
+      <a href="/denopack" className={headerTitle}>
         🦕📦 denopack
       </a>
       <a
