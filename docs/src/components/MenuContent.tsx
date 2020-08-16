@@ -42,8 +42,14 @@ export function MenuContent({ active }: { active?: string }) {
       <MenuLink href="./index.html" active={active === "home"}>
         Home
       </MenuLink>
+      <MenuLink href="./cli.html" active={active === "cli"}>
+        CLI
+      </MenuLink>
       <MenuLink href="./scriptRunners.html" active={active === "scriptrunners"}>
         Script runners
+      </MenuLink>
+      <MenuLink href="./plugins.html" active={active === "plugins"}>
+        Plugins
       </MenuLink>
     </>
   );

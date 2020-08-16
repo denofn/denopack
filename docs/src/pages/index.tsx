@@ -59,17 +59,16 @@ function Index() {
             </CodeBlock>
             <h4>From nest.land</h4>
             <CodeBlock>
-              deno install --unstable --allow-read --allow-write --allow-env --allow-net -n denopack
+              eggs install --unstable --allow-read --allow-write --allow-env --allow-net -n denopack
               -f https://x.nest.land/denopack@0.5.0/cli.ts
             </CodeBlock>
           </Section>
           <Section title="Goal" className={sectionContainer}>
             <p>
-              First off, let's make this absolutely clear: there is absolutely{" "}
-              <strong>nothing</strong> wrong with <Code>deno bundle</Code>. In most cases, it will
-              actually handle everything necessary for a bundler to handle. There are, however,
-              several features missing that would make a bundler even more awesome such as
-              minifying, tree shaking, ...
+              Disclaimer: there is absolutely <strong>nothing</strong> wrong with{" "}
+              <Code>deno bundle</Code>. In most cases, it will actually handle everything necessary
+              for a bundler to handle. There are, however, several features missing that would make
+              a bundler even more awesome such as minifying, tree shaking, ...
             </p>
             <p>
               denopack's goal is to provide a pluggable bundling solution for the Deno ecosystem,
