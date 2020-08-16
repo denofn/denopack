@@ -1,8 +1,10 @@
+import { BottomSpacer } from "../components/BottomSpacer.tsx";
 import { Code } from "../components/Code.tsx";
 import { CodeBlock } from "../components/CodeBlock.tsx";
 import { Hero } from "../components/Hero.tsx";
 import { Page } from "../components/Page.tsx";
 import { Section } from "../components/Section.tsx";
+import { SidebarContainer } from "../components/Sidebar.tsx";
 import { css, React } from "../deps.ts";
 
 const heroP = css({
@@ -13,7 +15,6 @@ const heroP = css({
 });
 
 const sectionContainer = css({
-  margin: "1rem auto",
   minWidth: "300px",
   width: "66vw",
 });
@@ -24,7 +25,7 @@ const highlightedSpan = css({
 
 function Index() {
   return (
-    <Page>
+    <Page active="home">
       <>
         <Hero
           title={
@@ -49,33 +50,36 @@ function Index() {
             </a>
           </p>
         </Hero>
-        <Section title="Installation" className={sectionContainer}>
-          <h4>From deno.land</h4>
-          <CodeBlock>
-            deno install --unstable --allow-read --allow-write --allow-env --allow-net -n denopack
-            -f https://deno.land/x/denopack@0.5.0/cli.ts
-          </CodeBlock>
-          <h4>From nest.land</h4>
-          <CodeBlock>
-            deno install --unstable --allow-read --allow-write --allow-env --allow-net -n denopack
-            -f https://x.nest.land/denopack@0.5.0/cli.ts
-          </CodeBlock>
-        </Section>
-        <Section title="Goal" className={sectionContainer}>
-          <p>
-            First off, let's make this absolutely clear: there is absolutely{" "}
-            <strong>nothing</strong> wrong with <Code>deno bundle</Code>. In most cases, it will
-            actually handle everything necessary for a bundler to handle. There are, however,
-            several features missing that would make a bundler even more awesome such as minifying,
-            tree shaking, ...
-          </p>
-          <p>
-            denopack's goal is to provide a pluggable bundling solution for the Deno ecosystem,
-            using Rollup behind the scenes, continually expanding functionality. It is important for
-            both backend and frontend development on Deno to be able to use a mature and optimized
-            set of tools, and denopack is here to help.
-          </p>
-        </Section>
+        <SidebarContainer active="home">
+          <Section title="Installation" className={sectionContainer}>
+            <h4>From deno.land</h4>
+            <CodeBlock>
+              deno install --unstable --allow-read --allow-write --allow-env --allow-net -n denopack
+              -f https://deno.land/x/denopack@0.5.0/cli.ts
+            </CodeBlock>
+            <h4>From nest.land</h4>
+            <CodeBlock>
+              deno install --unstable --allow-read --allow-write --allow-env --allow-net -n denopack
+              -f https://x.nest.land/denopack@0.5.0/cli.ts
+            </CodeBlock>
+          </Section>
+          <Section title="Goal" className={sectionContainer}>
+            <p>
+              First off, let's make this absolutely clear: there is absolutely{" "}
+              <strong>nothing</strong> wrong with <Code>deno bundle</Code>. In most cases, it will
+              actually handle everything necessary for a bundler to handle. There are, however,
+              several features missing that would make a bundler even more awesome such as
+              minifying, tree shaking, ...
+            </p>
+            <p>
+              denopack's goal is to provide a pluggable bundling solution for the Deno ecosystem,
+              using Rollup behind the scenes, continually expanding functionality. It is important
+              for both backend and frontend development on Deno to be able to use a mature and
+              optimized set of tools, and denopack is here to help.
+            </p>
+          </Section>
+          <BottomSpacer />
+        </SidebarContainer>
       </>
     </Page>
   );

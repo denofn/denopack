@@ -1,16 +1,15 @@
-import { css, React } from "../deps.ts";
+import { React } from "../deps.ts";
 import { Topbar } from "./Topbar.tsx";
 
-const footerSpacer = css({
-  marginBottom: "5rem",
-});
+type Props = {
+  active?: string;
+};
 
-export function Page({ children }: React.PropsWithChildren<{}>) {
+export function Page({ children, active }: React.PropsWithChildren<Props>) {
   return (
     <>
-      <Topbar />
+      <Topbar active={active} />
       {children}
-      <div className={footerSpacer} />
     </>
   );
 }

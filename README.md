@@ -24,7 +24,6 @@
 - [CLI](#cli)
   - [Installation](#installation)
   - [Usage](#usage)
-  - [Usage with script runners](#usage-with-script-runners)
   - [Permissions](#permissions)
 - [Config file](#config-file)
 - [Plugins](#plugins)
@@ -86,57 +85,6 @@ denopack -i mod.ts -o bundle.js
 denopack -i mod.ts --dir dist
 denopack -c denopack.config.ts
 denopack -i mod.ts -o out.js -d dist -c denopack.config.ts
-```
-
-### Usage with script runners
-
-In case you don't want to globally install denopack, but want to use it locally with script runners: this is absolutely, totally possible since denopack uses 0 NodeJS specific code!
-
-Script runners that should work out-of-the-box:
-
-- [velociraptor](https://github.com/umbopepato/velociraptor)
-
-```yml
-# example
-
-scripts:
-  start: deno run --unstable --allow-read --allow-write https://deno.land/x/denopack@0.5.0/cli.ts
-```
-
-```sh
-vr run start -i mod.ts -o bundle.js
-```
-
-- [denox](https://github.com/BentoumiTech/denox)
-
-```yml
-#example
-
-scripts:
-  start:
-    file: https://deno.land/x/denopack@0.5.0/cli.ts
-    deno_options:
-      allow-read: true
-      allow-write: true
-      unstable: true
-```
-
-```sh
-denox run start -i mod.ts -o bundle.js
-```
-
-- [Commands](https://github.com/buttercubz/commands)
-
-```json
-{
-  "config": {
-    "start": "--unstable --allow-read --allow-write https://deno.land/x/denopack@0.5.0/cli.ts -i mod.ts -o bundle.js"
-  }
-}
-```
-
-```sh
-Commands start
 ```
 
 ### Permissions

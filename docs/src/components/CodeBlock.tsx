@@ -7,9 +7,11 @@ const codeRoot = css({
   backgroundColor: "#E2E8F0",
   fontFamily: "monospace",
   padding: ".5rem",
-  wordBreak: "break-word",
+  overflowX: "auto",
+  whiteSpace: "nowrap",
+  marginBottom: "16px",
 });
 
 export function CodeBlock({ children }: React.PropsWithChildren<{}>) {
-  return <div className={codeRoot}>{children}</div>;
+  return <code className={codeRoot}>{children}</code>;
 }

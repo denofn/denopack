@@ -1,7 +1,7 @@
 import { css, React } from "../deps.ts";
 
 const sectionRoot = css({
-  paddingTop: "1.5rem",
+  margin: "3rem auto 0",
   width: "100%",
 });
 
