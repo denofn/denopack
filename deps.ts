@@ -15,8 +15,10 @@ export type {
   RollupBuild,
   RollupCache,
   OutputAsset,
+  OutputBundle,
   OutputChunk,
   OutputOptions,
+  ModuleFormat,
 } from "https://unpkg.com/rollup@2.23.0/dist/rollup.d.ts";
 
 import { default as _debounce } from "https://unpkg.com/lodash-es@4.17.15/debounce.js";
