@@ -1,6 +1,7 @@
 import { Plugin } from "../../deps.ts";
-import { MinifyOptions } from "../../vendor/terser@4.8.0/terser.d.ts";
-import { minify } from "../../vendor/terser@4.8.0/terser.ts";
+import { minify } from "./deps.ts";
+
+import type { MinifyOptions } from "./deps.ts";
 
 export function pluginTerserTransform({ sourceMap, ...opts }: MinifyOptions = {}): Plugin {
   if (!!sourceMap) {
