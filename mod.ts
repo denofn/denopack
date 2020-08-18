@@ -1,16 +1,19 @@
 export * from "./plugin/mod.ts";
+export * from "./util/htmlTemplate.ts";
 
 export { default as config } from "./cli/options.ts";
 
-// @deno-types="https://unpkg.com/rollup@2.23.0/dist/rollup.d.ts"
-export { rollup } from "https://unpkg.com/rollup@2.23.0/dist/es/rollup.browser.js";
+export { rollup } from "./deps.ts";
 export type {
   Plugin,
   ResolveIdResult,
   RollupOptions,
   RollupOutput,
   RollupBuild,
+  RollupCache,
   OutputAsset,
+  OutputBundle,
   OutputChunk,
   OutputOptions,
-} from "https://unpkg.com/rollup@2.23.0/dist/rollup.d.ts";
+  ModuleFormat,
+} from "./deps.ts";

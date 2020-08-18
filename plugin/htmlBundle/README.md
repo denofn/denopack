@@ -2,6 +2,8 @@
 
 Creates HTML files to serve Rollup bundles.
 
+**NOTE: currently incompatible with `--cache` and `--watch`**
+
 ## Options
 
 - `attributes [Attributes]`: Specifies additional attributes for `html`, `link`, and `script` elements. For each property, provide an object with key-value pairs that represent an HTML element attribute name and value. By default, the `html` element is rendered with an attribute of `lang="en"`

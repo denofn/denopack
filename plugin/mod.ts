@@ -8,3 +8,5 @@ export { pluginFileLoader, Opts as FileLoaderOptions } from "./fileLoader/mod.ts
 export * from "./terserTransform/mod.ts";
 export * from "./typescriptTransform/mod.ts";
 export * from "./typescriptCompile/mod.ts";
+export * from "./cssBundle/mod.ts";
+export * from "./htmlBundle/mod.ts";

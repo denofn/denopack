@@ -23,7 +23,7 @@ function filter(id: string) {
   return path.parse(id).ext === ".css";
 }
 
-export function pluginCssGenerateBundle(options: Opts = {}): Plugin {
+export function pluginCssBundle(options: Opts = {}): Plugin {
   let dest = options.output;
   let changes: number | undefined;
 
@@ -86,4 +86,4 @@ export function pluginCssGenerateBundle(options: Opts = {}): Plugin {
   };
 }
 
-export default pluginCssGenerateBundle;
+export default pluginCssBundle;

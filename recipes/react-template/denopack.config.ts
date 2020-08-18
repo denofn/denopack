@@ -1,9 +1,12 @@
-import type { RollupOptions } from "../../deps.ts";
-import css from "../../plugin/cssBundle/mod.ts";
-import { useCache } from "../../plugin/hooks.ts";
-import html from "../../plugin/htmlBundle/mod.ts";
-import { pluginTerserTransform } from "../../plugin/terserTransform/mod.ts";
-import { htmlTemplate, TemplateOpts } from "../../util/htmlTemplate.ts";
+import {
+  htmlTemplate,
+  pluginCssBundle as css,
+  pluginHtmlBundle as html,
+  pluginTerserTransform as terser,
+  useCache,
+} from "../../mod.ts";
+
+import type { RollupOptions, TemplateOpts } from "../../mod.ts";
 
 function createHtmlTemplate(opts: TemplateOpts): Promise<string> {
   opts.bodyEntry = `<noscript>You need to enable JavaScript to run this app.</noscript>
@@ -36,7 +39,7 @@ const config: RollupOptions = {
         jsx: "react",
       },
     }),
-    pluginTerserTransform({
+    terser({
       module: true,
       compress: true,
       mangle: true,

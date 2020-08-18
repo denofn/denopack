@@ -2,6 +2,8 @@
 
 Denopack plugin that bundles imported CSS
 
+**NOTE: currently incompatible with `--cache` and `--watch`**
+
 ## Options
 
 - `output [string | false]`: default `"bundle.css"`. Filename of the css bundle. Will emit no file if output is `false`

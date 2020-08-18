@@ -1,0 +1,3 @@
+scripts:
+  build: denopack -c denopack.config.ts && vr copy
+  copy: cp public/favicon.ico dist/favicon.ico
