@@ -9,3 +9,5 @@ export function pluginTypescriptTransform(opts?: Deno.CompilerOptions): Plugin {
     },
   };
 }
+
+export default pluginTypescriptTransform;

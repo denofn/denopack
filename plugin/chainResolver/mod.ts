@@ -21,3 +21,5 @@ export function pluginChainResolver(...plugs: Plugin[]): Plugin {
     },
   };
 }
+
+export default pluginChainResolver;

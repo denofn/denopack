@@ -24,3 +24,5 @@ export function pluginTerserTransform({ sourceMap, ...opts }: MinifyOptions = {}
     },
   };
 }
+
+export default pluginTerserTransform;

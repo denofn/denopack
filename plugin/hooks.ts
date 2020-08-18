@@ -1,8 +1,8 @@
-import { Opts as CacheLoaderOptions, pluginCacheLoader } from "./cacheLoader/mod.ts";
-import { Opts as FileLoaderOptions, pluginFileLoader } from "./fileLoader/mod.ts";
-import { pluginImportResolver } from "./importResolver/mod.ts";
-import { pluginTypescriptCompile } from "./typescriptCompile/mod.ts";
-import { pluginTypescriptTransform } from "./typescriptTransform/mod.ts";
+import loadCache, { Opts as CacheLoaderOptions } from "./cacheLoader/mod.ts";
+import loadFiles, { Opts as FileLoaderOptions } from "./fileLoader/mod.ts";
+import importer from "./importResolver/mod.ts";
+import tsCompile from "./typescriptCompile/mod.ts";
+import tsTransform from "./typescriptTransform/mod.ts";
 
 const useLoadAndTransform = ({
   fileLoaderOptions,
@@ -10,14 +10,14 @@ const useLoadAndTransform = ({
 }: {
   compilerOptions?: Deno.CompilerOptions;
   fileLoaderOptions?: FileLoaderOptions;
-}) => [pluginFileLoader(fileLoaderOptions), pluginTypescriptTransform(compilerOptions)];
+}) => [loadFiles(fileLoaderOptions), tsTransform(compilerOptions)];
 
 export const useAlwaysFetch = (
   opts: {
     compilerOptions?: Deno.CompilerOptions;
     fileLoaderOptions?: FileLoaderOptions;
   } = {}
-) => [pluginImportResolver(), ...useLoadAndTransform(opts)];
+) => [importer(), ...useLoadAndTransform(opts)];
 
 export const useCache = (
   opts: {
@@ -26,8 +26,8 @@ export const useCache = (
     fileLoaderOptions?: FileLoaderOptions;
   } = {}
 ) => [
-  pluginImportResolver(),
-  pluginCacheLoader(opts.cacheLoaderOptions),
+  importer(),
+  loadCache(opts.cacheLoaderOptions),
   ...useLoadAndTransform({
     compilerOptions: opts.compilerOptions,
     fileLoaderOptions: opts.fileLoaderOptions,
@@ -67,13 +67,13 @@ export const useCompile = (
     fileLoaderOptions?: FileLoaderOptions;
   } = {}
 ) => [
-  pluginTypescriptCompile({ useAsLoader: false, compilerOptions: opts.compilerOptions }),
-  pluginCacheLoader(opts.cacheLoaderOptions),
-  pluginFileLoader(opts.fileLoaderOptions),
+  tsCompile({ useAsLoader: false, compilerOptions: opts.compilerOptions }),
+  loadCache(opts.cacheLoaderOptions),
+  loadFiles(opts.fileLoaderOptions),
 ];
 
 export const useCompileAsLoader = (
   opts: {
     compilerOptions?: Deno.CompilerOptions;
   } = {}
-) => [pluginTypescriptCompile({ useAsLoader: true, compilerOptions: opts.compilerOptions })];
+) => [tsCompile({ useAsLoader: true, compilerOptions: opts.compilerOptions })];

@@ -27,3 +27,5 @@ export function pluginFileLoader(opts: Opts = {}): Plugin {
     },
   };
 }
+
+export default pluginFileLoader;

@@ -7,3 +7,5 @@ export function pluginImportResolver(): Plugin {
     resolveId: resolver,
   };
 }
+
+export default pluginImportResolver;

@@ -40,3 +40,5 @@ export function pluginCacheLoader(opts: Opts = {}): Plugin {
     },
   };
 }
+
+export default pluginCacheLoader;

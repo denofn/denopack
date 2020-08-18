@@ -66,3 +66,5 @@ export function pluginTypescriptCompile({ useAsLoader, compilerOptions }: Option
     },
   };
 }
+
+export default pluginTypescriptCompile;
