@@ -2,15 +2,16 @@
 
 denopack provides several built-in plugins that you can use
 
-- [pluginRootResolver](./pluginRootResolver)
-- [pluginImportResolver](./pluginImportResolver)
-- ~~[pluginCacheResolver](./pluginCacheResolver)~~ **deprecated after Deno v1.2.3**
-- [pluginChainResolver](./pluginChainResolver)
-- [pluginCacheLoader](./pluginCacheResolver)
-- [pluginFileLoader](./pluginFileLoader)
-- [pluginTypescriptTransform](./pluginTypescriptTransform)
-- [pluginTypescriptCompile](./pluginTypescriptCompile)
-- [pluginTerserTransform](./pluginTerserTransform)
+- [pluginRootResolver](./rootResolver)
+- [pluginImportResolver](./importResolver)
+- ~~[pluginCacheResolver](./cacheResolver)~~ **deprecated after Deno v1.2.3**
+- [pluginChainResolver](./chainResolver)
+- [pluginCacheLoader](./cacheResolver)
+- [pluginFileLoader](./fileLoader)
+- [pluginTypescriptTransform](./typescriptTransform)
+- [pluginTypescriptCompile](./typescriptCompile)
+- [pluginTerserTransform](./terserTransform)
+- [pluginHtmlGenerateBundle](./htmlGenerateBundle)
 
 ## Hooks
 

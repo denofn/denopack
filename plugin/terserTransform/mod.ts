@@ -1,6 +1,7 @@
 import { Plugin } from "../../deps.ts";
-import { MinifyOptions } from "../../vendor/terser@4.8.0/terser.d.ts";
-import { minify } from "../../vendor/terser@4.8.0/terser.ts";
+import { minify } from "./deps.ts";
+
+import type { MinifyOptions } from "./deps.ts";
 
 export function pluginTerserTransform({ sourceMap, ...opts }: MinifyOptions = {}): Plugin {
   if (!!sourceMap) {
@@ -11,7 +12,7 @@ export function pluginTerserTransform({ sourceMap, ...opts }: MinifyOptions = {}
 
   return {
     name: "denopack-plugin-terserTransform",
-    transform(code) {
+    async renderChunk(code) {
       const result = minify(code, { ...opts, sourceMap: true });
 
       if (typeof result.code === "undefined")
@@ -23,3 +24,5 @@ export function pluginTerserTransform({ sourceMap, ...opts }: MinifyOptions = {}
     },
   };
 }
+
+export default pluginTerserTransform;

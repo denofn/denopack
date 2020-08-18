@@ -8,3 +8,5 @@ export function pluginRootResolver(): Plugin {
     },
   };
 }
+
+export default pluginRootResolver;

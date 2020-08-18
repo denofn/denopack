@@ -1,3 +1,5 @@
 eggs-debug.log
 
 test/**/*
+
+.DS_Store

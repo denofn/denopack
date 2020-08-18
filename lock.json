@@ -44,6 +44,6 @@
   "https://unpkg.com/lodash-es@4.17.15/isSymbol.js": "f0dc1666c3cec2306cd4fd0f63a9a7ab1f25ed21d2db6664b1edc81bd3641a41",
   "https://unpkg.com/lodash-es@4.17.15/now.js": "1304c9968c6c069d6529465225da0dbccf18055c0e340eda213ce6c47565a58f",
   "https://unpkg.com/lodash-es@4.17.15/toNumber.js": "259181d3d6a6e779f2a8861a8cf4de4bd79920a6afe65de612e2d33c695c89ae",
-  "https://unpkg.com/rollup@2.23.0/dist/es/rollup.browser.js": "fa17eb7f6b65f8de7d960e6b1e3aa34664a121a5c3db903ce1bc3b7eed6bd540",
-  "https://unpkg.com/rollup@2.23.0/dist/rollup.d.ts": "07f64403aa45bcad261b83708a6a8d113229de2a4eb7b8bca37e58912c44048d"
+  "https://unpkg.com/rollup@2.26.3/dist/es/rollup.browser.js": "8f5f89257f22140e44c99d45b2848008c21837f117b6cf54a05739b575d28c6b",
+  "https://unpkg.com/rollup@2.26.3/dist/rollup.d.ts": "d3201f330e4781141244897bc36100d712da21237314eeba0cd131fc8ab663b5"
 }
