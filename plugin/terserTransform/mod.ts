@@ -12,7 +12,7 @@ export function pluginTerserTransform({ sourceMap, ...opts }: MinifyOptions = {}
 
   return {
     name: "denopack-plugin-terserTransform",
-    transform(code) {
+    async renderChunk(code) {
       const result = minify(code, { ...opts, sourceMap: true });
 
       if (typeof result.code === "undefined")

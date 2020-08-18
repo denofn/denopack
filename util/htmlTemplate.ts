@@ -15,6 +15,7 @@ export type TemplateOpts = {
   meta: Record<string, string>[];
   publicPath: string;
   title: string;
+  bodyEntry?: string;
 };
 
 export const htmlTemplate = async ({
@@ -23,27 +24,39 @@ export const htmlTemplate = async ({
   meta,
   publicPath,
   title,
-}: TemplateOpts) => {
+  bodyEntry,
+}: TemplateOpts): Promise<string> => {
   const scripts = (files.js || [])
     .map(({ fileName }) => {
       const attrs = makeHtmlAttributes(attributes.script);
       return `<script src="${publicPath}${fileName}"${attrs}></script>`;
     })
-    .join("\n");
+    .join("\n    ");
 
   const links = (files.css || [])
     .map(({ fileName }) => {
       const attrs = makeHtmlAttributes(attributes.link);
       return `<link href="${publicPath}${fileName}" rel="stylesheet"${attrs}>`;
     })
-    .join("\n");
+    .join("\n    ");
 
   const metas = meta
     .map((input) => {
       const attrs = makeHtmlAttributes(input);
       return `<meta${attrs}>`;
     })
-    .join("\n");
+    .join("\n    ");
+
+  const body = bodyEntry
+    ? `
+  <body>
+    ${bodyEntry}
+    ${scripts}
+  </body>`
+    : `
+  <body>
+    ${scripts}
+  </body>`;
 
   return `
 <!doctype html>
@@ -53,8 +66,6 @@ export const htmlTemplate = async ({
     <title>${title}</title>
     ${links}
   </head>
-  <body>
-    ${scripts}
-  </body>
+${body}
 </html>`;
 };

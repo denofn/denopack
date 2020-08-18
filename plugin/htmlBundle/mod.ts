@@ -54,7 +54,7 @@ export const defaults = {
   meta: [{ charset: "utf-8" }],
   publicPath: "",
   template: defaultTemplate,
-  title: "Rollup Bundle",
+  title: "denopack bundle",
 };
 
 function getFiles(bundle: OutputBundle) {
@@ -70,11 +70,11 @@ function getFiles(bundle: OutputBundle) {
   return result;
 }
 
-export function pluginHtmlGenerateBundle(opts: Opts = {}): Plugin {
+export function pluginHtmlBundle(opts: Opts = {}): Plugin {
   const { attributes, fileName, meta, publicPath, template, title } = { ...defaults, ...opts };
 
   return {
-    name: "denopack-plugin-htmlGenerateBundle",
+    name: "denopack-plugin-htmlBundle",
 
     async generateBundle(output, bundle) {
       const format = output.format as ModuleFormat;
@@ -93,14 +93,17 @@ export function pluginHtmlGenerateBundle(opts: Opts = {}): Plugin {
       const files = getFiles(bundle);
       const source = await template({ attributes, bundle, files, meta, publicPath, title });
 
-      const htmlFile: Pick<OutputAsset, "type" | "source" | "name" | "fileName"> = {
+      const htmlFile: OutputAsset = {
         type: "asset",
         source,
-        name: "Rollup HTML Asset",
+        name: "denopack HTML Asset",
         fileName,
+        isAsset: true,
       };
 
       this.emitFile(htmlFile);
     },
   };
 }
+
+export default pluginHtmlBundle;

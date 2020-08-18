@@ -1,0 +1,4 @@
+scripts:
+  start: vr copy && deno run -A --unstable ../../cli.ts -c denopack.config.ts --cache cache.json
+  copy: cp -R public dist
+  clearCache: rm cache.json

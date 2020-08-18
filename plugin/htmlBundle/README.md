@@ -1,4 +1,4 @@
-# denopack/plugin/htmlGenerateBundle
+# denopack/plugin/htmlBundle
 
 Creates HTML files to serve Rollup bundles.
 
@@ -32,9 +32,9 @@ This plugin is a Deno rewrite of [@rollup/plugin-html](https://github.com/rollup
 ## Usage
 
 ```ts
-import { pluginHtmlGenerateBundle } from "https://deno.land/x/denopack@0.5.0/plugin/pluginHtmlGenerateBundle/mod.ts";
+import html from "https://deno.land/x/denopack@0.5.0/plugin/htmlBundle/mod.ts";
 
 export default {
-  plugins: [pluginHtmlGenerateBundle()],
+  plugins: [html()],
 };
 ```
