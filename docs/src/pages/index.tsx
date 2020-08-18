@@ -55,12 +55,12 @@ function Index() {
             <h4>From deno.land</h4>
             <CodeBlock>
               deno install --unstable --allow-read --allow-write --allow-env --allow-net -n denopack
-              -f https://deno.land/x/denopack@0.5.0/cli.ts
+              -f https://deno.land/x/denopack@0.6.0/cli.ts
             </CodeBlock>
             <h4>From nest.land</h4>
             <CodeBlock>
               eggs install --unstable --allow-read --allow-write --allow-env --allow-net -n denopack
-              -f https://x.nest.land/denopack@0.5.0/cli.ts
+              -f https://x.nest.land/denopack@0.6.0/cli.ts
             </CodeBlock>
           </Section>
           <Section title="Goal" className={sectionContainer}>

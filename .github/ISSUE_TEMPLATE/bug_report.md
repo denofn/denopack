@@ -26,8 +26,8 @@ If applicable, add screenshots to help explain your problem.
 **Desktop (please complete the following information):**
 
 - OS: [e.g. macOS, Ubuntu, ...]
-- Deno version [e.g. v1.2.3]
-- denopack version [e.g. 0.5.0]
+- Deno version [e.g. v1.3.0]
+- denopack version [e.g. 0.6.0]
 
 **Additional context**
 Add any other context about the problem here.

@@ -42,7 +42,7 @@ function ScriptRunners() {
               <br />
               <Pad />
               start: deno run --unstable --allow-read --allow-write
-              https://deno.land/x/denopack@0.5.0/cli.ts
+              https://deno.land/x/denopack@0.6.0/cli.ts
             </CodeBlock>
             <CodeBlock>vr run start -i mod.ts -o bundle.js</CodeBlock>
             <h4>
@@ -58,7 +58,7 @@ function ScriptRunners() {
               <br />
               <Pad />
               <Pad />
-              file: https://deno.land/x/denopack@0.5.0/cli.ts
+              file: https://deno.land/x/denopack@0.6.0/cli.ts
               <br />
               <Pad />
               <Pad />
@@ -93,7 +93,7 @@ function ScriptRunners() {
               <br />
               <Pad />
               <Pad /> "start": "--unstable --allow-read --allow-write
-              https://deno.land/x/denopack@0.5.0/cli.ts -i mod.ts -o bundle.js"
+              https://deno.land/x/denopack@0.6.0/cli.ts -i mod.ts -o bundle.js"
               <br />
               <Pad />
               {"}"}
