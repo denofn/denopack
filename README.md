@@ -30,7 +30,7 @@ eggs install --unstable --allow-read --allow-write --allow-env --allow-net -n de
 
 ## Documentation
 
-Visit [https://denofn.github.io/denopack](https://denofn.github.io/denopack)
+Visit [https://denopack.mod.land](https://denopack.mod.land)
 
 ## Contributing
 
