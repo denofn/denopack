@@ -34,7 +34,7 @@ This plugin is a Deno rewrite of [@rollup/plugin-html](https://github.com/rollup
 ## Usage
 
 ```ts
-import html from "https://deno.land/x/denopack@0.6.0/plugin/htmlBundle/mod.ts";
+import html from "https://deno.land/x/denopack@0.7.0/plugin/htmlBundle/mod.ts";
 
 export default {
   plugins: [html()],

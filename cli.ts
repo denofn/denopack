@@ -4,7 +4,7 @@ import { watch } from "./cli/watch.ts";
 import { cac } from "./deps.ts";
 
 const denopack = cac("denopack");
-denopack.version("0.6.0");
+denopack.version("0.7.0");
 
 denopack
   .option("-i, --input <pathToFile>", "The input file (most likely mod.ts)", {})

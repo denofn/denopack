@@ -20,9 +20,9 @@
 Put this before pluginFileLoader
 
 ```ts
-import { pluginImportResolver } from "https://deno.land/x/denopack@0.6.0/plugin/importResolver/mod.ts";
-import { pluginCacheLoader } from "https://deno.land/x/denopack@0.6.0/plugin/cacheLoader/mod.ts";
-import { pluginFileLoader } from "https://deno.land/x/denopack@0.6.0/plugin/filLoader/mod.ts";
+import { pluginImportResolver } from "https://deno.land/x/denopack@0.7.0/plugin/importResolver/mod.ts";
+import { pluginCacheLoader } from "https://deno.land/x/denopack@0.7.0/plugin/cacheLoader/mod.ts";
+import { pluginFileLoader } from "https://deno.land/x/denopack@0.7.0/plugin/filLoader/mod.ts";
 
 export default {
   plugins: [pluginImportResolver(), pluginCacheLoader(), pluginFileLoader()],
@@ -32,9 +32,9 @@ export default {
 ### Strict integrity checks
 
 ```ts
-import { pluginImportResolver } from "https://deno.land/x/denopack@0.6.0/plugin/importResolver/mod.ts";
-import { pluginCacheLoader } from "https://deno.land/x/denopack@0.6.0/plugin/cacheLoader/mod.ts";
-import { pluginFileLoader } from "https://deno.land/x/denopack@0.6.0/plugin/filLoader/mod.ts";
+import { pluginImportResolver } from "https://deno.land/x/denopack@0.7.0/plugin/importResolver/mod.ts";
+import { pluginCacheLoader } from "https://deno.land/x/denopack@0.7.0/plugin/cacheLoader/mod.ts";
+import { pluginFileLoader } from "https://deno.land/x/denopack@0.7.0/plugin/filLoader/mod.ts";
 
 export default {
   plugins: [

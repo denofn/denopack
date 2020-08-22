@@ -4,9 +4,9 @@ import {
   pluginHtmlBundle as html,
   pluginTerserTransform as terser,
   useCache,
-} from "https://deno.land/x/denopack@0.6.0/mod.ts";
+} from "https://deno.land/x/denopack@0.7.0/mod.ts";
 
-import type { RollupOptions, TemplateOpts } from "https://deno.land/x/denopack@0.6.0/mod.ts";
+import type { RollupOptions, TemplateOpts } from "https://deno.land/x/denopack@0.7.0/mod.ts";
 
 function createHtmlTemplate(opts: TemplateOpts): Promise<string> {
   opts.bodyEntry = `<noscript>You need to enable JavaScript to run this app.</noscript>
