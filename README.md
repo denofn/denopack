@@ -19,11 +19,11 @@
 ### Installation
 
 ```sh
-deno run --allow-run --allow-read https://deno.land/x/denopack@0.7.0/install.ts
+deno run --allow-run --allow-read https://deno.land/x/denopack@0.7.1/install.ts
 ```
 
 ```sh
-deno run --allow-run --allow-read https://x.nest.land/denopack@0.7.0/install.ts
+deno run --allow-run --allow-read https://x.nest.land/denopack@0.7.1/install.ts
 ```
 
 **NOTE: denopack uses unstable Deno APIs. These APIs are not final and may break, but this does mean `--unstable` is mandatory!**
