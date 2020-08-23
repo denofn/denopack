@@ -1,6 +1,7 @@
 interface HTTPSOptions {
-  ca: string;
+  /* Path for the file that contains your certificate */
   cert: string;
+  /* Path for the file that contains your key */
   key: string;
 }
 
@@ -89,7 +90,6 @@ export const parseOptions = (
     options.https &&
     (
       typeof options.https !== "object" ||
-      !options.https.ca ||
       !options.https.cert ||
       !options.https.key
     )

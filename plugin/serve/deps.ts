@@ -1,5 +1,6 @@
 export {
-  listenAndServe as createServer,
+  listenAndServe as createHTTPServer,
+  listenAndServeTLS as createHTTPSServer,
   Response as ServerResponse,
   ServerRequest,
 } from "http://deno.land/std@0.66.0/http/mod.ts";

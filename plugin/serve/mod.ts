@@ -1,5 +1,6 @@
 import {
-  createServer,
+  createHTTPServer,
+  createHTTPSServer,
 } from "./deps.ts";
 import { path } from "../../deps.ts";
 import { Plugin } from "../../deps.ts";
@@ -43,9 +44,14 @@ export const serve = (
   //TODO:Soremwar
   //Enable https
   if (parsed_options.https) {
-    //server = createHttpsServer(options.https, requestListener).listen(options.port, options.host)
+    createHTTPSServer({
+      certFile: parsed_options.https.cert,
+      keyFile: parsed_options.https.key,
+      hostname: parsed_options.host,
+      port: parsed_options.port,
+    }, createRequestHandler(parsed_options));
   } else {
-    createServer({
+    createHTTPServer({
       hostname: parsed_options.host,
       port: parsed_options.port,
     }, createRequestHandler(parsed_options));
