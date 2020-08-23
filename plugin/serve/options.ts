@@ -17,7 +17,7 @@ export interface ServeOptions {
 
 export interface UserOptions {
   /** Folder(s) to serve files from */
-  contentBase?: string | string[];
+  contentBase: string | string[];
   /** Set headers */
   headers?: { [header: string]: string };
   /** Path to fallback page. Set to `true` to return index.html (200) instead of error page (404) */
@@ -44,13 +44,13 @@ const defaultOptions = {
 
 /** Really long validations, but necessary for use with JavaScript */
 export const parseOptions = (
-  options: { [option: string]: any },
+  options: UserOptions,
 ): ServeOptions => {
   options.contentBase = options.contentBase.length
     ? options.contentBase
     : defaultOptions.contentBase;
   if (
-    !(options.contentBase as any[]).every((x) => typeof x === "string")
+    !(options.contentBase as unknown[]).every((x) => typeof x === "string")
   ) {
     throw new Error(
       `Options for serve: contentBase must be a valid path or paths`,

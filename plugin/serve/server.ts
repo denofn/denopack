@@ -8,71 +8,10 @@ import { ServeOptions } from "./options.ts";
 
 const DEFAULT_MIME_TYPE = "text/plain";
 
-const getNotFoundResponse = (
-  requested_path: string,
-  content_folders: string[],
-): ServerResponse => {
-  return {
-    body: (
-      "404 Not Found" + "\n\n" +
-      (requested_path.slice(1) || "index.html") +
-      ` in path ${
-        (content_folders).join(
-          ", ",
-        )
-      }` + "\n\n" +
-      "(rollup-plugin-serve)"
-    ),
-    status: 404,
-  };
-};
-
-interface File {
-  content: string;
-  path: string;
-}
-
-//TODO:Soremwar
-//Explore other possible errors besides not found
-const readFileFromContentBase = async (
-  content_base: string[],
-  url: string,
-): Promise<File> => {
-  let file: File = {
-    content: "",
-    path: "",
-  };
-
-  for (const content_path of content_base) {
-    let file_path: string;
-    // Load index.html in directories
-    if (url.endsWith("/")) {
-      file_path = path.resolve(
-        Deno.cwd(),
-        path.normalize(`${content_path}/index.html`),
-      );
-    } else {
-      file_path = path.resolve(
-        Deno.cwd(),
-        path.normalize(content_path + url),
-      );
-    }
-
-    try {
-      file.content = Deno.readTextFileSync(file_path);
-      file.path = file_path;
-    } catch {
-      continue;
-    }
-  }
-
-  if (file.path) {
-    return file;
-  } else {
-    throw new Error();
-  }
-};
-
+/**
+ * Returns a requestHandler for the server
+ * This one does the heavy lifting, search for each file and serve it to user
+ * */
 export const createRequestHandler = (
   options: ServeOptions,
 ) => {
@@ -130,4 +69,69 @@ export const createRequestHandler = (
         }
       });
   };
+};
+
+const getNotFoundResponse = (
+  requested_path: string,
+  content_folders: string[],
+): ServerResponse => {
+  return {
+    body: (
+      "404 Not Found" + "\n\n" +
+      (requested_path.slice(1) || "index.html") +
+      ` in path ${
+        (content_folders).join(
+          ", ",
+        )
+      }` + "\n\n" +
+      "(rollup-plugin-serve)"
+    ),
+    status: 404,
+  };
+};
+
+interface File {
+  content: string;
+  path: string;
+}
+
+//TODO
+//Validate alternative errors beside not found
+const readFileFromContentBase = async (
+  content_base: string[],
+  url: string,
+): Promise<File> => {
+  let file: File = {
+    content: "",
+    path: "",
+  };
+
+  for (const content_path of content_base) {
+    let file_path: string;
+
+    if (url.endsWith("/")) {
+      file_path = path.resolve(
+        Deno.cwd(),
+        path.normalize(`${content_path}/index.html`),
+      );
+    } else {
+      file_path = path.resolve(
+        Deno.cwd(),
+        path.normalize(content_path + url),
+      );
+    }
+
+    try {
+      file.content = Deno.readTextFileSync(file_path);
+      file.path = file_path;
+    } catch {
+      continue;
+    }
+  }
+
+  if (file.path) {
+    return file;
+  } else {
+    throw new Error();
+  }
 };

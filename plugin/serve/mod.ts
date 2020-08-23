@@ -13,7 +13,11 @@ import {
   createRequestHandler,
 } from "./server.ts";
 
-/** Serve your rolled up bundle like webpack-dev-server */
+/** 
+ * Plugin for serving your compiled files through a http/https server
+ * Requires --allow-net=host:port
+ * Can be used in conjuction with --watch for a development server
+ */
 export const serve = (
   options: UserOptions | string | string[] = "",
 ): Plugin => {
@@ -41,8 +45,6 @@ export const serve = (
     );
   }
 
-  //TODO:Soremwar
-  //Enable https
   if (parsed_options.https) {
     createHTTPSServer({
       certFile: parsed_options.https.cert,
