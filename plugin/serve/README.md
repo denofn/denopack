@@ -25,17 +25,17 @@
 ## Usage
 
 ```ts
-import { serve } from "https://deno.land/x/denopack/plugin/serve/mod.ts";
+import { pluginServe } from "https://deno.land/x/denopack/plugin/serve/mod.ts";
 
 export default {
   plugins: [
-    serve('serve_path'),
+    pluginServe('serve_path'),
   ],
 };
 ```
 
 ```ts
-import { serve } from "https://deno.land/x/denopack/plugin/serve/mod.ts";
+import { pluginServe } from "https://deno.land/x/denopack/plugin/serve/mod.ts";
 
 const options_object = {
   contentBase: 'serve_path',
@@ -43,7 +43,7 @@ const options_object = {
 
 export default {
   plugins: [
-    serve(options_object),
+    pluginServe(options_object),
   ],
 };
 ```

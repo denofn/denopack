@@ -84,7 +84,7 @@ const getNotFoundResponse = (
           ", ",
         )
       }` + "\n\n" +
-      "(rollup-plugin-serve)"
+      "(denopack-plugin-serve)"
     ),
     status: 404,
   };

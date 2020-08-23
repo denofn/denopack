@@ -18,7 +18,7 @@ import {
  * Requires --allow-net=host:port
  * Can be used in conjuction with --watch for a development server
  */
-export const serve = (
+export const pluginServe = (
   options: UserOptions | string | string[] = "",
 ): Plugin => {
   let parsed_options: ServeOptions;
@@ -62,7 +62,7 @@ export const serve = (
   let running = parsed_options.verbose === false;
 
   return {
-    name: "serve",
+    name: "denopack-plugin-serve",
     generateBundle() {
       if (!running) {
         running = true;
