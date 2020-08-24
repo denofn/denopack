@@ -8,6 +8,11 @@ Denopack plugin that bundles imported CSS
 
 - `output [string | false]`: default `"bundle.css"`. Filename of the css bundle. Will emit no file if output is `false`
 
+## Required flags
+
+- `--allow-read` used by filtering functionality
+- `--allow-env` used by filtering functionality
+
 ## Attribution
 
 This plugin is a rough rewrite of [rollup-plugin-css-only](https://github.com/thgh/rollup-plugin-css-only).
