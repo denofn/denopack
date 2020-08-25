@@ -13,9 +13,9 @@ Uses the internal `Deno.transpileOnly` [compiler API](https://deno.land/manual/r
 ## Usage
 
 ```ts
-import { pluginImportResolver } from "https://deno.land/x/denopack@0.7.1/plugin/importResolver/mod.ts";
-import { pluginFileLoader } from "https://deno.land/x/denopack@0.7.1/plugin/fileLoader/mod.ts";
-import { pluginTypescriptTransform } from "https://deno.land/x/denopack@0.7.1/plugin/typescriptTransform/mod.ts";
+import { pluginImportResolver } from "https://deno.land/x/denopack@0.8.0/plugin/importResolver/mod.ts";
+import { pluginFileLoader } from "https://deno.land/x/denopack@0.8.0/plugin/fileLoader/mod.ts";
+import { pluginTypescriptTransform } from "https://deno.land/x/denopack@0.8.0/plugin/typescriptTransform/mod.ts";
 
 export default {
   plugins: [

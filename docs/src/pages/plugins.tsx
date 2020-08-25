@@ -48,7 +48,7 @@ function Plugins() {
             </p>
             <CodeBlock>
               import /* whatever plugins/hooks are needed */
-              "https://deno.land/x/denopack@0.7.1/plugin/mod.ts";
+              "https://deno.land/x/denopack@0.8.0/plugin/mod.ts";
               <br />
               <br />
               export default {"{"}

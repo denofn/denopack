@@ -1,6 +1,5 @@
 # denopack/plugin/serve
 
-
 ## Required flags
 
 - `--allow-read=serve_path(s)`
@@ -25,25 +24,21 @@
 ## Usage
 
 ```ts
-import { pluginServe } from "https://deno.land/x/denopack/plugin/serve/mod.ts";
+import { pluginServe } from "https://deno.land/x/denopack@0.8.0/plugin/serve/mod.ts";
 
 export default {
-  plugins: [
-    pluginServe('serve_path'),
-  ],
+  plugins: [pluginServe("serve_path")],
 };
 ```
 
 ```ts
-import { pluginServe } from "https://deno.land/x/denopack/plugin/serve/mod.ts";
+import { pluginServe } from "https://deno.land/x/denopack@0.8.0/plugin/serve/mod.ts";
 
 const options_object = {
-  contentBase: 'serve_path',
+  contentBase: "serve_path",
 };
 
 export default {
-  plugins: [
-    pluginServe(options_object),
-  ],
+  plugins: [pluginServe(options_object)],
 };
 ```

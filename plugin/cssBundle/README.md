@@ -10,8 +10,7 @@ Denopack plugin that bundles imported CSS
 
 ## Required flags
 
-- `--allow-read` used by filtering functionality
-- `--allow-env` used by filtering functionality
+- `--allow-read` and `--allow-env` because @rollup/pluginutils uses `std/node/process.ts`
 
 ## Attribution
 
@@ -20,7 +19,7 @@ This plugin is a rough rewrite of [rollup-plugin-css-only](https://github.com/th
 ## Usage
 
 ```ts
-import css from "https://deno.land/x/denopack@0.7.1/plugin/cssBundle/mod.ts";
+import css from "https://deno.land/x/denopack@0.8.0/plugin/cssBundle/mod.ts";
 
 export default {
   plugins: [css({ output: "bundle.css" })],
