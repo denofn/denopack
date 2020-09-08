@@ -1,6 +1,11 @@
+name: ci
+
+on: [push, pull_request]
+
 jobs:
-  ci:
+  test:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
