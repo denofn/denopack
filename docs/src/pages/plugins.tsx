@@ -28,23 +28,32 @@ function Plugins() {
         <SidebarContainer active="plugins">
           <Section title="Plugins" className={sectionContainer}>
             <p>
-              Since the bundling logic - aside file system/network access - is handled by Rollup,
-              the remaining core functionality of denopack is based around plugins that use Deno
-              APIs for key features. A list of included plugins and a collection of strategies are
-              included in the{" "}
-              <Link href="https://github.com/denofn/denopack/blob/main/plugin" target="_blank">
+              Since the bundling logic - aside file system/network access - is
+              handled by Rollup, the remaining core functionality of denopack is
+              based around plugins that use Deno APIs for key features. A list
+              of included plugins and a collection of strategies are included in
+              the{" "}
+              <Link
+                href="https://github.com/denofn/denopack/blob/main/plugin"
+                target="_blank"
+              >
                 plugin directory on Github
               </Link>
-              . Documentation from Rollup regarding plugins is available on their{" "}
-              <Link href="https://rollupjs.org/guide/en/#plugin-development" target="_blank">
+              . Documentation from Rollup regarding plugins is available on
+              their{" "}
+              <Link
+                href="https://rollupjs.org/guide/en/#plugin-development"
+                target="_blank"
+              >
                 docs site
               </Link>
               .
             </p>
             <h4>Usage</h4>
             <p>
-              If you only need plugins or hooks - for example to create a config file - you can
-              import straight from the mod.ts in the plugin directory.
+              If you only need plugins or hooks - for example to create a config
+              file - you can import straight from the mod.ts in the plugin
+              directory.
             </p>
             <CodeBlock>
               import /* whatever plugins/hooks are needed */

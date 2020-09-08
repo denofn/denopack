@@ -17,12 +17,16 @@ denopack.option("-d, --dir [pathToDir]", "The output directory", {});
 denopack.option(
   "-c, --config [pathToConfig]",
   "The config file. Use --defaultConfig for default values",
-  {}
+  {},
 );
 
 denopack.option("--cache <cacheLocation>", "Persist build cache", {});
 
-denopack.option("--watch <dirOrFile>", "Watch a file or directory and rebuild on changes", {});
+denopack.option(
+  "--watch <dirOrFile>",
+  "Watch a file or directory and rebuild on changes",
+  {},
+);
 
 denopack.option("--defaultConfig", "Prints the default config to stdout", {});
 

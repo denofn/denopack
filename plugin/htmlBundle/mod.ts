@@ -29,7 +29,13 @@ import { htmlTemplate as defaultTemplate } from "../../util/htmlTemplate.ts";
 import { isOutputAsset } from "../../util/isOutputAsset.ts";
 
 import type { Attributes, TemplateOpts } from "../../util/htmlTemplate.ts";
-import type { Plugin, OutputAsset, OutputChunk, ModuleFormat, OutputBundle } from "../../deps.ts";
+import type {
+  Plugin,
+  OutputAsset,
+  OutputChunk,
+  ModuleFormat,
+  OutputBundle,
+} from "../../deps.ts";
 
 const { extname } = path;
 
@@ -58,7 +64,9 @@ export const defaults = {
 };
 
 function getFiles(bundle: OutputBundle) {
-  const files = Object.values(bundle).filter((file) => isOutputAsset(file) || file.isEntry);
+  const files = Object.values(bundle).filter((file) =>
+    isOutputAsset(file) || file.isEntry
+  );
 
   const result: Record<string, (OutputAsset | OutputChunk)[]> = {};
   for (const file of files) {
@@ -71,27 +79,38 @@ function getFiles(bundle: OutputBundle) {
 }
 
 export function pluginHtmlBundle(opts: Opts = {}): Plugin {
-  const { attributes, fileName, meta, publicPath, template, title } = { ...defaults, ...opts };
+  const { attributes, fileName, meta, publicPath, template, title } = {
+    ...defaults,
+    ...opts,
+  };
 
   return {
     name: "denopack-plugin-htmlBundle",
 
     async generateBundle(output, bundle) {
       const format = output.format as ModuleFormat;
-      if (!supportedFormats.includes(format) && !opts.template)
+      if (!supportedFormats.includes(format) && !opts.template) {
         this.warn(
-          `plugin-html: The output format '${
-            output.format
-          }' is not directly supported. A custom \`template\` is probably required. Supported formats include: ${supportedFormats.join(
-            ", "
-          )}`
+          `plugin-html: The output format '${output.format}' is not directly supported. A custom \`template\` is probably required. Supported formats include: ${
+            supportedFormats.join(
+              ", ",
+            )
+          }`,
         );
+      }
 
-      if (format === "esm" || format === "es")
-        attributes.script = Object.assign({}, attributes.script, { type: "module" });
+      if (format === "esm" || format === "es") {
+        attributes.script = Object.assign(
+          {},
+          attributes.script,
+          { type: "module" },
+        );
+      }
 
       const files = getFiles(bundle);
-      const source = await template({ attributes, bundle, files, meta, publicPath, title });
+      const source = await template(
+        { attributes, bundle, files, meta, publicPath, title },
+      );
 
       const htmlFile: OutputAsset = {
         type: "asset",

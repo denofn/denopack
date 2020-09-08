@@ -1,7 +1,10 @@
 import { path } from "../deps.ts";
 import { usesProtocol } from "./usesProtocol.ts";
 
-export function resolver(importee: string, importer: string | undefined): string {
+export function resolver(
+  importee: string,
+  importer: string | undefined,
+): string {
   if (!importer) return importee;
   else if (!usesProtocol(importee)) {
     return usesProtocol(importer)

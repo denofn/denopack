@@ -6,7 +6,15 @@ import { RawSourceMap } from "./source-map.d.ts";
 /** @deprecated since this versions basically do not exist */
 type ECMA_UNOFFICIAL = 6 | 7 | 8 | 9 | 10 | 11;
 
-export type ECMA = 5 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | ECMA_UNOFFICIAL;
+export type ECMA =
+  | 5
+  | 2015
+  | 2016
+  | 2017
+  | 2018
+  | 2019
+  | 2020
+  | ECMA_UNOFFICIAL;
 
 export interface ParseOptions {
   bare_returns?: boolean;
@@ -109,15 +117,15 @@ export interface OutputOptions {
     | "some"
     | RegExp
     | ((
-        node: AST_Node,
-        comment: {
-          value: string;
-          type: "comment1" | "comment2" | "comment3" | "comment4";
-          pos: number;
-          line: number;
-          col: number;
-        }
-      ) => boolean);
+      node: AST_Node,
+      comment: {
+        value: string;
+        type: "comment1" | "comment2" | "comment3" | "comment4";
+        pos: number;
+        line: number;
+        col: number;
+      },
+    ) => boolean);
   ecma?: ECMA;
   ie8?: boolean;
   indent_level?: number;
@@ -184,7 +192,12 @@ export interface SourceMapOptions {
 declare function parse(text: string, options?: ParseOptions): AST_Node;
 
 export class TreeWalker {
-  constructor(callback: (node: AST_Node, descend?: (node: AST_Node) => void) => boolean | undefined);
+  constructor(
+    callback: (
+      node: AST_Node,
+      descend?: (node: AST_Node) => void,
+    ) => boolean | undefined,
+  );
   directives: object;
   find_parent(type: AST_Node): AST_Node | undefined;
   has_directive(type: string): boolean;
@@ -202,9 +215,9 @@ export class TreeTransformer extends TreeWalker {
     before: (
       node: AST_Node,
       descend?: (node: AST_Node, tw: TreeWalker) => void,
-      in_list?: boolean
+      in_list?: boolean,
     ) => AST_Node | undefined,
-    after?: (node: AST_Node, in_list?: boolean) => AST_Node | undefined
+    after?: (node: AST_Node, in_list?: boolean) => AST_Node | undefined,
   );
   before: (node: AST_Node) => AST_Node;
   after?: (node: AST_Node) => AST_Node;
@@ -214,7 +227,7 @@ export function push_uniq<T>(array: T[], el: T): void;
 
 export function minify(
   files: string | string[] | { [file: string]: string } | AST_Node,
-  options?: MinifyOptions
+  options?: MinifyOptions,
 ): MinifyOutput;
 
 export class AST_Node {
@@ -251,7 +264,11 @@ declare class SymbolDef {
   id: number;
 }
 
-type ArgType = AST_SymbolFunarg | AST_DefaultAssign | AST_Destructuring | AST_Expansion;
+type ArgType =
+  | AST_SymbolFunarg
+  | AST_DefaultAssign
+  | AST_Destructuring
+  | AST_Expansion;
 
 declare class AST_Statement extends AST_Node {
   constructor(props?: object);

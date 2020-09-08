@@ -48,7 +48,9 @@ export function pluginCssBundle(options: Opts = {}): Plugin {
       return "";
     },
     async generateBundle(opts) {
-      if ((!changes && typeof changes !== "undefined") || options.output === false) {
+      if (
+        (!changes && typeof changes !== "undefined") || options.output === false
+      ) {
         return;
       }
 

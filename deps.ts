@@ -30,5 +30,5 @@ export const debounce = _debounce as <T extends (...args: any[]) => any>(
     leading?: boolean;
     maxWait?: number;
     trailing?: boolean;
-  }
+  },
 ) => T;

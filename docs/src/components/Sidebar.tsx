@@ -30,7 +30,9 @@ type Props = {
   active?: string;
 };
 
-export function SidebarContainer({ children, active }: React.PropsWithChildren<Props>) {
+export function SidebarContainer(
+  { children, active }: React.PropsWithChildren<Props>,
+) {
   return (
     <div className={sidebarContainer}>
       <div className={sidebarRoot}>

@@ -11,5 +11,11 @@ export function buildCacheUrl(urlRaw: string): string {
   const sha256 = hash.createHash("sha256");
   const fileHash = sha256.update(`${url.pathname}${url.search}`).toString();
 
-  return path.join(denoDir, "deps", url.protocol.replace(":", ""), host, fileHash);
+  return path.join(
+    denoDir,
+    "deps",
+    url.protocol.replace(":", ""),
+    host,
+    fileHash,
+  );
 }

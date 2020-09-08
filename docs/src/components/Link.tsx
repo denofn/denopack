@@ -13,7 +13,9 @@ type AProps = {
   target?: string;
 };
 
-export function Link({ href, target, children }: React.PropsWithChildren<AProps>) {
+export function Link(
+  { href, target, children }: React.PropsWithChildren<AProps>,
+) {
   return (
     <a href={href} target={target} className={linkRoot}>
       {children}

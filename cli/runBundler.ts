@@ -7,7 +7,7 @@ import { persistSourceMaps } from "./persistSourceMaps.ts";
 
 export async function runBundler(
   { input, output, dir, config, print, cache }: Options,
-  watchCache?: RollupCache
+  watchCache?: RollupCache,
 ): Promise<RollupCache | undefined> {
   const now = Date.now();
 
@@ -17,15 +17,20 @@ export async function runBundler(
       : "./options.ts"
   );
 
-  if (!!watchCache && findPlugin(conf.plugins ?? [], "denopack-plugin-typescriptCompile")) {
-    console.warn(`pluginTypescriptCompile is currently not supported in watch mode`);
+  if (
+    !!watchCache &&
+    findPlugin(conf.plugins ?? [], "denopack-plugin-typescriptCompile")
+  ) {
+    console.warn(
+      `pluginTypescriptCompile is currently not supported in watch mode`,
+    );
     Deno.exit(1);
   }
 
   const [rollupOpts, outputOpts, outputDir] = await mergeOptions(
     conf,
     { input, output, dir, cache },
-    watchCache
+    watchCache,
   );
 
   const bundle = (await rollup(rollupOpts)) as RollupBuild;

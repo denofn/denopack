@@ -5,5 +5,5 @@ import { AST_Node, MinifyOptions, MinifyOutput } from "./terser.d.ts";
 
 export const minify: (
   files: string | string[] | { [file: string]: string } | AST_Node,
-  options?: MinifyOptions
+  options?: MinifyOptions,
 ) => MinifyOutput = (globalThis as any).Terser.minify;

@@ -7,12 +7,16 @@ import {
   useCache,
 } from "https://deno.land/x/denopack@0.8.0/mod.ts";
 
-import type { RollupOptions, TemplateOpts } from "https://deno.land/x/denopack@0.8.0/mod.ts";
+import type {
+  RollupOptions,
+  TemplateOpts,
+} from "https://deno.land/x/denopack@0.8.0/mod.ts";
 
 const isDev = !Deno.env.get("REACT_APP_IS_PROD");
 
 function createHtmlTemplate(opts: TemplateOpts): Promise<string> {
-  opts.bodyEntry = `<noscript>You need to enable JavaScript to run this app.</noscript>
+  opts.bodyEntry =
+    `<noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>`;
   return htmlTemplate(opts);
 }
@@ -49,11 +53,11 @@ const config: RollupOptions = {
     }),
     ...(isDev
       ? [
-          serve({
-            contentBase: "dist",
-            port: 3000,
-          }),
-        ]
+        serve({
+          contentBase: "dist",
+          port: 3000,
+        }),
+      ]
       : []),
   ],
   output: {

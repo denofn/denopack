@@ -26,14 +26,18 @@ type LinkProps = {
   active?: boolean;
 };
 
-function MenuLink({ href, active, children }: React.PropsWithChildren<LinkProps>) {
-  return active ? (
-    <a className={`${menuLinkRoot} ${activeLink}`}>{children}</a>
-  ) : (
-    <a href={href} className={menuLinkRoot}>
-      {children}
-    </a>
-  );
+function MenuLink(
+  { href, active, children }: React.PropsWithChildren<LinkProps>,
+) {
+  return active
+    ? (
+      <a className={`${menuLinkRoot} ${activeLink}`}>{children}</a>
+    )
+    : (
+      <a href={href} className={menuLinkRoot}>
+        {children}
+      </a>
+    );
 }
 
 export function MenuContent({ active }: { active?: string }) {
