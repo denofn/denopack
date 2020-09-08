@@ -65,11 +65,11 @@ export function pluginTypescriptCompile(
     },
 
     async load(id) {
-      return !!useAsLoader ? resolveFromModules(id) : null;
+      return useAsLoader ? resolveFromModules(id) : null;
     },
 
     async transform(_, id) {
-      return !!useAsLoader ? null : resolveFromModules(id);
+      return useAsLoader ? null : resolveFromModules(id);
     },
   };
 }

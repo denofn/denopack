@@ -35,7 +35,7 @@ export function pluginRenderPagesAsHtml(pages: string[]): Plugin {
         const { default: Page, title: pageTitle } = await import(
           `${path.resolve(page)}`
         );
-        const body = (ReactDOMServer as any).renderToStaticMarkup(<Page />);
+        const body = ReactDOMServer.renderToStaticMarkup(<Page />);
         const baseStyle =
           `<link rel="stylesheet" type="text/css" href="./assets/base.css">\n`;
         const style = getStyleTag(injector);

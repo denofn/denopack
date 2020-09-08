@@ -75,7 +75,7 @@ export function Topbar({ active }: Props) {
 export function GHLogo({ className }: { className?: string }) {
   return (
     <a
-      className={`${headerLink}${!!className ? " " + className : ""}`}
+      className={`${headerLink}${className ? " " + className : ""}`}
       href="https://github.com/denofn/denopack"
       aria-label="denopack on GitHub"
       rel="noopener noreferrer"

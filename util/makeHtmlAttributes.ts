@@ -1,5 +1,5 @@
 export function makeHtmlAttributes(
-  attributes?: Record<string, any> | null,
+  attributes?: Record<string, string> | null,
 ): string {
   if (!attributes) {
     return "";

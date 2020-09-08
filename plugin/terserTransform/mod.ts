@@ -6,7 +6,7 @@ import type { MinifyOptions } from "./deps.ts";
 export function pluginTerserTransform(
   { sourceMap, ...opts }: MinifyOptions = {},
 ): Plugin {
-  if (!!sourceMap) {
+  if (sourceMap) {
     console.warn(
       `Sourcemap config option is ignored. Generating sourcemaps is inferred from Rollup output options`,
     );

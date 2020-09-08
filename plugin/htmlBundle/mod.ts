@@ -42,7 +42,7 @@ const { extname } = path;
 export type Opts = {
   attributes?: Attributes;
   fileName?: string;
-  meta?: Record<string, any>[];
+  meta?: Record<string, string>[];
   publicPath?: string;
   template?: (opts: TemplateOpts) => Promise<string>;
   title?: string;
