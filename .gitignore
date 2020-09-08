@@ -1,3 +1,5 @@
+.vscode
+
 eggs-debug.log
 
 test/**/*
