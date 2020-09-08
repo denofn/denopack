@@ -15,7 +15,7 @@ export function pluginTerserTransform(
   return {
     name: "denopack-plugin-terserTransform",
     async renderChunk(code) {
-      const result = minify(code, { ...opts, sourceMap: true });
+      const result = await minify(code, { ...opts, sourceMap: true });
 
       if (typeof result.code === "undefined") {
         throw new Error("Terser is not supposed to return nothing!");
