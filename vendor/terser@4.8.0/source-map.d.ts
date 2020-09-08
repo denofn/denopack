@@ -1,3 +1,4 @@
+// deno-lint-ignore-file
 export interface StartOfSourceMap {
   file?: string;
   sourceRoot?: string;

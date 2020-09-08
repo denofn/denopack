@@ -1,3 +1,4 @@
+// deno-lint-ignore-file
 /// <reference lib="es2015" />
 
 import { RawSourceMap } from "./source-map.d.ts";

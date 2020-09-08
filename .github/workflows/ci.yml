@@ -1,0 +1,20 @@
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Setup latest deno version
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: v1.3.3
+
+      - name: Format
+        run: deno fmt --check
+
+      - name: Lint
+        run: deno lint --unstable
+
+      - name: Test install
+        run: deno run --allow-run --allow-read ./install.ts
