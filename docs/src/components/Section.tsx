@@ -10,7 +10,9 @@ type Props = {
   title: React.ReactNode;
 };
 
-export function Section({ title, children, className }: React.PropsWithChildren<Props>) {
+export function Section(
+  { title, children, className }: React.PropsWithChildren<Props>,
+) {
   return (
     <section className={`${sectionRoot}${className ? " " + className : ""}`}>
       <h2>{title}</h2>

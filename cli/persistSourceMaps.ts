@@ -3,7 +3,7 @@ import { isOutputAsset } from "../util/isOutputAsset.ts";
 
 export async function persistSourceMaps(
   generateFn: (outputOptions: OutputOptions) => Promise<RollupOutput>,
-  opts: OutputOptions
+  opts: OutputOptions,
 ): Promise<RollupOutput> {
   const generated = await generateFn(opts);
 
@@ -16,7 +16,8 @@ export async function persistSourceMaps(
       toEmit.map &&
       !toEmit.code.includes(`//# sourceMappingUrl=${toEmit.map.file}.map`)
     ) {
-      toEmit.code = `${toEmit.code}//# sourceMappingUrl=${toEmit.map.file}.map\n`;
+      toEmit.code =
+        `${toEmit.code}//# sourceMappingUrl=${toEmit.map.file}.map\n`;
     }
   }
 

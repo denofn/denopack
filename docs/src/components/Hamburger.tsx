@@ -87,8 +87,10 @@ export function Hamburger({ active }: Props) {
         className={[sidebarIconToggle, "sidebarIconToggle"].join(" ")}
       >
         <div className={[spinner, line, "diagonalPart1"].join(" ")}></div>
-        <div className={[spinner, lineWithMargin, "horizontal"].join(" ")}></div>
-        <div className={[spinner, lineWithMargin, "diagonalPart2"].join(" ")}></div>
+        <div className={[spinner, lineWithMargin, "horizontal"].join(" ")}>
+        </div>
+        <div className={[spinner, lineWithMargin, "diagonalPart2"].join(" ")}>
+        </div>
       </label>
       <div id="sidebarMenu" className={sidebarMenu}>
         <MenuContent active={active} />

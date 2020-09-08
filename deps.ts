@@ -23,12 +23,12 @@ export type {
 
 import { default as _debounce } from "https://unpkg.com/lodash-es@4.17.15/debounce.js";
 
-export const debounce = _debounce as <T extends (...args: any[]) => any>(
+export const debounce = _debounce as <T extends (...args: unknown[]) => unknown>(
   func: T,
   wait?: number,
   options?: {
     leading?: boolean;
     maxWait?: number;
     trailing?: boolean;
-  }
+  },
 ) => T;

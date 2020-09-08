@@ -13,12 +13,14 @@ export type Opts = {
 async function cacheLoader(
   id: string,
   opts: Opts,
-  lockFile: Record<string, string> | undefined
+  lockFile: Record<string, string> | undefined,
 ): Promise<string | null> {
   const cacheUrl = buildCacheUrl(id);
   const isFileInCache = await isFile(cacheUrl);
 
-  if (opts.cacheOnly && !isFileInCache) throw new Error(`Cannot find ${id} in Deno cache`);
+  if (opts.cacheOnly && !isFileInCache) {
+    throw new Error(`Cannot find ${id} in Deno cache`);
+  }
   if (!opts.lazy && !isFileInCache) return null;
 
   const code = await Deno.readTextFile(cacheUrl);

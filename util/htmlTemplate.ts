@@ -3,9 +3,9 @@ import { makeHtmlAttributes } from "./makeHtmlAttributes.ts";
 import type { OutputBundle } from "../deps.ts";
 
 export type Attributes = {
-  link: Record<string, any> | null;
-  html: Record<string, any> | null;
-  script: Record<string, any> | null;
+  link: Record<string, string> | null;
+  html: Record<string, string> | null;
+  script: Record<string, string> | null;
 };
 
 export type TemplateOpts = {

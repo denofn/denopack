@@ -10,11 +10,15 @@ export function pluginChainResolver(...plugs: Plugin[]): Plugin {
         resolvedImportee = await plug?.resolveId?.call(
           this,
           typeof resolvedImportee === "string" ? resolvedImportee : importee,
-          importer
+          importer,
         );
         // bail on partial resolved id
-        if (typeof resolvedImportee === "object" && typeof resolvedImportee?.id !== "undefined")
+        if (
+          typeof resolvedImportee === "object" &&
+          typeof resolvedImportee?.id !== "undefined"
+        ) {
           return resolvedImportee;
+        }
       }
 
       return resolvedImportee;

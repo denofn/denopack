@@ -28,12 +28,15 @@ function ScriptRunners() {
         <SidebarContainer active="scriptrunners">
           <Section title="Script runners" className={sectionContainer}>
             <p>
-              In case you don't want to globally install denopack, but want to use it locally with
-              script runners: this is absolutely, totally possible since denopack uses 0 NodeJS
-              specific code!
+              In case you don't want to globally install denopack, but want to
+              use it locally with script runners: this is absolutely, totally
+              possible since denopack uses 0 NodeJS specific code!
             </p>
             <h4>
-              <Link href="https://github.com/umbopepato/velociraptor" target="_blank">
+              <Link
+                href="https://github.com/umbopepato/velociraptor"
+                target="_blank"
+              >
                 Velociraptor
               </Link>
             </h4>
@@ -46,7 +49,10 @@ function ScriptRunners() {
             </CodeBlock>
             <CodeBlock>vr run start -i mod.ts -o bundle.js</CodeBlock>
             <h4>
-              <Link href="https://github.com/BentoumiTech/denox" target="_blank">
+              <Link
+                href="https://github.com/BentoumiTech/denox"
+                target="_blank"
+              >
                 Denox
               </Link>
             </h4>
@@ -81,7 +87,10 @@ function ScriptRunners() {
             </CodeBlock>
             <CodeBlock>denox run start -i mod.ts -o bundle.js</CodeBlock>
             <h4>
-              <Link href="https://github.com/buttercubz/commands" target="_blank">
+              <Link
+                href="https://github.com/buttercubz/commands"
+                target="_blank"
+              >
                 Commands
               </Link>
             </h4>
@@ -92,7 +101,8 @@ function ScriptRunners() {
               "config": {"{"}
               <br />
               <Pad />
-              <Pad /> "start": "--unstable --allow-read --allow-write
+              <Pad />
+              "start": "--unstable --allow-read --allow-write
               https://deno.land/x/denopack@0.8.0/cli.ts -i mod.ts -o bundle.js"
               <br />
               <Pad />

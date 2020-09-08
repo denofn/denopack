@@ -1,3 +1,4 @@
+// deno-lint-ignore-file
 export interface StartOfSourceMap {
   file?: string;
   sourceRoot?: string;
@@ -57,7 +58,11 @@ export class SourceMapConsumer {
   allGeneratedPositionsFor(originalPosition: MappedPosition): Position[];
   hasContentsOfAllSources(): boolean;
   sourceContentFor(source: string, returnNullOnMissing?: boolean): string;
-  eachMapping(callback: (mapping: MappingItem) => void, context?: any, order?: number): void;
+  eachMapping(
+    callback: (mapping: MappingItem) => void,
+    context?: any,
+    order?: number,
+  ): void;
 }
 
 export interface Mapping {
@@ -69,10 +74,16 @@ export interface Mapping {
 
 export class SourceMapGenerator {
   constructor(startOfSourceMap?: StartOfSourceMap);
-  static fromSourceMap(sourceMapConsumer: SourceMapConsumer): SourceMapGenerator;
+  static fromSourceMap(
+    sourceMapConsumer: SourceMapConsumer,
+  ): SourceMapGenerator;
   addMapping(mapping: Mapping): void;
   setSourceContent(sourceFile: string, sourceContent: string): void;
-  applySourceMap(sourceMapConsumer: SourceMapConsumer, sourceFile?: string, sourceMapPath?: string): void;
+  applySourceMap(
+    sourceMapConsumer: SourceMapConsumer,
+    sourceFile?: string,
+    sourceMapPath?: string,
+  ): void;
   toString(): string;
 }
 
@@ -84,8 +95,18 @@ export interface CodeWithSourceMap {
 export class SourceNode {
   constructor();
   constructor(line: number, column: number, source: string);
-  constructor(line: number, column: number, source: string, chunk?: string, name?: string);
-  static fromStringWithSourceMap(code: string, sourceMapConsumer: SourceMapConsumer, relativePath?: string): SourceNode;
+  constructor(
+    line: number,
+    column: number,
+    source: string,
+    chunk?: string,
+    name?: string,
+  );
+  static fromStringWithSourceMap(
+    code: string,
+    sourceMapConsumer: SourceMapConsumer,
+    relativePath?: string,
+  ): SourceNode;
   add(chunk: string): void;
   prepend(chunk: string): void;
   setSourceContent(sourceFile: string, sourceContent: string): void;

@@ -12,6 +12,7 @@ const codeRoot = css({
   marginBottom: "16px",
 });
 
+// deno-lint-ignore ban-types
 export function CodeBlock({ children }: React.PropsWithChildren<{}>) {
   return <code className={codeRoot}>{children}</code>;
 }

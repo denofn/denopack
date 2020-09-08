@@ -3,4 +3,5 @@ import "https://unpkg.com/terser@5.3.0/dist/bundle.min.js";
 
 import type { minify as minifyfn } from "./terser.d.ts";
 
+// deno-lint-ignore no-explicit-any
 export const minify: typeof minifyfn = (globalThis as any).Terser.minify;

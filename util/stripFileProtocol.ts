@@ -1,6 +1,8 @@
 import { isHttpUrl } from "./isHttpUrl.ts";
 
-export function stripFileProtocol(emitMap: Record<string, string>): Record<string, string> {
+export function stripFileProtocol(
+  emitMap: Record<string, string>,
+): Record<string, string> {
   const newEmitMap: Record<string, string> = {};
 
   Object.keys(emitMap).forEach((k: string) => {

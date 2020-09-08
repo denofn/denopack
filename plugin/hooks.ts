@@ -16,7 +16,7 @@ export const useAlwaysFetch = (
   opts: {
     compilerOptions?: Deno.CompilerOptions;
     fileLoaderOptions?: FileLoaderOptions;
-  } = {}
+  } = {},
 ) => [importer(), ...useLoadAndTransform(opts)];
 
 export const useCache = (
@@ -24,7 +24,7 @@ export const useCache = (
     cacheLoaderOptions?: CacheLoaderOptions;
     compilerOptions?: Deno.CompilerOptions;
     fileLoaderOptions?: FileLoaderOptions;
-  } = {}
+  } = {},
 ) => [
   importer(),
   loadCache(opts.cacheLoaderOptions),
@@ -39,7 +39,7 @@ export const useCacheLazy = (
     fileLoaderOptions?: FileLoaderOptions;
     cacheLoaderOptions?: CacheLoaderOptions;
     compilerOptions?: Deno.CompilerOptions;
-  } = {}
+  } = {},
 ) =>
   useCache({
     cacheLoaderOptions: { ...opts.cacheLoaderOptions, lazy: true },
@@ -52,7 +52,7 @@ export const useCacheOnly = (
     fileLoaderOptions?: FileLoaderOptions;
     cacheLoaderOptions?: CacheLoaderOptions;
     compilerOptions?: Deno.CompilerOptions;
-  } = {}
+  } = {},
 ) =>
   useCache({
     fileLoaderOptions: opts.fileLoaderOptions,
@@ -65,7 +65,7 @@ export const useCompile = (
     cacheLoaderOptions?: CacheLoaderOptions;
     compilerOptions?: Deno.CompilerOptions;
     fileLoaderOptions?: FileLoaderOptions;
-  } = {}
+  } = {},
 ) => [
   tsCompile({ useAsLoader: false, compilerOptions: opts.compilerOptions }),
   loadCache(opts.cacheLoaderOptions),
@@ -75,5 +75,5 @@ export const useCompile = (
 export const useCompileAsLoader = (
   opts: {
     compilerOptions?: Deno.CompilerOptions;
-  } = {}
+  } = {},
 ) => [tsCompile({ useAsLoader: true, compilerOptions: opts.compilerOptions })];

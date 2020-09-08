@@ -22,28 +22,34 @@ function CLI() {
               The following flags are available:
               <ul>
                 <li>
-                  <Code>-i/--input {"<pathToFile>"}</Code>: the input file (in most cases mod.ts)
+                  <Code>-i/--input {"<pathToFile>"}
+                  </Code>: the input file (in most cases mod.ts)
                 </li>
                 <li>
-                  <Code>-o/--output {"<pathToFile>"}</Code>: the output file name
+                  <Code>-o/--output {"<pathToFile>"}
+                  </Code>: the output file name
                 </li>
                 <li>
-                  <Code>-d/--dir {"<pathToDir>"}</Code>: the output directory. Setting this is
-                  needed for code splitting and always takes precedence over <Code>-o</Code>
+                  <Code>-d/--dir {"<pathToDir>"}
+                  </Code>: the output directory. Setting this is needed for code
+                  splitting and always takes precedence over <Code>-o</Code>
                 </li>
                 <li>
-                  <Code>-c/--config {"<pathToConfig>"}</Code>: the config file. Use{" "}
+                  <Code>-c/--config {"<pathToConfig>"}
+                  </Code>: the config file. Use{" "}
                   <Code>--defaultConfig</Code> to see the default values.
                 </li>
                 <li>
-                  <Code>--cache {"<cacheLocation>"}</Code>: location to persist build cache
+                  <Code>--cache {"<cacheLocation>"}
+                  </Code>: location to persist build cache
                 </li>
                 <li>
-                  <Code>--watch {"<dirOrFile>"}</Code>: watch a file or directory and rebuild on
-                  changes
+                  <Code>--watch {"<dirOrFile>"}
+                  </Code>: watch a file or directory and rebuild on changes
                 </li>
                 <li>
-                  <Code>--defaultConfig</Code>: prints the default config to stdout
+                  <Code>--defaultConfig
+                  </Code>: prints the default config to stdout
                 </li>
                 <li>
                   <Code>--print</Code>: prints the generated bundle to stdout
@@ -59,18 +65,26 @@ function CLI() {
             <h4>Permissions</h4>
             <p>
               <strong>
-                NOTE: both denopack and its plugins use unstable Deno APIs. These APIs are not final
-                and may break, but this does mean <Code>--unstable</Code> is mandatory!
+                NOTE: both denopack and its plugins use unstable Deno APIs.
+                These APIs are not final and may break, but this does mean
+                <Code>--unstable</Code> is mandatory!
               </strong>
             </p>
             <p>
-              The CLI itself can run with a base permission of <Code>--allow-read</Code>, printing
-              to stdout with the <Code>-p</Code> flag. Writing to file naturally requires{" "}
+              The CLI itself can run with a base permission of <Code>
+                --allow-read
+              </Code>, printing to stdout with the <Code>-p</Code>
+              flag. Writing to file naturally requires{" "}
               <Code>--allow-write</Code>.
               <br />
-              Additionally, the various built-in plugins can require extra permissions like{" "}
-              <Code>--allow-net</Code> and <Code>--allow-env</Code>. More info can be found{" "}
-              <Link href="https://github.com/denofn/denopack/blob/main/plugin" target="_blank">
+              Additionally, the various built-in plugins can require extra
+              permissions like{" "}
+              <Code>--allow-net</Code> and <Code>--allow-env
+              </Code>. More info can be found{" "}
+              <Link
+                href="https://github.com/denofn/denopack/blob/main/plugin"
+                target="_blank"
+              >
                 in the plugin folder on Github
               </Link>
               .
@@ -78,11 +92,15 @@ function CLI() {
             <h4>Config file</h4>
             <p>
               Importing a{" "}
-              <Link href="https://rollupjs.org/guide/en/#configuration-files" target="_blank">
+              <Link
+                href="https://rollupjs.org/guide/en/#configuration-files"
+                target="_blank"
+              >
                 Rollup config file
-              </Link>{" "}
-              is supported using the <Code>-c {"<path/to/config>"}</Code> flag and follow the same
-              conventions as Rollup:
+              </Link>
+              {" "}
+              is supported using the <Code>-c {"<path/to/config>"}</Code>
+              flag and follow the same conventions as Rollup:
               <ul>
                 <li>use default export for your config</li>
                 <li>ideally call it rollup.config.ts or denopack.config.ts</li>

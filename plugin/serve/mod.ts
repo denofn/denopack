@@ -8,7 +8,9 @@ import { createRequestHandler } from "./server.ts";
  * Requires --allow-net=host:port
  * Can be used in conjuction with --watch for a development server
  */
-export const pluginServe = (options: UserOptions | string | string[] = ""): Plugin => {
+export const pluginServe = (
+  options: UserOptions | string | string[] = "",
+): Plugin => {
   let parsed_options: ServeOptions;
   if (Array.isArray(options)) {
     parsed_options = parseOptions({
@@ -18,14 +20,16 @@ export const pluginServe = (options: UserOptions | string | string[] = ""): Plug
     parsed_options = parseOptions({
       contentBase: [options],
     });
-  } else if (options && !Array.isArray(options) && typeof options === "object") {
+  } else if (
+    options && !Array.isArray(options) && typeof options === "object"
+  ) {
     if (!Array.isArray(options.contentBase)) {
       options.contentBase = options.contentBase ? [options.contentBase] : [""];
     }
     parsed_options = parseOptions(options as UserOptions);
   } else {
     throw new Error(
-      "Options for serve: you must provide a valid path, list of paths or options object"
+      "Options for serve: you must provide a valid path, list of paths or options object",
     );
   }
 
@@ -37,7 +41,7 @@ export const pluginServe = (options: UserOptions | string | string[] = ""): Plug
         hostname: parsed_options.host,
         port: parsed_options.port,
       },
-      createRequestHandler(parsed_options)
+      createRequestHandler(parsed_options),
     );
   } else {
     createHTTPServer(
@@ -45,7 +49,7 @@ export const pluginServe = (options: UserOptions | string | string[] = ""): Plug
         hostname: parsed_options.host,
         port: parsed_options.port,
       },
-      createRequestHandler(parsed_options)
+      createRequestHandler(parsed_options),
     );
   }
 
@@ -58,9 +62,14 @@ export const pluginServe = (options: UserOptions | string | string[] = ""): Plug
         running = true;
 
         const protocol = parsed_options.https ? "https" : "http";
-        const url = `${protocol}://${parsed_options.host}:${parsed_options.port}`;
+        const url =
+          `${protocol}://${parsed_options.host}:${parsed_options.port}`;
         parsed_options.contentBase.forEach((base) => {
-          console.log(`${url} -> ${path.resolve(Deno.cwd(), path.normalize(base || "./"))}`);
+          console.log(
+            `${url} -> ${
+              path.resolve(Deno.cwd(), path.normalize(base || "./"))
+            }`,
+          );
         });
       }
     },

@@ -31,7 +31,13 @@ await Deno.run({
 
 // Serve
 await Deno.run({
-  cmd: ["deno", "cache", "--unstable", "--reload", `${buildURL("./plugin/serve/deps.ts")}`],
+  cmd: [
+    "deno",
+    "cache",
+    "--unstable",
+    "--reload",
+    `${buildURL("./plugin/serve/deps.ts")}`,
+  ],
 }).status();
 
 // Unstable plugin deps

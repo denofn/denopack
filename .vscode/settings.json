@@ -1,8 +1,8 @@
 {
   "deno.enable": true,
   "deno.unstable": true,
+  "deno.lint": true,
   "editor.formatOnSave": true,
-  "prettier.printWidth": 100,
   "importSorter.generalConfiguration.sortOnBeforeSave": true,
   "importSorter.importStringConfiguration.quoteMark": "double",
   "importSorter.importStringConfiguration.tabSize": 2,

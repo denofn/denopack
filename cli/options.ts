@@ -32,7 +32,8 @@ export type Options = {
 };
 
 export function printDefaultConfig(): void {
-  console.log(`import { pluginTerserTransform, RollupOptions, useCache } from "https://deno.land/x/denopack@0.8.0/mod.ts";
+  console.log(
+    `import { pluginTerserTransform, RollupOptions, useCache } from "https://deno.land/x/denopack@0.8.0/mod.ts";
 
 const config: RollupOptions = {
   plugins: [
@@ -51,13 +52,14 @@ const config: RollupOptions = {
 };
 
 export default config;
-`);
+`,
+  );
 }
 
 export async function mergeOptions(
   opts: RollupOptions,
   { input, output, dir, cache }: Options,
-  watchCache?: RollupCache
+  watchCache?: RollupCache,
 ): Promise<[Omit<RollupOptions, "output">, OutputOptions, string]> {
   const { output: _outputOpts, ...rollupOpts } = opts;
   const outputOpts = (_outputOpts as OutputOptions) ?? {};

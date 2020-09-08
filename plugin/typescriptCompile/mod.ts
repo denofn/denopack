@@ -14,8 +14,9 @@ let files: string[];
 function resolveFromModules(id: string) {
   const resolvedFile = isHttpUrl(id) ? id : path.resolve(id);
   const originalFile = path.parse(resolvedFile);
-  const jsFile =
-    originalFile.ext === ".js" ? resolvedFile : `${originalFile.dir}/${originalFile.name}.js`;
+  const jsFile = originalFile.ext === ".js"
+    ? resolvedFile
+    : `${originalFile.dir}/${originalFile.name}.js`;
 
   if (!files.includes(jsFile)) {
     // Allows files like React (.js) to still be bundled since they don't get re-emitted
@@ -29,7 +30,7 @@ function resolveFromModules(id: string) {
 async function resolveId(
   compilerOptions: Deno.CompilerOptions,
   _importee: string,
-  importer: string | undefined
+  importer: string | undefined,
 ) {
   if (importer || modules) return resolver(_importee, importer);
 
@@ -40,7 +41,11 @@ async function resolveId(
     redirected && (importee = url);
   }
 
-  const [diagnostics, emitMap] = await Deno.compile(importee, undefined, compilerOptions);
+  const [diagnostics, emitMap] = await Deno.compile(
+    importee,
+    undefined,
+    compilerOptions,
+  );
 
   if (diagnostics) throw new Error(Deno.formatDiagnostics(diagnostics));
 
@@ -50,7 +55,9 @@ async function resolveId(
   return importee;
 }
 
-export function pluginTypescriptCompile({ useAsLoader, compilerOptions }: Options = {}): Plugin {
+export function pluginTypescriptCompile(
+  { useAsLoader, compilerOptions }: Options = {},
+): Plugin {
   return {
     name: "denopack-plugin-typescriptCompile",
     async resolveId(importee, importer) {
@@ -58,11 +65,11 @@ export function pluginTypescriptCompile({ useAsLoader, compilerOptions }: Option
     },
 
     async load(id) {
-      return !!useAsLoader ? resolveFromModules(id) : null;
+      return useAsLoader ? resolveFromModules(id) : null;
     },
 
     async transform(_, id) {
-      return !!useAsLoader ? null : resolveFromModules(id);
+      return useAsLoader ? null : resolveFromModules(id);
     },
   };
 }
