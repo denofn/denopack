@@ -24,7 +24,7 @@ THE SOFTWARE.
 
 */
 
-import { path } from "../../deps.ts";
+import { fs, path } from "../../deps.ts";
 import { htmlTemplate as defaultTemplate } from "../../util/htmlTemplate.ts";
 import { isOutputAsset } from "../../util/isOutputAsset.ts";
 
@@ -36,8 +36,6 @@ import type {
   ModuleFormat,
   OutputBundle,
 } from "../../deps.ts";
-
-const { extname } = path;
 
 export type Opts = {
   attributes?: Attributes;
@@ -58,7 +56,6 @@ export const defaults = {
   },
   fileName: "index.html",
   meta: [{ charset: "utf-8" }],
-  publicPath: "",
   template: defaultTemplate,
   title: "denopack bundle",
 };
@@ -71,7 +68,7 @@ function getFiles(bundle: OutputBundle) {
   const result: Record<string, (OutputAsset | OutputChunk)[]> = {};
   for (const file of files) {
     const { fileName } = file;
-    const extension: string = extname(fileName).substring(1);
+    const extension: string = path.extname(fileName).substring(1);
     result[extension] = (result[extension] || []).concat(file);
   }
 
@@ -79,7 +76,7 @@ function getFiles(bundle: OutputBundle) {
 }
 
 export function pluginHtmlBundle(opts: Opts = {}): Plugin {
-  const { attributes, fileName, meta, publicPath, template, title } = {
+  const { attributes, fileName, meta, template, title } = {
     ...defaults,
     ...opts,
   };
@@ -108,9 +105,29 @@ export function pluginHtmlBundle(opts: Opts = {}): Plugin {
       }
 
       const files = getFiles(bundle);
-      const source = await template(
-        { attributes, bundle, files, meta, publicPath, title },
+
+      const filePath = path.dirname(
+        path.resolve(
+          path.join(Deno.cwd(), output.dir || ""),
+          fileName,
+        ),
       );
+
+      await fs.ensureDir(filePath)
+        .catch(() => {
+          throw new Error(
+            `Couldn't create the directory for the html template`,
+          );
+        });
+
+      const source = await template({
+        attributes,
+        bundle,
+        files,
+        meta,
+        path: fileName,
+        title,
+      });
 
       const htmlFile: OutputAsset = {
         type: "asset",
