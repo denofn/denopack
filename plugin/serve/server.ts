@@ -1,8 +1,4 @@
-import {
-  getContentType,
-  ServerRequest,
-  ServerResponse,
-} from "./deps.ts";
+import { getContentType, ServerRequest, ServerResponse } from "./deps.ts";
 import { path } from "../../deps.ts";
 import type { ServeOptions } from "./options.ts";
 
@@ -12,25 +8,16 @@ const DEFAULT_MIME_TYPE = "text/plain";
  * Returns a requestHandler for the server
  * This one does the heavy lifting, search for each file and serve it to user
  * */
-export const createRequestHandler = (
-  options: ServeOptions,
-) => {
-  return async (
-    request: ServerRequest,
-  ): Promise<void> => {
+export const createRequestHandler = (options: ServeOptions) => {
+  return async (request: ServerRequest): Promise<void> => {
     const url_path = decodeURI(request.url.split("?")[0]);
 
     let headers = new Headers();
-    Object
-      .entries(options.headers)
-      .forEach(([header, value]) => {
-        headers.append(header, value);
-      });
+    Object.entries(options.headers).forEach(([header, value]) => {
+      headers.append(header, value);
+    });
 
-    await readFileFromContentBase(
-      options.contentBase,
-      url_path,
-    )
+    await readFileFromContentBase(options.contentBase, url_path)
       .then(({ content, path: file_path }) => {
         headers.set(
           "Content-Type",
@@ -63,9 +50,7 @@ export const createRequestHandler = (
               );
             });
         } else {
-          request.respond(
-            getNotFoundResponse(url_path, options.contentBase),
-          );
+          request.respond(getNotFoundResponse(url_path, options.contentBase));
         }
       });
   };
@@ -76,16 +61,12 @@ const getNotFoundResponse = (
   content_folders: string[],
 ): ServerResponse => {
   return {
-    body: (
-      "404 Not Found" + "\n\n" +
+    body: "404 Not Found" +
+      "\n\n" +
       (requested_path.slice(1) || "index.html") +
-      ` in path ${
-        (content_folders).join(
-          ", ",
-        )
-      }` + "\n\n" +
-      "(denopack-plugin-serve)"
-    ),
+      ` in path ${content_folders.join(", ")}` +
+      "\n\n" +
+      "(denopack-plugin-serve)",
     status: 404,
   };
 };
@@ -115,10 +96,7 @@ const readFileFromContentBase = async (
         path.normalize(`${content_path}/index.html`),
       );
     } else {
-      file_path = path.resolve(
-        Deno.cwd(),
-        path.normalize(content_path + url),
-      );
+      file_path = path.resolve(Deno.cwd(), path.normalize(content_path + url));
     }
 
     try {
