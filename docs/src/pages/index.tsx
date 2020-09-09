@@ -73,7 +73,8 @@ function Index() {
             <p>
               Disclaimer: there is absolutely <strong>nothing</strong>
               wrong with{" "}
-              <Code>deno bundle
+              <Code>
+                deno bundle
               </Code>. In most cases, it will actually handle everything
               necessary for a bundler to handle. There are, however, several
               features missing that would make a bundler even more awesome such

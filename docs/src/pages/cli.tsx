@@ -48,7 +48,8 @@ function CLI() {
                   </Code>: watch a file or directory and rebuild on changes
                 </li>
                 <li>
-                  <Code>--defaultConfig
+                  <Code>
+                    --defaultConfig
                   </Code>: prints the default config to stdout
                 </li>
                 <li>
@@ -79,7 +80,8 @@ function CLI() {
               <br />
               Additionally, the various built-in plugins can require extra
               permissions like{" "}
-              <Code>--allow-net</Code> and <Code>--allow-env
+              <Code>--allow-net</Code> and <Code>
+                --allow-env
               </Code>. More info can be found{" "}
               <Link
                 href="https://github.com/denofn/denopack/blob/main/plugin"
