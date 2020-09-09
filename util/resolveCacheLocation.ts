@@ -9,7 +9,7 @@ export function resolveCacheLocation(): string {
 
   switch (Deno.build.os) {
     case "darwin":
-      if (homeDir) return path.join(homeDir, "Library", "Cache", ".deno");
+      if (homeDir) return path.join(homeDir, "Library", "Caches", "deno");
       break;
     case "linux": {
       const xdgCacheHomeDir = Deno.env.get("XDG_CACHE_HOME");
