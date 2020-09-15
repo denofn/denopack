@@ -1,7 +1,8 @@
 import { debounce, RollupCache } from "../deps.ts";
 import { isHttpUrl } from "../util/isHttpUrl.ts";
-import type { Options } from "./options.ts";
 import { runBundler } from "./runBundler.ts";
+
+import type { Options } from "./options.ts";
 
 export async function watch({ watch, ...opts }: Options) {
   if (typeof watch !== "string" || isHttpUrl(watch)) {

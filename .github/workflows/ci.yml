@@ -27,3 +27,6 @@ jobs:
 
       - name: Test install
         run: deno run --allow-run --allow-read ./install.ts
+
+      - name: Test
+        run: deno test --unstable -A

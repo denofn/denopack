@@ -20,11 +20,8 @@ export type TemplateOpts = {
 };
 
 const resolveRelativePath = (from: string, to: string) => {
-  const raw_path = path.join(
-    path.relative(
-      path.dirname(from),
-      path.dirname(to),
-    ),
+  const raw_path = path.posix.join(
+    path.relative(path.dirname(from), path.dirname(to)),
     path.basename(to),
   );
 
@@ -69,21 +66,22 @@ export const htmlTemplate = async ({
   <body>
     ${bodyEntry}
     ${scripts}
-  </body>`
+  </body>
+  `
     : `
   <body>
     ${scripts}
-  </body>`;
+  </body>
+  `;
 
-  return (
-    `<!doctype html>
-      <html${makeHtmlAttributes(attributes.html)}>
-        <head>
-          ${metas}
-          <title>${title}</title>
-          ${links}
-        </head>
-      ${body}
-    </html>`
-  );
+  return `<!doctype html>
+<html${makeHtmlAttributes(attributes.html)}>
+  <head>
+    ${metas}
+    <title>${title}</title>
+    ${links}
+  </head>
+  ${body}
+</html>
+`;
 };
