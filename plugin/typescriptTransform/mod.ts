@@ -1,4 +1,4 @@
-import { Plugin } from "../../deps.ts";
+import type { Plugin } from "../../deps.ts";
 import Mutex from "../../util/mutex.ts";
 
 const transpilerMutex = new Mutex();

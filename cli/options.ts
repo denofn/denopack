@@ -1,4 +1,4 @@
-import { OutputOptions, RollupCache, RollupOptions } from "../deps.ts";
+import type { OutputOptions, RollupCache, RollupOptions } from "../deps.ts";
 import { useCache } from "../plugin/hooks.ts";
 import { pluginTerserTransform } from "../plugin/terserTransform/mod.ts";
 import { getCache } from "./getCache.ts";

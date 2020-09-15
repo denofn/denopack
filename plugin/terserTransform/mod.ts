@@ -1,4 +1,4 @@
-import { Plugin } from "../../deps.ts";
+import type { Plugin } from "../../deps.ts";
 import { minify } from "./deps.ts";
 
 import type { MinifyOptions } from "./deps.ts";

@@ -4,7 +4,7 @@ import {
   ServerResponse,
 } from "./deps.ts";
 import { path } from "../../deps.ts";
-import { ServeOptions } from "./options.ts";
+import type { ServeOptions } from "./options.ts";
 
 const DEFAULT_MIME_TYPE = "text/plain";
 
