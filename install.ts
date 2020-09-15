@@ -7,6 +7,9 @@ function buildURL(target: string): string {
   if (url.startsWith("https://")) {
     return new URL(join(dir, target)).href;
   } else {
+    if (Deno.build.os === "windows") {
+      return resolve(dir.replace("file:///", ""), target);
+    }
     return resolve(dir.replace("file://", ""), target);
   }
 }

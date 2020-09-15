@@ -20,7 +20,7 @@ export type TemplateOpts = {
 };
 
 const resolveRelativePath = (from: string, to: string) => {
-  const raw_path = path.join(
+  const raw_path = path.posix.join(
     path.relative(path.dirname(from), path.dirname(to)),
     path.basename(to),
   );
