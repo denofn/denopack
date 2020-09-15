@@ -8,5 +8,5 @@ ReactDOM.render(
     <App />
   </React.StrictMode>,
   // deno-lint-ignore no-undef
-  document.getElementById("root")
+  document.getElementById("root"),
 );
