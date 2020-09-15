@@ -23,7 +23,7 @@ jobs:
         run: deno fmt --check
 
       - name: Lint
-        run: deno lint --unstable --ignore=recipes/react-template/src/
+        run: deno lint --unstable
 
       - name: Test install
         run: deno run --allow-run --allow-read ./install.ts
