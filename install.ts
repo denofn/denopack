@@ -1,4 +1,4 @@
-import { join, parse, resolve } from "https://deno.land/std@0.66.0/path/mod.ts";
+import { join, parse, resolve } from "https://deno.land/std@0.69.0/path/mod.ts";
 
 const url = import.meta.url;
 

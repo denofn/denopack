@@ -11,6 +11,8 @@ export async function runBundler(
 ): Promise<RollupCache | undefined> {
   const now = Date.now();
 
+  // TODO(lucacasonato): remove after bug fix for this lands in Deno 1.4.1
+  // deno-lint-ignore no-undef
   const { default: conf } = await import(
     config && typeof config === "string"
       ? `file://${path.join(Deno.cwd(), path.normalize(config))}`

@@ -1,4 +1,4 @@
-import { Plugin } from "../../deps.ts";
+import type { Plugin } from "../../deps.ts";
 import { resolver } from "../../util/resolver.ts";
 
 export function pluginImportResolver(): Plugin {
