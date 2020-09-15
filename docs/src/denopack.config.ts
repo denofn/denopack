@@ -1,4 +1,4 @@
-import { RollupOptions } from "../../mod.ts";
+import type { RollupOptions } from "../../mod.ts";
 import { pluginRenderPagesAsHtml } from "./plugins/pluginBundleAsHtml.tsx";
 
 const config: RollupOptions = {

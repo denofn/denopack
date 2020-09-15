@@ -1,4 +1,4 @@
-import { debounce, RollupCache } from "../deps.ts";
+import { debounce } from "../deps.ts";
 
 async function watch() {
   const run = debounce(async function () {
