@@ -4,11 +4,13 @@ import { watch } from "./cli/watch.ts";
 import { cac } from "./deps.ts";
 
 const denopack = cac("denopack");
-denopack.version("0.8.0");
+denopack.version("0.9.0");
 
-denopack
-  .option("-i, --input <pathToFile>", "The input file (most likely mod.ts)", {})
-  .usage("-i mod.ts");
+denopack.option(
+  "-i, --input <pathToFile>",
+  "The input file (most likely mod.ts)",
+  {},
+).usage("-i mod.ts");
 
 denopack.option("-o, --output [pathToFile]", "The output file name", {});
 

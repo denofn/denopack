@@ -29,14 +29,18 @@ function Index() {
       <>
         <Hero
           title={<>
-            The bundling and minification toolset,{" "}
-            <span className={highlightedSpan}>made for Deno.</span>
+            The bundling and minification toolset, <span
+              className={highlightedSpan}
+            >
+              made for Deno.
+            </span>
           </>}
         >
           <p className={heroP}>
             denopack is a CLI tool and a collection of plugins designed for
-            bundling code to be used with Deno or in the browser.{" "}
-            <i className={highlightedSpan}>
+            bundling code to be used with Deno or in the browser. <i
+              className={highlightedSpan}
+            >
               No node_modules, no npm or yarn needed.
             </i>
           </p>
@@ -61,19 +65,18 @@ function Index() {
             <h4>From deno.land</h4>
             <CodeBlock>
               deno run --allow-run --allow-read
-              https://deno.land/x/denopack@0.8.0/install.ts
+              https://deno.land/x/denopack@0.9.0/install.ts
             </CodeBlock>
             <h4>From nest.land</h4>
             <CodeBlock>
               deno run --allow-run --allow-read
-              https://x.nest.land/denopack@0.8.0/install.ts
+              https://x.nest.land/denopack@0.9.0/install.ts
             </CodeBlock>
           </Section>
           <Section title="Goal" className={sectionContainer}>
             <p>
               Disclaimer: there is absolutely <strong>nothing</strong>
-              wrong with{" "}
-              <Code>
+              wrong with <Code>
                 deno bundle
               </Code>. In most cases, it will actually handle everything
               necessary for a bundler to handle. There are, however, several

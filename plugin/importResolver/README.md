@@ -6,7 +6,7 @@ Use this plugin if you want to write your resolving logic yourself.
 ## Usage
 
 ```ts
-import { pluginImportResolver } from "https://deno.land/x/denopack@0.8.0/plugin/importResolver/mod.ts";
+import { pluginImportResolver } from "https://deno.land/x/denopack@0.9.0/plugin/importResolver/mod.ts";
 
 export default {
   plugins: [pluginImportResolver()],
