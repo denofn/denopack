@@ -1,4 +1,4 @@
-import { path, RollupOutput } from "../deps.ts";
+import { fs, path, RollupOutput } from "../deps.ts";
 import { isDir } from "../util/isDir.ts";
 import { isOutputAsset } from "../util/isOutputAsset.ts";
 
@@ -8,7 +8,9 @@ export async function emitFiles(
 ): Promise<void> {
   const outputDirPath = path.resolve(Deno.cwd(), path.normalize(outputDir));
 
-  if (!(await isDir(outputDirPath))) await Deno.mkdir(outputDirPath);
+  if (!(await isDir(outputDirPath))) {
+    await fs.emptyDirSync(outputDirPath);
+  }
 
   for (const toEmit of generated.output) {
     const location = path.resolve(outputDirPath, toEmit.fileName);
