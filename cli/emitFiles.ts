@@ -9,7 +9,7 @@ export async function emitFiles(
   const outputDirPath = path.resolve(Deno.cwd(), path.normalize(outputDir));
 
   if (!(await isDir(outputDirPath))) {
-    await fs.emptyDir(outputDirPath);
+    await fs.ensureDir(outputDirPath);
   }
 
   for (const toEmit of generated.output) {
