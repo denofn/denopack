@@ -7,6 +7,11 @@ export async function getCache(_cachePath: string): Promise<RollupCache> {
   }
   const defaultCache: RollupCache = { modules: [] };
 
-  if (!(await fs.exists(cachePath))) return defaultCache;
-  return JSON.parse(await Deno.readTextFile(cachePath)) as RollupCache;
+  try {
+    if (!(await fs.exists(cachePath))) return defaultCache;
+    const cache = JSON.parse(await Deno.readTextFile(cachePath)) as RollupCache;
+    return cache;
+  } catch {
+    return defaultCache;
+  }
 }
