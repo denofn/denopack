@@ -1,5 +1,4 @@
 import { fs, path, RollupOutput } from "../deps.ts";
-import { isDir } from "../util/isDir.ts";
 import { isOutputAsset } from "../util/isOutputAsset.ts";
 
 export async function emitFiles(
@@ -8,15 +7,14 @@ export async function emitFiles(
 ): Promise<void> {
   const outputDirPath = path.resolve(Deno.cwd(), path.normalize(outputDir));
 
-  if (!(await isDir(outputDirPath))) {
-    await fs.ensureDir(outputDirPath);
-  }
-
   for (const toEmit of generated.output) {
     const location = path.resolve(outputDirPath, toEmit.fileName);
     const data: string | Uint8Array = isOutputAsset(toEmit)
       ? toEmit.source
       : toEmit.code;
+
+    const dir = path.dirname(location);
+    await fs.ensureDir(dir);
 
     if (typeof data === "string") await Deno.writeTextFile(location, data);
     else await Deno.writeFile(location, data);
