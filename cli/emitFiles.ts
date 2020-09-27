@@ -1,5 +1,4 @@
 import { fs, path, RollupOutput } from "../deps.ts";
-import { isDir } from "../util/isDir.ts";
 import { isOutputAsset } from "../util/isOutputAsset.ts";
 
 export async function emitFiles(
