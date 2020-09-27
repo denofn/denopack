@@ -15,7 +15,7 @@ export function pluginFileLoader(opts: Opts = {}): Plugin {
     name: "denopack-plugin-fileLoader",
     async load(id) {
       if (!isHttpUrl(id)) {
-        return Deno.readTextFile(id);
+        return Deno.readTextFile(id.startsWith("file://") ? new URL(id) : id);
       }
 
       const response = await fetch(id);
