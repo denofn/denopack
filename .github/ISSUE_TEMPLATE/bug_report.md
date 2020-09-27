@@ -27,7 +27,7 @@ If applicable, add screenshots to help explain your problem.
 
 - OS: [e.g. macOS, Ubuntu, ...]
 - Deno version [e.g. v1.3.0]
-- denopack version [e.g. 0.8.0]
+- denopack version [e.g. 0.9.0]
 
 **Additional context**
 Add any other context about the problem here.

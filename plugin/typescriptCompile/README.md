@@ -26,25 +26,20 @@ If you don't care about source maps, using the Compiler API with appears to be t
 ### In conjunction with a source file loader
 
 ```ts
-import { pluginTypescriptCompile } from "https://deno.land/x/denopack@0.8.0/plugin/typescriptCompile/mod.ts";
-import { pluginFileLoader } from "https://deno.land/x/denopack@0.8.0/plugin/fileLoader/mod.ts";
+import { pluginTypescriptCompile } from "https://deno.land/x/denopack@0.9.0/plugin/typescriptCompile/mod.ts";
+import { pluginFileLoader } from "https://deno.land/x/denopack@0.9.0/plugin/fileLoader/mod.ts";
 
 export default {
-  plugins: [
-    pluginTypescriptCompile({ compilerOptions: { ...myCompilerOptions } }),
-    pluginFileLoader(),
-  ],
+  plugins: [pluginTypescriptCompile({ compilerOptions: { ...myCompilerOptions } }), pluginFileLoader()],
 };
 ```
 
 ### Explicitly loading files
 
 ```ts
-import { pluginTypescriptCompile } from "https://deno.land/x/denopack@0.8.0/plugin/typescriptCompile/mod.ts";
+import { pluginTypescriptCompile } from "https://deno.land/x/denopack@0.9.0/plugin/typescriptCompile/mod.ts";
 
 export default {
-  plugins: [
-    pluginTypescriptCompile({ useAsLoader: true, compilerOptions: { ...myCompilerOptions } }),
-  ],
+  plugins: [pluginTypescriptCompile({ useAsLoader: true, compilerOptions: { ...myCompilerOptions } })],
 };
 ```

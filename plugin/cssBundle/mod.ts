@@ -11,6 +11,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 import { createFilter } from "../deps.ts";
+import { fs, path } from "../../deps.ts";
 
 import type { Plugin, OutputAsset } from "../../deps.ts";
 
@@ -71,6 +72,20 @@ export function pluginCssBundle(options: Opts = {}): Plugin {
           dest = dest.slice(0, -3);
         }
         dest = dest + ".css";
+      }
+
+      if (typeof dest === "string") {
+        const filePath = path.dirname(
+          path.resolve(
+            path.join(Deno.cwd(), opts.dir || ""),
+            dest,
+          ),
+        );
+
+        fs.ensureDir(filePath)
+          .catch(() => {
+            throw new Error(`Couldn't create folder for the css output`);
+          });
       }
 
       this.emitFile({

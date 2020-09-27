@@ -5,12 +5,12 @@ import {
   pluginServe as serve,
   pluginTerserTransform as terser,
   useCache,
-} from "https://deno.land/x/denopack@0.8.0/mod.ts";
+} from "https://deno.land/x/denopack@0.9.0/mod.ts";
 
 import type {
   RollupOptions,
   TemplateOpts,
-} from "https://deno.land/x/denopack@0.8.0/mod.ts";
+} from "https://deno.land/x/denopack@0.9.0/mod.ts";
 
 const isDev = !Deno.env.get("REACT_APP_IS_PROD");
 
