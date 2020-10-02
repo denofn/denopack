@@ -14,10 +14,10 @@ export async function persistSourceMaps(
     if (
       !isOutputAsset(toEmit) &&
       toEmit.map &&
-      !toEmit.code.includes(`//# sourceMappingUrl=${toEmit.map.file}.map`)
+      !toEmit.code.includes(`//# sourceMappingURL=${toEmit.map.file}.map`)
     ) {
       toEmit.code =
-        `${toEmit.code}//# sourceMappingUrl=${toEmit.map.file}.map\n`;
+        `${toEmit.code}//# sourceMappingURL=${toEmit.map.file}.map\n`;
     }
   }
 
