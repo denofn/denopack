@@ -24,7 +24,7 @@
 ## Usage
 
 ```ts
-import { pluginServe } from "https://deno.land/x/denopack@0.9.0/plugin/serve/mod.ts";
+import { pluginServe } from "https://deno.land/x/denopack@0.9.1/plugin/serve/mod.ts";
 
 export default {
   plugins: [pluginServe("serve_path")],
@@ -32,7 +32,7 @@ export default {
 ```
 
 ```ts
-import { pluginServe } from "https://deno.land/x/denopack@0.9.0/plugin/serve/mod.ts";
+import { pluginServe } from "https://deno.land/x/denopack@0.9.1/plugin/serve/mod.ts";
 
 const options_object = {
   contentBase: "serve_path",

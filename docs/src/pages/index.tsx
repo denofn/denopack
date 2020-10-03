@@ -65,19 +65,18 @@ function Index() {
             <h4>From deno.land</h4>
             <CodeBlock>
               deno run --allow-run --allow-read
-              https://deno.land/x/denopack@0.9.0/install.ts
+              https://deno.land/x/denopack@0.9.1/install.ts
             </CodeBlock>
             <h4>From nest.land</h4>
             <CodeBlock>
               deno run --allow-run --allow-read
-              https://x.nest.land/denopack@0.9.0/install.ts
+              https://x.nest.land/denopack@0.9.1/install.ts
             </CodeBlock>
           </Section>
           <Section title="Goal" className={sectionContainer}>
             <p>
               Disclaimer: there is absolutely <strong>nothing</strong>
-              wrong with <Code>
-                deno bundle
+              wrong with <Code>deno bundle
               </Code>. In most cases, it will actually handle everything
               necessary for a bundler to handle. There are, however, several
               features missing that would make a bundler even more awesome such
