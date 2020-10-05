@@ -11,9 +11,15 @@ export function resolver(
       // If path is absolute, just prefix with `file:///`
       if (path.isAbsolute(importee)) {
         return new URL(`file:///${importee}`).toString();
+        // else if relative path resolve based on Deno.cwd()
+      } else if (
+        importee.startsWith("./") || importee.startsWith("../") ||
+        (Deno.build.os === "windows" && (
+          importee.startsWith(".\\") || importee.startsWith("..\\")
+        ))
+      ) {
+        return new URL(`file:///${path.join(Deno.cwd(), importee)}`).toString();
       }
-      // else resolve based on Deno.cwd()
-      return new URL(`file:///${path.join(Deno.cwd(), importee)}`).toString();
     }
     return importee;
   } else if (!usesProtocol(importee)) {
