@@ -7,7 +7,7 @@ import {
 import type { RollupOptions } from "../../../mod.ts";
 
 const config: RollupOptions = {
-  input: "src/mod.ts",
+  input: "./src/mod.ts",
   plugins: [
     css({ output: "mod.css" }),
     html({

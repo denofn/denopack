@@ -22,7 +22,7 @@ function createHtmlTemplate(opts: TemplateOpts): Promise<string> {
 }
 
 const config: RollupOptions = {
-  input: "src/mod.tsx",
+  input: "./src/mod.tsx",
   plugins: [
     css({ output: "mod.css" }),
     html({
