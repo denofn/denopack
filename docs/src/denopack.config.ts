@@ -6,10 +6,10 @@ const config: RollupOptions = {
   preserveEntrySignatures: false,
   plugins: [
     pluginRenderPagesAsHtml([
-      "src/pages/index.tsx",
-      "src/pages/scriptRunners.tsx",
-      "src/pages/cli.tsx",
-      "src/pages/plugins.tsx",
+      "./src/pages/index.tsx",
+      "./src/pages/scriptRunners.tsx",
+      "./src/pages/cli.tsx",
+      "./src/pages/plugins.tsx",
     ]),
   ],
   output: {

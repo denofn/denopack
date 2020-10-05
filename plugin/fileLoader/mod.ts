@@ -1,5 +1,6 @@
 import { path, Plugin } from "../../deps.ts";
 import { checkIntegrity } from "../../util/checkIntegrity.ts";
+import { isFileUrl } from "../../util/isFileUrl.ts";
 import { isHttpUrl } from "../../util/isHttpUrl.ts";
 
 export type Opts = {
@@ -14,16 +15,16 @@ export function pluginFileLoader(opts: Opts = {}): Plugin {
   return {
     name: "denopack-plugin-fileLoader",
     async load(id) {
-      if (!isHttpUrl(id)) {
-        return Deno.readTextFile(id.startsWith("file://") ? new URL(id) : id);
+      if (isFileUrl(id)) {
+        return Deno.readTextFile(new URL(id));
+      } else if (isHttpUrl(id)) {
+        const response = await fetch(id);
+        const code = await response.text();
+
+        if (lockFile) checkIntegrity(lockFile, id, code);
+
+        return code;
       }
-
-      const response = await fetch(id);
-      const code = await response.text();
-
-      if (lockFile) checkIntegrity(lockFile, id, code);
-
-      return code;
     },
   };
 }
