@@ -17,14 +17,14 @@ export function pluginFileLoader(opts: Opts = {}): Plugin {
     async load(id) {
       if (isFileUrl(id)) {
         return Deno.readTextFile(new URL(id));
+      } else if (isHttpUrl(id)) {
+        const response = await fetch(id);
+        const code = await response.text();
+
+        if (lockFile) checkIntegrity(lockFile, id, code);
+
+        return code;
       }
-
-      const response = await fetch(id);
-      const code = await response.text();
-
-      if (lockFile) checkIntegrity(lockFile, id, code);
-
-      return code;
     },
   };
 }

@@ -7,8 +7,13 @@ export function resolver(
 ): string {
   if (!importer) {
     // If this is a raw absolute path, make it a `file://` path.
-    if (!usesProtocol(importee) && path.isAbsolute(importee)) {
-      return new URL(`file:///${importee}`).toString();
+    if (!usesProtocol(importee)) {
+      // If path is absolute, just prefix with `file:///`
+      if (path.isAbsolute(importee)) {
+        return new URL(`file:///${importee}`).toString();
+      }
+      // else resolve based on Deno.cwd()
+      return new URL(`file:///${path.join(Deno.cwd(), importee)}`).toString();
     }
     return importee;
   } else if (!usesProtocol(importee)) {
