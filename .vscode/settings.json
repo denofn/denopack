@@ -3,10 +3,5 @@
   "deno.unstable": true,
   "deno.lint": true,
   "editor.formatOnSave": true,
-  "importSorter.generalConfiguration.sortOnBeforeSave": true,
-  "importSorter.importStringConfiguration.quoteMark": "double",
-  "importSorter.importStringConfiguration.tabSize": 2,
-  "importSorter.sortConfiguration.removeUnusedDefaultImports": true,
-  "importSorter.importStringConfiguration.trailingComma": "multiLine",
-  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.type": "newLineEachExpressionAfterCountLimitExceptIfOnlyOne"
+  "editor.defaultFormatter": "denoland.vscode-deno",
 }
