@@ -6,7 +6,7 @@ export function resolver(
   importer: string | undefined,
 ): string {
   if (!importer) {
-    // If this is a raw absolute path, make it a `file:///` path.
+    // If this is a raw absolute path, make it a `file://` path.
     if (!usesProtocol(importee) && path.isAbsolute(importee)) {
       return new URL(`file:///${importee}`).toString();
     }
