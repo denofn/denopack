@@ -16,8 +16,8 @@
 ## Usage
 
 ```ts
-import { pluginImportResolver } from "https://deno.land/x/denopack@0.9.1/plugin/importResolver/mod.ts";
-import { pluginFileLoader } from "https://deno.land/x/denopack@0.9.1/plugin/fileLoader/mod.ts";
+import { pluginImportResolver } from "https://deno.land/x/denopack@0.10.0/plugin/importResolver/mod.ts";
+import { pluginFileLoader } from "https://deno.land/x/denopack@0.10.0/plugin/fileLoader/mod.ts";
 
 export default {
   plugins: [pluginImportResolver(), pluginFileLoader()],
@@ -27,9 +27,9 @@ export default {
 ### Strict integrity checks
 
 ```ts
-import { pluginImportResolver } from "https://deno.land/x/denopack@0.9.1/plugin/importResolver/mod.ts";
-import { pluginCacheLoader } from "https://deno.land/x/denopack@0.9.1/plugin/cacheLoader/mod.ts";
-import { pluginFileLoader } from "https://deno.land/x/denopack@0.9.1/plugin/filLoader/mod.ts";
+import { pluginImportResolver } from "https://deno.land/x/denopack@0.10.0/plugin/importResolver/mod.ts";
+import { pluginCacheLoader } from "https://deno.land/x/denopack@0.10.0/plugin/cacheLoader/mod.ts";
+import { pluginFileLoader } from "https://deno.land/x/denopack@0.10.0/plugin/filLoader/mod.ts";
 
 export default {
   plugins: [

@@ -19,7 +19,7 @@ This plugin is a rough rewrite of [rollup-plugin-css-only](https://github.com/th
 ## Usage
 
 ```ts
-import css from "https://deno.land/x/denopack@0.9.1/plugin/cssBundle/mod.ts";
+import css from "https://deno.land/x/denopack@0.10.0/plugin/cssBundle/mod.ts";
 
 export default {
   plugins: [css({ output: "bundle.css" })],
