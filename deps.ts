@@ -8,17 +8,17 @@ export { cac } from "https://unpkg.com/cac@6.6.1/mod.js";
 // @deno-types="https://unpkg.com/rollup@2.26.11/dist/rollup.d.ts"
 export { rollup } from "https://unpkg.com/rollup@2.26.11/dist/es/rollup.browser.js";
 export type {
-  Plugin,
-  ResolveIdResult,
-  RollupOptions,
-  RollupOutput,
-  RollupBuild,
-  RollupCache,
+  ModuleFormat,
   OutputAsset,
   OutputBundle,
   OutputChunk,
   OutputOptions,
-  ModuleFormat,
+  Plugin,
+  ResolveIdResult,
+  RollupBuild,
+  RollupCache,
+  RollupOptions,
+  RollupOutput,
 } from "https://unpkg.com/rollup@2.26.11/dist/rollup.d.ts";
 
 import { default as _debounce } from "https://unpkg.com/lodash-es@4.17.15/debounce.js";

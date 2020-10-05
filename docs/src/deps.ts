@@ -13,12 +13,12 @@ import ReactDOMServer from "https://dev.jspm.io/react-dom@16.13.1/cjs/react-dom-
 import React from "https://dev.jspm.io/react@16.13.1";
 
 export {
-  React,
-  ReactDOMServer,
+  css,
   filterOutUnusedRules,
   getStyleTag,
-  VirtualInjector,
-  css,
-  setup,
   keyframes,
+  React,
+  ReactDOMServer,
+  setup,
+  VirtualInjector,
 };

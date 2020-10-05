@@ -5,15 +5,15 @@ export { default as config } from "./cli/options.ts";
 
 export { rollup } from "./deps.ts";
 export type {
-  Plugin,
-  ResolveIdResult,
-  RollupOptions,
-  RollupOutput,
-  RollupBuild,
-  RollupCache,
+  ModuleFormat,
   OutputAsset,
   OutputBundle,
   OutputChunk,
   OutputOptions,
-  ModuleFormat,
+  Plugin,
+  ResolveIdResult,
+  RollupBuild,
+  RollupCache,
+  RollupOptions,
+  RollupOutput,
 } from "./deps.ts";

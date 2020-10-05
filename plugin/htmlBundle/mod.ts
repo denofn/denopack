@@ -30,11 +30,11 @@ import { isOutputAsset } from "../../util/isOutputAsset.ts";
 
 import type { Attributes, TemplateOpts } from "../../util/htmlTemplate.ts";
 import type {
-  Plugin,
-  OutputAsset,
-  OutputChunk,
   ModuleFormat,
+  OutputAsset,
   OutputBundle,
+  OutputChunk,
+  Plugin,
 } from "../../deps.ts";
 
 export type Opts = {

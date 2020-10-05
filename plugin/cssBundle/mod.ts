@@ -13,7 +13,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 import { createFilter } from "../deps.ts";
 import { fs, path } from "../../deps.ts";
 
-import type { Plugin, OutputAsset } from "../../deps.ts";
+import type { OutputAsset, Plugin } from "../../deps.ts";
 
 type Opts = {
   output?: string | boolean;

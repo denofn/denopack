@@ -1,7 +1,4 @@
-import {
-  pluginCssBundle as css,
-  useCache,
-} from "../../../mod.ts";
+import { pluginCssBundle as css, useCache } from "../../../mod.ts";
 
 import type { RollupOptions } from "../../../mod.ts";
 

@@ -32,8 +32,6 @@ export function pluginRenderPagesAsHtml(pages: string[]): Plugin {
     },
     async generateBundle() {
       for await (const page of pages) {
-        // TODO(lucacasonato): remove after bug fix for this lands in Deno 1.4.1
-        // deno-lint-ignore no-undef
         const { default: Page, title: pageTitle } = await import(
           `${path.resolve(page)}`
         );

@@ -2,7 +2,7 @@
   "name": "denopack",
   "description": "Bundling and minification toolset for Deno",
   "version": "0.9.1",
-  "stable": false,
+  "unstable": true,
   "entry": "./cli.ts",
   "repository": "https://github.com/denofn/denopack",
   "files": [
@@ -11,11 +11,12 @@
     "install.ts",
     "deps.ts",
     "lock.json",
-    "cli.ts",
     "cli/**/*",
     "vendor/**/*",
     "plugin/**/*",
     "recipes/**/*",
     "util/**/*"
-  ]
+  ],
+  "checkAll": true,
+  "unlisted": false
 }
