@@ -8,7 +8,11 @@ export function pluginTypescriptTransform(opts?: Deno.CompilerOptions): Plugin {
     name: "denopack-plugin-typescriptTransform",
     async transform(code, id) {
       const unlock = await transpilerMutex.lock();
-      const result = await Deno.transpileOnly({ [id]: code }, opts);
+      const result = await Deno.transpileOnly({ [id]: code }, opts).catch(
+        (e) => {
+          throw new Error(`Failed to transpile ${id}: ${e}`);
+        },
+      );
       unlock();
       return { code: result[id].source, map: result[id].map };
     },
