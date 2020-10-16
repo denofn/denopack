@@ -1,4 +1,4 @@
-# denopack/plugin/typescriptTransform
+# denopack/plugin/terserTransform
 
 Use Terser to minify/compress/mangle/... your bundle.
 
