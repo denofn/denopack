@@ -10,6 +10,7 @@ export function pluginTypescriptTransform(opts?: Deno.CompilerOptions): Plugin {
       const unlock = await transpilerMutex.lock();
       const result = await Deno.transpileOnly({ [id]: code }, opts).catch(
         (e) => {
+          unlock();
           throw new Error(`Failed to transpile ${id}: ${e}`);
         },
       );
