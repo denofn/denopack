@@ -1,4 +1,4 @@
 {
   "https://unpkg.com/source-map@0.7.3/dist/source-map.js": "84a912cfa28183b00fc9e6e3e017d28cbad0697133e6964e94f15be8129c95f0",
-  "https://unpkg.com/terser@4.8.0/dist/bundle.min.js": "406370750bbd866572455f365bddcf1777cd6c043e082084d1619799b01ec54e"
+  "https://unpkg.com/terser@5.3.1/dist/bundle.min.js": "a73988cd235294affcda589da488922ffa4444b74614cbdae6812845d11cda00"
 }
