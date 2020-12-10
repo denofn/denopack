@@ -6,6 +6,7 @@ export { pluginCacheLoader } from "./cacheLoader/mod.ts";
 export type { Opts as CacheLoaderOptions } from "./cacheLoader/mod.ts";
 export { pluginFileLoader } from "./fileLoader/mod.ts";
 export type { Opts as FileLoaderOptions } from "./fileLoader/mod.ts";
+export * from "./imageLoader/mod.ts";
 export * from "./terserTransform/mod.ts";
 export * from "./typescriptTransform/mod.ts";
 export * from "./typescriptCompile/mod.ts";
