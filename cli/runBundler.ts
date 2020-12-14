@@ -16,7 +16,7 @@ export async function runBundler(
       ? `file://${path.join(Deno.cwd(), path.normalize(config))}`
       : "./options.ts"
   );
-  
+
   if (typeof conf !== "object") {
     throw new Error([
       "Your configuration file does not export a valid configuration file as 'default'.",
