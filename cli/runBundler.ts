@@ -17,7 +17,7 @@ export async function runBundler(
       : "./options.ts"
   );
   
-  if (!conf) {
+  if (typeof conf !== 'object') {
     throw new Error([
       "Your configuration file does not export a valid configuration file as 'default'.",
       "Make sure your configuration file is not empty, and exports a configuration object."
