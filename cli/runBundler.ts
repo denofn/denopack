@@ -21,7 +21,7 @@ export async function runBundler(
     throw new Error([
       "Your configuration file does not export a valid configuration file as 'default'.",
       "Make sure your configuration file is not empty, and exports a configuration object.",
-    ].join('\n');
+    ].join('\n'));
   }
 
   if (
