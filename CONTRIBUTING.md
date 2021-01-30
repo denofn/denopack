@@ -1,13 +1,7 @@
 # Contributing
 
 - If you are using vscode, install and enable the [required extensions](./.vscode/extensions.json).
-  - If you are not using vscode, sort your imports and use the following prettier settings:
-    - semi: true
-    - singleQuote: false
-    - printWidth: 100
-    - trailingComma: "es5"
-    - tabWidth: 2
-    - useTabs: false
+  - If you are not using vscode, sort your imports and run `deno fmt`.
 - Functions, constants and variables are always camelCase
 - Classes are allowed to be PascalCase
 - Extract shared code to [util](./util)
