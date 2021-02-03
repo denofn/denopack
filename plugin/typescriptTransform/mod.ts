@@ -7,14 +7,21 @@ export function pluginTypescriptTransform(opts?: Deno.CompilerOptions): Plugin {
   return {
     name: "denopack-plugin-typescriptTransform",
     async transform(code, id) {
-      const unlock = await transpilerMutex.lock();
-      const result = await Deno.transpileOnly({ [id]: code }, opts).catch(
-        (e) => {
-          throw new Error(`Failed to transpile ${id}: ${e}`);
-        },
-      );
-      unlock();
-      return { code: result[id].source, map: result[id].map };
+      let unlock;
+      try {
+        unlock = await transpilerMutex.lock();
+        const result = await Deno.emit(id, {
+          sources: { [id]: code },
+          compilerOptions: opts,
+          check: false,
+        });
+        const { [`${id}.js`]: output, [`${id}.js.map`]: map } = result.files;
+        return { code: output, map };
+      } catch (error) {
+        throw new Error(`Failed to transpile ${id}: ${error}`);
+      } finally {
+        unlock?.();
+      }
     },
   };
 }

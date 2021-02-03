@@ -1,10 +1,7 @@
 import { path } from "../deps.ts";
 import { usesProtocol } from "./usesProtocol.ts";
 
-export function resolver(
-  importee: string,
-  importer: string | undefined,
-): string {
+export function resolver(importee: string, importer?: string): string {
   if (!importer) {
     // If this is a raw absolute path, make it a `file://` path.
     if (!usesProtocol(importee)) {
@@ -13,10 +10,10 @@ export function resolver(
         return new URL(`file:///${importee}`).toString();
         // else if relative path resolve based on Deno.cwd()
       } else if (
-        importee.startsWith("./") || importee.startsWith("../") ||
-        (Deno.build.os === "windows" && (
-          importee.startsWith(".\\") || importee.startsWith("..\\")
-        ))
+        importee.startsWith("./") ||
+        importee.startsWith("../") ||
+        (Deno.build.os === "windows" &&
+          (importee.startsWith(".\\") || importee.startsWith("..\\")))
       ) {
         return new URL(`file:///${path.join(Deno.cwd(), importee)}`).toString();
       }
