@@ -10,10 +10,9 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-import { createFilter } from "../deps.ts";
-import { fs, path } from "../../deps.ts";
-
 import type { OutputAsset, Plugin } from "../../deps.ts";
+import { fs, path } from "../../deps.ts";
+import { createFilter } from "../deps.ts";
 
 type Opts = {
   output?: string | boolean;
@@ -48,7 +47,7 @@ export function pluginCssBundle(options: Opts = {}): Plugin {
 
       return "";
     },
-    async generateBundle(opts) {
+    generateBundle(opts) {
       if (
         (!changes && typeof changes !== "undefined") || options.output === false
       ) {

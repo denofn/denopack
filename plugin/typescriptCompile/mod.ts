@@ -56,15 +56,15 @@ export function pluginTypescriptCompile(
 ): Plugin {
   return {
     name: "denopack-plugin-typescriptCompile",
-    async resolveId(importee, importer) {
+    resolveId(importee, importer) {
       return resolveId(compilerOptions ?? {}, importee, importer);
     },
 
-    async load(id) {
+    load(id) {
       return useAsLoader ? resolveFromModules(id) : null;
     },
 
-    async transform(_, id) {
+    transform(_, id) {
       return useAsLoader ? null : resolveFromModules(id);
     },
   };

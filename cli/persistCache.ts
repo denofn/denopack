@@ -1,6 +1,6 @@
 import type { RollupCache } from "../deps.ts";
 
-export async function persistCache(
+export function persistCache(
   cachePath: string,
   cache: RollupCache,
 ): Promise<void> {

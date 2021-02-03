@@ -36,7 +36,7 @@ export function pluginCacheLoader(opts: Opts = {}): Plugin {
 
   return {
     name: "denopack-plugin-cacheLoader",
-    async load(id) {
+    load(id) {
       if (!isHttpUrl(id)) return null;
       return cacheLoader(id, opts, lockFile);
     },

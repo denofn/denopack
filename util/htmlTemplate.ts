@@ -1,7 +1,6 @@
+import type { OutputBundle } from "../deps.ts";
 import { path } from "../deps.ts";
 import { makeHtmlAttributes } from "./makeHtmlAttributes.ts";
-
-import type { OutputBundle } from "../deps.ts";
 
 export type Attributes = {
   link: Record<string, string> | null;
@@ -20,22 +19,22 @@ export type TemplateOpts = {
 };
 
 const resolveRelativePath = (from: string, to: string) => {
-  const raw_path = path.posix.join(
+  const rawPath = path.posix.join(
     path.relative(path.dirname(from), path.dirname(to)),
     path.basename(to),
   );
 
-  return raw_path.startsWith(".") ? raw_path : `./${raw_path}`;
+  return rawPath.startsWith(".") ? rawPath : `./${rawPath}`;
 };
 
-export const htmlTemplate = async ({
+export const htmlTemplate = ({
   attributes,
   files,
   meta,
   path,
   title,
   bodyEntry,
-}: TemplateOpts): Promise<string> => {
+}: TemplateOpts): string => {
   const scripts = (files.js || [])
     .map(({ fileName }) => {
       const attrs = makeHtmlAttributes(attributes.script);

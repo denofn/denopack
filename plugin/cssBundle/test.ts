@@ -30,11 +30,11 @@ Deno.test({
       await fs.ensureDir(path.join(testPath, "dist"));
       await fs.ensureFile(path.join(testPath, "dist", "css/output.css"));
 
-      const css_output = await Deno.readTextFile(
+      const cssOutput = await Deno.readTextFile(
         path.join(testPath, "dist", "css/output.css"),
       );
       asserts.assertStringContains(
-        css_output.replaceAll(/\s/g, ""),
+        cssOutput.replaceAll(/\s/g, ""),
         "body{background-color:black;}",
       );
     } finally {

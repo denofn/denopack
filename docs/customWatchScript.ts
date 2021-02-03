@@ -1,7 +1,7 @@
 import { debounce } from "../deps.ts";
 
 async function watch() {
-  const run = debounce(async function () {
+  const run = debounce(() => {
     Deno.run({
       cmd: ["vr", "start"],
     });
