@@ -1,10 +1,13 @@
 # denopack/plugin/typescriptTransform
 
-Uses the internal `Deno.transpileOnly` [compiler API](https://deno.land/manual/runtime/compiler_apis) to transpile TS to JS.
+Uses the internal `Deno.transpileOnly`
+[compiler API](https://deno.land/manual/runtime/compiler_apis) to transpile TS
+to JS.
 
 ## Options
 
-- `opts [Deno.CompilerOptions]`: this plugin accepts compiler options to pass to the Deno compiler API
+- `opts [Deno.CompilerOptions]`: this plugin accepts compiler options to pass to
+  the Deno compiler API
 
 ## Required flags
 
@@ -18,6 +21,10 @@ import { pluginFileLoader } from "https://deno.land/x/denopack@0.10.0/plugin/fil
 import { pluginTypescriptTransform } from "https://deno.land/x/denopack@0.10.0/plugin/typescriptTransform/mod.ts";
 
 export default {
-  plugins: [pluginImportResolver(), pluginFileLoader(), pluginTypescriptTransform({ ...myOptions })],
+  plugins: [
+    pluginImportResolver(),
+    pluginFileLoader(),
+    pluginTypescriptTransform({ ...myOptions }),
+  ],
 };
 ```

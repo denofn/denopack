@@ -1,6 +1,7 @@
 # denopack/plugin/chainResolver
 
-If files are resolved, Rollup will skip all other resolvers for that file. Sometimes you still want to do extra resolving.
+If files are resolved, Rollup will skip all other resolvers for that file.
+Sometimes you still want to do extra resolving.
 
 ## Usage
 

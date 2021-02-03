@@ -12,7 +12,9 @@
 
 ## Preface
 
-🦕📦 denopack is a CLI tool and a collection of plugins designed for bundling code to be used with Deno or in the browser. _No node_modules, no npm or yarn needed._
+🦕📦 denopack is a CLI tool and a collection of plugins designed for bundling code
+to be used with Deno or in the browser. _No node_modules, no npm or yarn
+needed._
 
 **General note: make sure you are running Deno v1.2.0 or later**
 
@@ -26,7 +28,8 @@ deno run --allow-run --allow-read https://deno.land/x/denopack@0.10.0/install.ts
 deno run --allow-run --allow-read https://x.nest.land/denopack@0.10.0/install.ts
 ```
 
-**NOTE: denopack uses unstable Deno APIs. These APIs are not final and may break, but this does mean `--unstable` is mandatory!**
+**NOTE: denopack uses unstable Deno APIs. These APIs are not final and may
+break, but this does mean `--unstable` is mandatory!**
 
 ## Documentation
 
@@ -38,5 +41,8 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## Acknowledgements
 
-- Reddit user [u/HarmonicAscendant](https://www.reddit.com/r/Deno/comments/hlm7dd/any_frontend_build_tools_for_deno_yet/) - unrelated to this library - who coined the name name Denopack
-- The sauropod and package emoji's courtesy of [Twemoji](https://twemoji.twitter.com/)
+- Reddit user
+  [u/HarmonicAscendant](https://www.reddit.com/r/Deno/comments/hlm7dd/any_frontend_build_tools_for_deno_yet/) -
+  unrelated to this library - who coined the name name Denopack
+- The sauropod and package emoji's courtesy of
+  [Twemoji](https://twemoji.twitter.com/)

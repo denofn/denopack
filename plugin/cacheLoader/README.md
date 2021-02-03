@@ -6,9 +6,14 @@
 
 ## Options
 
-- `lazy [boolean]`: defaults to false. If active, this will skip checking whether the file actually exists locally and will lazily return the assumed path
-- `cacheOnly [boolean]`: throws if an external dependency is not found inside the cache
-- `lockFile [string]`: path to a lockfile (for example: `lock.json`). Throws if the integrity of the loaded cache file does not match the integrity in the lockfile
+- `lazy [boolean]`: defaults to false. If active, this will skip checking
+  whether the file actually exists locally and will lazily return the assumed
+  path
+- `cacheOnly [boolean]`: throws if an external dependency is not found inside
+  the cache
+- `lockFile [string]`: path to a lockfile (for example: `lock.json`). Throws if
+  the integrity of the loaded cache file does not match the integrity in the
+  lockfile
 
 ## Required flags
 

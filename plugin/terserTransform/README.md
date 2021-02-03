@@ -4,7 +4,8 @@ Use Terser to minify/compress/mangle/... your bundle.
 
 ## Options
 
-- `opts [MinifyOptions]`: this plugin accepts Terser's config object for [minify options](https://terser.org/docs/api-reference#minify-options)
+- `opts [MinifyOptions]`: this plugin accepts Terser's config object for
+  [minify options](https://terser.org/docs/api-reference#minify-options)
 
 ## Usage
 
