@@ -34,7 +34,7 @@ export const htmlTemplate = ({
   path,
   title,
   bodyEntry,
-}: TemplateOpts): string => {
+}: TemplateOpts): Promise<string> => {
   const scripts = (files.js || [])
     .map(({ fileName }) => {
       const attrs = makeHtmlAttributes(attributes.script);
@@ -73,7 +73,7 @@ export const htmlTemplate = ({
   </body>
   `;
 
-  return `<!doctype html>
+  return Promise.resolve(`<!doctype html>
 <html${makeHtmlAttributes(attributes.html)}>
   <head>
     ${metas}
@@ -82,5 +82,5 @@ export const htmlTemplate = ({
   </head>
   ${body}
 </html>
-`;
+`);
 };
