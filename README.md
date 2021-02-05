@@ -16,7 +16,7 @@
 to be used with Deno or in the browser. _No node_modules, no npm or yarn
 needed._
 
-**General note: make sure you are running Deno v1.2.0 or later**
+**General note: make sure you are running Deno v1.7.0 or later**
 
 ### Installation
 
