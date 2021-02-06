@@ -1,5 +1,5 @@
-import { getContentType, ServerRequest, ServerResponse } from "./deps.ts";
 import { path } from "../../deps.ts";
+import { getContentType, ServerRequest, ServerResponse } from "./deps.ts";
 import type { ServeOptions } from "./options.ts";
 
 const DEFAULT_MIME_TYPE = "text/plain";
@@ -9,50 +9,51 @@ const DEFAULT_MIME_TYPE = "text/plain";
  * This one does the heavy lifting, search for each file and serve it to user
  * */
 export const createRequestHandler = (options: ServeOptions) => {
-  return async (request: ServerRequest): Promise<void> => {
-    const url_path = decodeURI(request.url.split("?")[0]);
+  return (request: ServerRequest): void => {
+    const urlPath = decodeURI(request.url.split("?")[0]);
 
-    let headers = new Headers();
+    const headers = new Headers();
     Object.entries(options.headers).forEach(([header, value]) => {
       headers.append(header, value);
     });
 
-    await readFileFromContentBase(options.contentBase, url_path)
-      .then(({ content, path: file_path }) => {
-        headers.set(
-          "Content-Type",
-          getContentType(path.extname(file_path)) || DEFAULT_MIME_TYPE,
-        );
-        request.respond({
-          body: content,
-          headers,
-        });
-      })
-      .catch(async () => {
-        if (options.historyApiFallback) {
-          await readFileFromContentBase(
+    try {
+      const { content, path: filePath } = readFileFromContentBase(
+        options.contentBase,
+        urlPath,
+      );
+      headers.set(
+        "Content-Type",
+        getContentType(path.extname(filePath)) || DEFAULT_MIME_TYPE,
+      );
+      request.respond({
+        body: content,
+        headers,
+      });
+    } catch {
+      if (options.historyApiFallback) {
+        try {
+          const { content, path: filePath } = readFileFromContentBase(
             options.contentBase,
             options.historyApiFallback,
-          )
-            .then(({ content, path: file_path }) => {
-              headers.set(
-                "Content-Type",
-                getContentType(path.extname(file_path)) || DEFAULT_MIME_TYPE,
-              );
-              request.respond({
-                body: content,
-                headers,
-              });
-            })
-            .catch(() => {
-              request.respond(
-                getNotFoundResponse(url_path, options.contentBase),
-              );
-            });
-        } else {
-          request.respond(getNotFoundResponse(url_path, options.contentBase));
+          );
+          headers.set(
+            "Content-Type",
+            getContentType(path.extname(filePath)) || DEFAULT_MIME_TYPE,
+          );
+          request.respond({
+            body: content,
+            headers,
+          });
+        } catch {
+          request.respond(
+            getNotFoundResponse(urlPath, options.contentBase),
+          );
         }
-      });
+      } else {
+        request.respond(getNotFoundResponse(urlPath, options.contentBase));
+      }
+    }
   };
 };
 
@@ -78,30 +79,30 @@ interface File {
 
 //TODO
 //Validate alternative errors beside not found
-const readFileFromContentBase = async (
-  content_base: string[],
+const readFileFromContentBase = (
+  contentBase: string[],
   url: string,
-): Promise<File> => {
-  let file: File = {
+): File => {
+  const file: File = {
     content: "",
     path: "",
   };
 
-  for (const content_path of content_base) {
-    let file_path: string;
+  for (const contentPath of contentBase) {
+    let filePath: string;
 
     if (url.endsWith("/")) {
-      file_path = path.resolve(
+      filePath = path.resolve(
         Deno.cwd(),
-        path.normalize(`${content_path}/index.html`),
+        path.normalize(`${contentPath}/index.html`),
       );
     } else {
-      file_path = path.resolve(Deno.cwd(), path.normalize(content_path + url));
+      filePath = path.resolve(Deno.cwd(), path.normalize(contentPath + url));
     }
 
     try {
-      file.content = Deno.readTextFileSync(file_path);
-      file.path = file_path;
+      file.content = Deno.readTextFileSync(filePath);
+      file.path = filePath;
     } catch {
       continue;
     }

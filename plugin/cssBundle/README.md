@@ -6,15 +6,18 @@ Denopack plugin that bundles imported CSS
 
 ## Options
 
-- `output [string | false]`: default `"bundle.css"`. Filename of the css bundle. Will emit no file if output is `false`
+- `output [string | false]`: default `"bundle.css"`. Filename of the css bundle.
+  Will emit no file if output is `false`
 
 ## Required flags
 
-- `--allow-read` and `--allow-env` because @rollup/pluginutils uses `std/node/process.ts`
+- `--allow-read` and `--allow-env` because @rollup/pluginutils uses
+  `std/node/process.ts`
 
 ## Attribution
 
-This plugin is a rough rewrite of [rollup-plugin-css-only](https://github.com/thgh/rollup-plugin-css-only).
+This plugin is a rough rewrite of
+[rollup-plugin-css-only](https://github.com/thgh/rollup-plugin-css-only).
 
 ## Usage
 

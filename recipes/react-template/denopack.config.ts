@@ -1,3 +1,7 @@
+import type {
+  RollupOptions,
+  TemplateOpts,
+} from "https://deno.land/x/denopack@0.10.0/mod.ts";
 import {
   htmlTemplate,
   pluginCssBundle as css,
@@ -6,11 +10,7 @@ import {
   pluginTerserTransform as terser,
   useCache,
 } from "https://deno.land/x/denopack@0.10.0/mod.ts";
-
-import type {
-  RollupOptions,
-  TemplateOpts,
-} from "https://deno.land/x/denopack@0.10.0/mod.ts";
+// TODO: update this version
 
 const isDev = !Deno.env.get("REACT_APP_IS_PROD");
 

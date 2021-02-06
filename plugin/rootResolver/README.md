@@ -1,7 +1,7 @@
 # denopack/plugin/rootResolver
 
-Resolves the root node and only the root node.
-Use this plugin if you want to write your resolving logic yourself.
+Resolves the root node and only the root node. Use this plugin if you want to
+write your resolving logic yourself.
 
 ## Usage
 

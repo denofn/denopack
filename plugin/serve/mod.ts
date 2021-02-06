@@ -11,13 +11,13 @@ import { createRequestHandler } from "./server.ts";
 export const pluginServe = (
   options: UserOptions | string | string[] = "",
 ): Plugin => {
-  let parsed_options: ServeOptions;
+  let parsedOptions: ServeOptions;
   if (Array.isArray(options)) {
-    parsed_options = parseOptions({
+    parsedOptions = parseOptions({
       contentBase: options,
     });
   } else if (typeof options === "string") {
-    parsed_options = parseOptions({
+    parsedOptions = parseOptions({
       contentBase: [options],
     });
   } else if (
@@ -26,34 +26,34 @@ export const pluginServe = (
     if (!Array.isArray(options.contentBase)) {
       options.contentBase = options.contentBase ? [options.contentBase] : [""];
     }
-    parsed_options = parseOptions(options as UserOptions);
+    parsedOptions = parseOptions(options as UserOptions);
   } else {
     throw new Error(
       "Options for serve: you must provide a valid path, list of paths or options object",
     );
   }
 
-  if (parsed_options.https) {
+  if (parsedOptions.https) {
     createHTTPSServer(
       {
-        certFile: parsed_options.https.cert,
-        keyFile: parsed_options.https.key,
-        hostname: parsed_options.host,
-        port: parsed_options.port,
+        certFile: parsedOptions.https.cert,
+        keyFile: parsedOptions.https.key,
+        hostname: parsedOptions.host,
+        port: parsedOptions.port,
       },
-      createRequestHandler(parsed_options),
+      createRequestHandler(parsedOptions),
     );
   } else {
     createHTTPServer(
       {
-        hostname: parsed_options.host,
-        port: parsed_options.port,
+        hostname: parsedOptions.host,
+        port: parsedOptions.port,
       },
-      createRequestHandler(parsed_options),
+      createRequestHandler(parsedOptions),
     );
   }
 
-  let running = parsed_options.verbose === false;
+  let running = parsedOptions.verbose === false;
 
   return {
     name: "denopack-plugin-serve",
@@ -61,10 +61,9 @@ export const pluginServe = (
       if (!running) {
         running = true;
 
-        const protocol = parsed_options.https ? "https" : "http";
-        const url =
-          `${protocol}://${parsed_options.host}:${parsed_options.port}`;
-        parsed_options.contentBase.forEach((base) => {
+        const protocol = parsedOptions.https ? "https" : "http";
+        const url = `${protocol}://${parsedOptions.host}:${parsedOptions.port}`;
+        parsedOptions.contentBase.forEach((base) => {
           console.log(
             `${url} -> ${
               path.resolve(Deno.cwd(), path.normalize(base || "./"))

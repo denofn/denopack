@@ -6,7 +6,9 @@
 
 ## Options
 
-- `lockFile [string]`: path to a lockfile (for example: `lock.json`). Throws if the integrity of the loaded cache file does not match the integrity in the lockfile
+- `lockFile [string]`: path to a lockfile (for example: `lock.json`). Throws if
+  the integrity of the loaded cache file does not match the integrity in the
+  lockfile
 
 ## Required flags
 

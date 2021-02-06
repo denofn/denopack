@@ -1,7 +1,7 @@
 import { path, Plugin } from "../../deps.ts";
 import { isHttpUrl } from "../../util/isHttpUrl.ts";
 import { resolver } from "../../util/resolver.ts";
-import { stripFileProtocol } from "../../util/stripFileProtocol.ts";
+import { usesProtocol } from "../../util/usesProtocol.ts";
 
 type Options = {
   useAsLoader?: boolean;
@@ -12,11 +12,8 @@ let modules: Record<string, string>;
 let files: string[];
 
 function resolveFromModules(id: string) {
-  const resolvedFile = isHttpUrl(id) ? id : path.resolve(id);
-  const originalFile = path.parse(resolvedFile);
-  const jsFile = originalFile.ext === ".js"
-    ? resolvedFile
-    : `${originalFile.dir}/${originalFile.name}.js`;
+  const resolvedFile = usesProtocol(id) ? id : path.resolve(id);
+  const jsFile = `${resolvedFile}.js`;
 
   if (!files.includes(jsFile)) {
     // Allows files like React (.js) to still be bundled since they don't get re-emitted
@@ -34,22 +31,21 @@ async function resolveId(
 ) {
   if (importer || modules) return resolver(_importee, importer);
 
-  let importee = _importee;
+  let importee = resolver(_importee);
 
   if (isHttpUrl(importee)) {
     const { url, redirected } = await fetch(importee);
     redirected && (importee = url);
   }
 
-  const [diagnostics, emitMap] = await Deno.compile(
-    importee,
-    undefined,
-    compilerOptions,
-  );
+  const result = await Deno.emit(importee, { compilerOptions });
+  const { diagnostics } = result;
 
-  if (diagnostics) throw new Error(Deno.formatDiagnostics(diagnostics));
+  if (diagnostics.length) {
+    throw new Error(Deno.formatDiagnostics(diagnostics));
+  }
 
-  modules = stripFileProtocol(emitMap);
+  modules = result.files;
   files = Object.keys(modules);
 
   return importee;
@@ -60,15 +56,15 @@ export function pluginTypescriptCompile(
 ): Plugin {
   return {
     name: "denopack-plugin-typescriptCompile",
-    async resolveId(importee, importer) {
+    resolveId(importee, importer) {
       return resolveId(compilerOptions ?? {}, importee, importer);
     },
 
-    async load(id) {
+    load(id) {
       return useAsLoader ? resolveFromModules(id) : null;
     },
 
-    async transform(_, id) {
+    transform(_, id) {
       return useAsLoader ? null : resolveFromModules(id);
     },
   };
